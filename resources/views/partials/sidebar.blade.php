@@ -16,7 +16,7 @@
                 <a href="{{url('admin/calendar')}}">
                   <i class="fa fa-calendar"></i>
                   <span class="title">
-                    Calendar
+                    Calendario
                   </span>
                 </a>
             </li>

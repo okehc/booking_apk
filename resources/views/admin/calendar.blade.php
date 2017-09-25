@@ -6,9 +6,7 @@
     
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     @can('reservacion_create')
-    <p>
-        <a href="{{ route('admin.reservacions.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>  
-    </p>
+        <a href="{{ route('admin.reservacions.create') }}" class="btn btn-primary pull-right">@lang('quickadmin.qa_add_new')</a>  
     @endcan
 
 
