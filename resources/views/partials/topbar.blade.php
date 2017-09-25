@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-            <a href="{{ url('/') }}" class="logo">
+            <a href="{{ url('/') }}">
                 <img class="full-height" src="/uploads/avatars/wba_large.png" alt="{{ env('APP_NAME', 'FaBe Manager') }}">
             </a>
     <!-- Header Navbar: style can be found in header.less -->
