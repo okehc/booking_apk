@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreReservacionsRequest;
 use App\Http\Requests\Admin\UpdateReservacionsRequest;
+use DB;
 
 class ReservacionsController extends Controller
 {
