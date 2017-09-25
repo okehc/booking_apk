@@ -2,7 +2,7 @@
     <!-- Logo -->
     <a href="{{ url('/admin/home') }}" class="logo">
     
-           <img class="full-height" src="/uploads/avatars/wba_large.png" alt="{{ env('APP_NAME', 'FaBe Manager') }}">
+           <img class="logo" src="/uploads/avatars/wba_large.png" alt="{{ env('APP_NAME', 'FaBe Manager') }}">
 
     </a>
     <!-- Header Navbar: style can be found in header.less -->
