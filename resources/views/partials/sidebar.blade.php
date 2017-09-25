@@ -21,6 +21,15 @@
                 </a>
             </li>
         
+            @can('reservacion_access')
+            <li class="{{ $request->segment(2) == 'reservacions' ? 'active' : '' }}">
+                <a href="{{ route('admin.reservacions.index') }}">
+                    <i class="fa fa-calendar-check-o"></i>
+                    <span class="title">@lang('quickadmin.reservacion.title')</span>
+                </a>
+            </li>
+            @endcan
+            
             @can('user_management_access')
             <li class="treeview">
                 <a href="#">
@@ -55,15 +64,6 @@
                 </ul>
             </li>
             @endcan
-            @can('reservacion_access')
-            <li class="{{ $request->segment(2) == 'reservacions' ? 'active' : '' }}">
-                <a href="{{ route('admin.reservacions.index') }}">
-                    <i class="fa fa-calendar-check-o"></i>
-                    <span class="title">@lang('quickadmin.reservacion.title')</span>
-                </a>
-            </li>
-            @endcan
-            
 
             
 
