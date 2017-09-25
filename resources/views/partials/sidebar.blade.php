@@ -3,16 +3,6 @@
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <ul class="sidebar-menu">
-
-<!--            <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
-                <a href="{{ url('/') }}">
-                    <i class="fa fa-wrench"></i>
-                    <span class="title">@lang('quickadmin.qa_dashboard')</span>
-                </a>
-            </li>
--->
-
         <div class="user-panel">
             <div class="pull-left image">
                 <img src="/uploads/avatars/{{{ Auth::user()->avatar }}}" class="img-circle"
@@ -29,6 +19,15 @@
             </div>
         </div>
 
+        <ul class="sidebar-menu">
+
+<!--            <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
+                <a href="{{ url('/') }}">
+                    <i class="fa fa-wrench"></i>
+                    <span class="title">@lang('quickadmin.qa_dashboard')</span>
+                </a>
+            </li>
+-->
             <li> 
                 <a href="{{url('admin/calendar')}}">
                   <i class="fa fa-calendar"></i>
