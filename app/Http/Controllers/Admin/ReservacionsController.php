@@ -48,10 +48,10 @@ class ReservacionsController extends Controller
         }
 
         try {
-            $e= DB::connection('odbc')->selectOne('SELECT * FROM tb_users') ;
-            var_dump($e);
+            $rooms= DB::connection('odbc')->selectOne('SELECT * FROM tb_rooms') ;        
+            
             //DB::connection()->getPdo();
-        } catch (\Exception $e) {
+        } catch (\Exception $rooms) {
             die("Could not connect to the database.  Please check your configuration.");
         }
         return view('admin.reservacions.create');
