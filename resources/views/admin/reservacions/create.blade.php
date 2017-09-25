@@ -1,4 +1,11 @@
 @extends('layouts.app')
+                
+
+                <?php
+                var_dump($rooms);
+                ?>
+                
+
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>

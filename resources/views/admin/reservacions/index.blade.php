@@ -34,10 +34,6 @@
 
                     </tr>
                 </thead>
-
-                <?php
-                var_dump($rooms);
-                ?>
                 
                 <tbody>
                     @if (count($reservacions) > 0)
