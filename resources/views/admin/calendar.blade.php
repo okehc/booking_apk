@@ -8,7 +8,7 @@
     @can('reservacion_create')
         <a href="{{ route('admin.reservacions.create') }}" class="btn btn-primary pull-right">@lang('quickadmin.qa_add_new')</a>  
     @endcan
-
+    </br>
     <div id='calendar'></div>
 
 @endsection
