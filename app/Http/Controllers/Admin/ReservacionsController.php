@@ -54,7 +54,7 @@ class ReservacionsController extends Controller
         } catch (\Exception $rooms) {
             die("Could not connect to the database.  Please check your configuration.");
         }
-        return view('admin.reservacions.create');
+        return view('admin.reservacions.create')->with('rooms', $rooms);
     }
 
     /**
