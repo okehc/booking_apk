@@ -1,8 +1,17 @@
 <header class="main-header">
     <!-- Logo -->
-            <a href="{{ url('/') }}">
+    <a href="{{ url('/admin/home') }}" class="logo"
+       style="font-size: 16px;">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">
+                
                 <img class="full-height" src="/uploads/avatars/wba_large.png" alt="{{ env('APP_NAME', 'FaBe Manager') }}">
-            </a>
+        </span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+           <img class="full-height" src="/uploads/avatars/wba_large.png" alt="{{ env('APP_NAME', 'FaBe Manager') }}">
+        </span>
+    </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
