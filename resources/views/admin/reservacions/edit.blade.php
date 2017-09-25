@@ -25,36 +25,24 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('ubicacion', old('ubicacion'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('ubicacion'))
+                        <p class="help-block">
+                            {{ $errors->first('ubicacion') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('sala_de_juntas', trans('quickadmin.reservacion.fields.sala-de-juntas').'*', ['class' => 'control-label']) !!}
                     {!! Form::text('sala_de_juntas', old('sala_de_juntas'), ['class' => 'form-control', 'placeholder' => 'Nombre de sala de juntas', 'required' => '']) !!}
                     <p class="help-block">Nombre de sala de juntas</p>
                     @if($errors->has('sala_de_juntas'))
                         <p class="help-block">
                             {{ $errors->first('sala_de_juntas') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('capacidad', trans('quickadmin.reservacion.fields.capacidad').'*', ['class' => 'control-label']) !!}
-                    {!! Form::number('capacidad', old('capacidad'), ['class' => 'form-control', 'placeholder' => 'capacidad de invitados', 'required' => '']) !!}
-                    <p class="help-block">capacidad de invitados</p>
-                    @if($errors->has('capacidad'))
-                        <p class="help-block">
-                            {{ $errors->first('capacidad') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('fecha_de_inicio', trans('quickadmin.reservacion.fields.fecha-de-inicio').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('fecha_de_inicio', old('fecha_de_inicio'), ['class' => 'form-control datetime', 'placeholder' => 'Fecha de Inicio']) !!}
-                    <p class="help-block">Fecha de Inicio</p>
-                    @if($errors->has('fecha_de_inicio'))
-                        <p class="help-block">
-                            {{ $errors->first('fecha_de_inicio') }}
                         </p>
                     @endif
                 </div>
@@ -73,9 +61,9 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('invitado', trans('quickadmin.reservacion.fields.invitado').'*', ['class' => 'control-label']) !!}
-                    {!! Form::email('invitado', old('invitado'), ['class' => 'form-control', 'placeholder' => 'Lista de invitados sapara por ,', 'required' => '']) !!}
-                    <p class="help-block">Lista de invitados sapara por ,</p>
+                    {!! Form::label('invitado', trans('quickadmin.reservacion.fields.invitado').'', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('invitado', old('invitado'), ['class' => 'form-control ', 'placeholder' => 'Escribir los correos separados por comas ( , )']) !!}
+                    <p class="help-block">Escribir los correos separados por comas ( , )</p>
                     @if($errors->has('invitado'))
                         <p class="help-block">
                             {{ $errors->first('invitado') }}
@@ -86,8 +74,8 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('comentario', trans('quickadmin.reservacion.fields.comentario').'', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('comentario', old('comentario'), ['class' => 'form-control ', 'placeholder' => 'Comentario para enviar correo']) !!}
-                    <p class="help-block">Comentario para enviar correo</p>
+                    {!! Form::textarea('comentario', old('comentario'), ['class' => 'form-control ', 'placeholder' => 'Texto para enviar por correo']) !!}
+                    <p class="help-block">Texto para enviar por correo</p>
                     @if($errors->has('comentario'))
                         <p class="help-block">
                             {{ $errors->first('comentario') }}

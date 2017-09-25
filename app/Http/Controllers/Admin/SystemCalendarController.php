@@ -20,7 +20,7 @@ class SystemCalendarController extends Controller
 
            $eventLabel     = $reservacion->nombre_de_reunion; 
            $prefix         = 'Reservaciones'; 
-           $suffix         = 'Fechad e reservacion'; 
+           $suffix         = 'Fecha de reservación'; 
            $dataFieldValue = trim($prefix . " " . $eventLabel . " " . $suffix); 
            $events[]       = [ 
                 'title' => $dataFieldValue, 

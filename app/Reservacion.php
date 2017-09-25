@@ -10,28 +10,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @package App
  * @property string $nombre_de_reunion
+ * @property string $ubicacion
  * @property string $sala_de_juntas
- * @property integer $capacidad
  * @property string $fecha_de_inicio
  * @property string $fecha_de_finalizacion
- * @property string $invitado
+ * @property tinyInteger $repeat
+ * @property text $invitado
  * @property text $comentario
 */
 class Reservacion extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nombre_de_reunion', 'sala_de_juntas', 'capacidad', 'fecha_de_inicio', 'fecha_de_finalizacion', 'invitado', 'comentario'];
+    protected $fillable = ['nombre_de_reunion', 'ubicacion', 'sala_de_juntas', 'fecha_de_inicio', 'fecha_de_finalizacion', 'repeat', 'invitado', 'comentario'];
     
-
-    /**
-     * Set attribute to money format
-     * @param $input
-     */
-    public function setCapacidadAttribute($input)
-    {
-        $this->attributes['capacidad'] = $input ? $input : null;
-    }
 
     /**
      * Set attribute to date format

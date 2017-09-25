@@ -25,9 +25,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     Route::resource('reservacions', 'Admin\ReservacionsController');
-    Route::post('reservacions_mass_destroy', ['uses' => 'Admin\ReservacionsController@massDestroy', 'as' => 'reservacions.mass_destroy']);
-    Route::post('reservacions_restore/{id}', ['uses' => 'Admin\ReservacionsController@restore', 'as' => 'reservacions.restore']);
-    Route::delete('reservacions_perma_del/{id}', ['uses' => 'Admin\ReservacionsController@perma_del', 'as' => 'reservacions.perma_del']);
 
 
 });

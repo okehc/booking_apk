@@ -25,10 +25,8 @@ class StoreReservacionsRequest extends FormRequest
         return [
             'nombre_de_reunion' => 'required',
             'sala_de_juntas' => 'required',
-            'capacidad' => 'max:2147483647|required|numeric',
-            'fecha_de_inicio' => 'nullable|date_format:'.config('app.date_format').' H:i:s',
-            'fecha_de_finalizacion' => 'required|date_format:'.config('app.date_format').' H:i:s',
-            'invitado' => 'required|email',
+            'fecha_de_inicio' => 'required|date_format:'.config('app.date_format').' H:i:s|unique:reservacions,fecha_de_inicio',
+            'fecha_de_finalizacion' => 'required|date_format:'.config('app.date_format').' H:i:s|unique:reservacions,fecha_de_finalizacion',
         ];
     }
 }

@@ -4,7 +4,7 @@ return [
 		'user-management' => [		'title' => 'Administración de usuarios',		'fields' => [		],	],
 		'roles' => [		'title' => 'Roles',		'fields' => [			'title' => 'Título',		],	],
 		'users' => [		'title' => 'Usuarios',		'fields' => [			'name' => 'Nombre',			'email' => 'Correo',			'password' => 'Contraseña',			'role' => 'Rol',			'remember-token' => 'Recordar token',		],	],
-		'reservacion' => [		'title' => 'Reservacion',		'fields' => [			'nombre-de-reunion' => 'Nombre de reunión',			'sala-de-juntas' => 'Sala de Juntas',			'capacidad' => 'Capacidad',			'fecha-de-inicio' => 'Fecha de Inicio',			'fecha-de-finalizacion' => 'Fecha de Finalización',			'invitado' => 'Invitado(s)',			'comentario' => 'Comentario',		],	],
+		'reservacion' => [		'title' => 'Mis Reservaciones',		'fields' => [			'nombre-de-reunion' => 'Reunión',			'ubicacion' => 'Ubicación',			'sala-de-juntas' => 'Sala de Juntas',			'fecha-de-inicio' => 'Fecha de Inicio',			'fecha-de-finalizacion' => 'Fecha de Finalización',			'repeat' => 'Repetir?',			'invitado' => 'Invitado(s)',			'comentario' => 'Mensaje',		],	],
 	'qa_create' => 'बनाइए (क्रिएट)',
 	'qa_save' => 'सुरक्षित करे ',
 	'qa_edit' => 'संपादित करे (एडिट)',

@@ -82,9 +82,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('reservacion_view', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-        Gate::define('reservacion_delete', function ($user) {
-            return in_array($user->role_id, [1, 2]);
-        });
 
     }
 }
