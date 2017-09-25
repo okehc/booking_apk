@@ -49,8 +49,7 @@ class ReservacionsController extends Controller
 
         try {
             $rooms= DB::connection('odbc')->selectOne('SELECT * FROM tb_rooms') ;        
-            
-            //DB::connection()->getPdo();
+            var_dump($rooms);            //DB::connection()->getPdo();
         } catch (\Exception $rooms) {
             die("Could not connect to the database.  Please check your configuration.");
         }
