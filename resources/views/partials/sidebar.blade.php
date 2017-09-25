@@ -12,7 +12,15 @@
                 </a>
             </li>
 
-            
+            <li> 
+                <a href="{{url('admin/calendar')}}">
+                  <i class="fa fa-calendar"></i>
+                  <span class="title">
+                    Calendar
+                  </span>
+                </a>
+            </li>
+        
             @can('user_management_access')
             <li class="treeview">
                 <a href="#">

@@ -13,12 +13,32 @@
                 <div class="col-md-6">
                     <table class="table table-bordered table-striped">
                         <tr>
-                            <th>@lang('quickadmin.reservacion.fields.nombre')</th>
-                            <td field-key='nombre'>{{ $reservacion->nombre }}</td>
+                            <th>@lang('quickadmin.reservacion.fields.nombre-de-reunion')</th>
+                            <td field-key='nombre_de_reunion'>{{ $reservacion->nombre_de_reunion }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.reservacion.fields.sala-de-juntas')</th>
+                            <td field-key='sala_de_juntas'>{{ $reservacion->sala_de_juntas }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.reservacion.fields.capacidad')</th>
+                            <td field-key='capacidad'>{{ $reservacion->capacidad }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.reservacion.fields.fecha-de-inicio')</th>
+                            <td field-key='fecha_de_inicio'>{{ $reservacion->fecha_de_inicio }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.reservacion.fields.fecha-de-finalizacion')</th>
+                            <td field-key='fecha_de_finalizacion'>{{ $reservacion->fecha_de_finalizacion }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.reservacion.fields.invitado')</th>
+                            <td field-key='invitado'>{{ $reservacion->invitado }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.reservacion.fields.comentario')</th>
-                            <td field-key='comentario'>{{ $reservacion->comentario }}</td>
+                            <td field-key='comentario'>{!! $reservacion->comentario !!}</td>
                         </tr>
                     </table>
                 </div>

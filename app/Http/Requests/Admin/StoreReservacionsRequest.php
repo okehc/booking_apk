@@ -23,7 +23,12 @@ class StoreReservacionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required',
+            'nombre_de_reunion' => 'required',
+            'sala_de_juntas' => 'required',
+            'capacidad' => 'max:2147483647|required|numeric',
+            'fecha_de_inicio' => 'nullable|date_format:'.config('app.date_format').' H:i:s',
+            'fecha_de_finalizacion' => 'required|date_format:'.config('app.date_format').' H:i:s',
+            'invitado' => 'required|email',
         ];
     }
 }

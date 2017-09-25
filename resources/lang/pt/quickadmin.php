@@ -4,7 +4,7 @@ return [
 		'user-management' => [		'title' => 'Administración de usuarios',		'fields' => [		],	],
 		'roles' => [		'title' => 'Roles',		'fields' => [			'title' => 'Título',		],	],
 		'users' => [		'title' => 'Usuarios',		'fields' => [			'name' => 'Nombre',			'email' => 'Correo',			'password' => 'Contraseña',			'role' => 'Rol',			'remember-token' => 'Recordar token',		],	],
-		'reservacion' => [		'title' => 'Reservacion',		'fields' => [			'nombre' => 'Nombre',			'comentario' => 'Comentario',		],	],
+		'reservacion' => [		'title' => 'Reservacion',		'fields' => [			'nombre-de-reunion' => 'Nombre de reunión',			'sala-de-juntas' => 'Sala de Juntas',			'capacidad' => 'Capacidad',			'fecha-de-inicio' => 'Fecha de Inicio',			'fecha-de-finalizacion' => 'Fecha de Finalización',			'invitado' => 'Invitado(s)',			'comentario' => 'Comentario',		],	],
 	'qa_create' => 'Criar',
 	'qa_save' => 'Salvar',
 	'qa_edit' => 'Editar',

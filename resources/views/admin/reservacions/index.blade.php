@@ -33,7 +33,12 @@
                             @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                         @endcan
 
-                        <th>@lang('quickadmin.reservacion.fields.nombre')</th>
+                        <th>@lang('quickadmin.reservacion.fields.nombre-de-reunion')</th>
+                        <th>@lang('quickadmin.reservacion.fields.sala-de-juntas')</th>
+                        <th>@lang('quickadmin.reservacion.fields.capacidad')</th>
+                        <th>@lang('quickadmin.reservacion.fields.fecha-de-inicio')</th>
+                        <th>@lang('quickadmin.reservacion.fields.fecha-de-finalizacion')</th>
+                        <th>@lang('quickadmin.reservacion.fields.invitado')</th>
                         <th>@lang('quickadmin.reservacion.fields.comentario')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
@@ -51,8 +56,13 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='nombre'>{{ $reservacion->nombre }}</td>
-                                <td field-key='comentario'>{{ $reservacion->comentario }}</td>
+                                <td field-key='nombre_de_reunion'>{{ $reservacion->nombre_de_reunion }}</td>
+                                <td field-key='sala_de_juntas'>{{ $reservacion->sala_de_juntas }}</td>
+                                <td field-key='capacidad'>{{ $reservacion->capacidad }}</td>
+                                <td field-key='fecha_de_inicio'>{{ $reservacion->fecha_de_inicio }}</td>
+                                <td field-key='fecha_de_finalizacion'>{{ $reservacion->fecha_de_finalizacion }}</td>
+                                <td field-key='invitado'>{{ $reservacion->invitado }}</td>
+                                <td field-key='comentario'>{!! $reservacion->comentario !!}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('reservacion_delete')
@@ -97,7 +107,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="7">@lang('quickadmin.qa_no_entries_in_table')</td>
+                            <td colspan="12">@lang('quickadmin.qa_no_entries_in_table')</td>
                         </tr>
                     @endif
                 </tbody>
