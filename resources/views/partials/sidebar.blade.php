@@ -12,6 +12,23 @@
                 </a>
             </li>
 -->
+
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/uploads/avatars/{{{ Auth::user()->avatar }}}" class="img-circle"
+                     alt="User Image"/>
+            </div>
+            <div class="pull-left info">
+                @if (Auth::guest())
+                    <p>{{ env('APP_NAME', 'FaBe Manager') }}</p>
+                @else
+                    <p>{{ Auth::user()->name }}</p>
+                @endif
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+
             <li> 
                 <a href="{{url('admin/calendar')}}">
                   <i class="fa fa-calendar"></i>
