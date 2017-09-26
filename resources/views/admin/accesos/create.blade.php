@@ -12,7 +12,7 @@
 
 <?php 
 
-var_dump($ub_array);
+var_dump($ub_array[1]);
 
 ?>
 
