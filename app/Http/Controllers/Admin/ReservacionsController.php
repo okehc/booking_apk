@@ -47,17 +47,13 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
-    try {
-        $e= DB::connection('odbc')->selectOne('SELECT * FROM tb_users') ;
-        #$var_dump($e);
-        //DB::connection()->getPdo();
-    } catch (\Exception $e) {
-        die("Could not connect to the database.  Please check your configuration.");
-    }
+        try {
+            $e= DB::connection('odbc')->selectOne('SELECT * FROM tb_users') ;       
+        } catch (\Exception $e) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
 
-
-
-        return view('admin.reservacions.create');
+        return view('admin.reservacions.create')->with('e', $e);
     }
 
     /**

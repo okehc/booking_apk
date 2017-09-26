@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreAccesosRequest;
 use App\Http\Requests\Admin\UpdateAccesosRequest;
+use DB;
 
 class AccesosController extends Controller
 {
@@ -45,7 +46,14 @@ class AccesosController extends Controller
         if (! Gate::allows('acceso_create')) {
             return abort(401);
         }
-        return view('admin.accesos.create');
+
+        try {
+            $ubicaciones= DB::connection('mysql')->query('SELECT id, nombre, estado FROM ubicaciones') ;       
+        } catch (\Exception $e) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
+
+        return view('admin.accesos.create')->with('ubicaciones', $ubicaciones);
     }
 
     /**
