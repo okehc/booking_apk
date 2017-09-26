@@ -12,7 +12,7 @@
 
 <?php 
 
-var_dump($ub_array);
+var_dump($ubicaciones);
 
 ?>
 
@@ -32,7 +32,8 @@ var_dump($ub_array);
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_ubicacion', trans('quickadmin.accesos.fields.id-ubicacion').'*', ['class' => 'control-label']) !!}
-                    {!! Form::select('id_ubicacion', $ub_array), ['class' => 'form-control', 'placeholder' => 'Nombre del acceso a crear']) !!}
+                    {!! Form::number('id_ubicacion', old('id_ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación a la que pertenece', 'required' => '']) !!}
+                    
                     <p class="help-block">Ubicación a la que pertenece</p>
                     @if($errors->has('id_ubicacion'))
                         <p class="help-block">
