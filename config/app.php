@@ -175,7 +175,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        TCK\Odbc\OdbcServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -19,20 +19,21 @@
             </div>
         </div>
 
+
         <ul class="sidebar-menu">
 
-<!--            <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
+            <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
                     <i class="fa fa-wrench"></i>
                     <span class="title">@lang('quickadmin.qa_dashboard')</span>
                 </a>
             </li>
--->
+
             <li> 
                 <a href="{{url('admin/calendar')}}">
                   <i class="fa fa-calendar"></i>
                   <span class="title">
-                    Calendario
+                    Calendar
                   </span>
                 </a>
             </li>
@@ -80,7 +81,6 @@
                 </ul>
             </li>
             @endcan
-
             @can('adminitracion_access')
             <li class="treeview">
                 <a href="#">
@@ -124,7 +124,7 @@
                 @endcan
                 </ul>
             </li>
-            @endcan            
+            @endcan
 
             
 

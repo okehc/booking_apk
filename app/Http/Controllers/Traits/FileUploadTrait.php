@@ -17,8 +17,8 @@ trait FileUploadTrait
 		$uploadPath = public_path(env('UPLOAD_PATH'));
 		$thumbPath = public_path(env('UPLOAD_PATH').'/thumb');
         if (! file_exists($uploadPath)) {
-            mkdir($uploadPath, 0777);
-            mkdir($thumbPath, 0777);
+            mkdir($uploadPath, 0775);
+            mkdir($thumbPath, 0775);
         }
 
         $finalRequest = $request;
@@ -31,7 +31,7 @@ trait FileUploadTrait
                     $file     = $request->file($key);
                     $image    = Image::make($file);
                     if (! file_exists($thumbPath)) {
-                        mkdir($thumbPath, 0777, true);
+                        mkdir($thumbPath, 0775, true);
                     }
                     Image::make($file)->resize(50, 50)->save($thumbPath . '/' . $filename);
                     $width  = $image->width();

@@ -83,5 +83,61 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        // Auth gates for: Ubicaciones
+        Gate::define('ubicacione_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('ubicacione_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('ubicacione_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('ubicacione_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('ubicacione_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
+        // Auth gates for: Accesos
+        Gate::define('acceso_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('acceso_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('acceso_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('acceso_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('acceso_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
+        // Auth gates for: Seccion
+        Gate::define('seccion_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('seccion_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('seccion_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('seccion_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('seccion_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
+        // Auth gates for: Adminitración general
+        Gate::define('adminitración_general_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
     }
 }

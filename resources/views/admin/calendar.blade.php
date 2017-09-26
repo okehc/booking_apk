@@ -3,12 +3,9 @@
 
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
-    
-    <h3 class="page-title">@lang('quickadmin.calendar.title')</h3>
-    @can('reservacion_create')
-        <a href="{{ route('admin.reservacions.create') }}" class="btn btn-primary">@lang('quickadmin.qa_add_new')</a>  
-    @endcan
-    </br>
+
+    <h3 class="page-title">Calendar</h3>
+
     <div id='calendar'></div>
 
 @endsection
