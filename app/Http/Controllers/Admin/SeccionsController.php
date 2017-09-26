@@ -32,7 +32,7 @@ class SeccionsController extends Controller
         } else {
             
             try {
-                $accesos= DB::connection('mysql')->select('SELECT a.id, b.nombre as id_ubicacion, a.nombre_seccion, a.id_atributos, a.created_at, a.updated_at, 
+                $seccions= DB::connection('mysql')->select('SELECT a.id, b.nombre as id_ubicacion, a.nombre_seccion, a.id_atributos, a.created_at, a.updated_at, 
                                                            a.deleted_at FROM seccions a JOIN ubicaciones b on a.id_ubicacion = b.id  ') ;     
 
             } catch (\Exception $ubicaciones) {
