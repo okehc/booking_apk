@@ -48,12 +48,15 @@ class AccesosController extends Controller
         }
 
         try {
-            $ubicaciones= DB::connection('mysql')->raw('SELECT id, nombre, estado FROM ubicaciones') ;    
+            $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;    
 
             $ub_array = array();
             foreach($ubicaciones as $ubicacion) {
                 $ub_array[$ubicacion->id] = $ubicacion->nombre;
             }
+
+var_dump($ubicaciones);
+var_dump($ub_array);
 
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
