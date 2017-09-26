@@ -134,8 +134,8 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
-        // Auth gates for: Adminitración general
-        Gate::define('adminitración_general_access', function ($user) {
+        // Auth gates for: Adminitracion
+        Gate::define('adminitracion_access', function ($user) {
             return in_array($user->role_id, [1]);
         });
 
