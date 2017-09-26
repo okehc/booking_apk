@@ -55,8 +55,11 @@ class AccesosController extends Controller
                 $ub_array[$ubicacion->id] = $ubicacion->nombre;
             }
 
-            
-var_dump($ub_array);
+            $ub= Ubicacione::all()->lists('id', 'nombre');
+
+
+
+var_dump($ub);
 
 #print_r($ubicaciones);
 #print_r($ub_array);
