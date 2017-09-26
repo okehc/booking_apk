@@ -53,6 +53,10 @@ class AccesosController extends Controller
             die("Could not connect to the database.  Please check your configuration.");
         }
 
+
+var_dump($ubicaciones);
+
+
         return view('admin.accesos.create')->with('ubicaciones', $ubicaciones);
     }
 
