@@ -50,9 +50,6 @@ class AccesosController extends Controller
         try {
             $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;    
 
-$b= $ubicaciones->toArray();
-var_dump($b);
-
             $ub_array = array();
             foreach($ubicaciones as $ubicacion) {
                 $ub_array[$ubicacion->id] = $ubicacion->nombre;
