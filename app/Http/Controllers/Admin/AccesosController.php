@@ -48,7 +48,7 @@ class AccesosController extends Controller
         }
 
         try {
-            $ubicaciones= DB::connection('mysql')->selectOne('SELECT id, nombre, estado FROM ubicaciones') ;       
+            $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;       
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
         }
