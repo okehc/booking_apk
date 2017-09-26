@@ -54,8 +54,12 @@ class AccesosController extends Controller
                 $ub_array[$ubicacion->id] = $ubicacion->nombre;
             }
 
-print_r($ubicaciones);
-print_r($ub_array);
+            $ubi= Ubicacione::all();
+
+print_r($ubi);
+
+#print_r($ubicaciones);
+#print_r($ub_array);
 
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
