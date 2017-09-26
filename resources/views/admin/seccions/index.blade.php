@@ -33,8 +33,8 @@
                             @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                         @endcan
 
-                        <th>@lang('quickadmin.seccion.fields.id-ubicacion')</th>
                         <th>@lang('quickadmin.seccion.fields.nombre-seccion')</th>
+                        <th>@lang('quickadmin.seccion.fields.id-ubicacion')</th>                        
                         <th>@lang('quickadmin.seccion.fields.id-atributos')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
@@ -51,9 +51,9 @@
                                 @can('seccion_delete')
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
-
-                                <td field-key='id_ubicacion'>{{ $seccion->id_ubicacion }}</td>
+                                
                                 <td field-key='nombre_seccion'>{{ $seccion->nombre_seccion }}</td>
+                                <td field-key='id_ubicacion'>{{ $seccion->id_ubicacion }}</td>                                
                                 <td field-key='id_atributos'>{{ $seccion->id_atributos }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
