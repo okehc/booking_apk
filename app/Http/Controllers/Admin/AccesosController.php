@@ -55,9 +55,8 @@ class AccesosController extends Controller
                 $ub_array[$ubicacion->id] = $ubicacion->nombre;
             }
 
-            $ubi= Ubicacione::all();
-
-print_r($ubi);
+            
+print_r($ub_array);
 
 #print_r($ubicaciones);
 #print_r($ub_array);
