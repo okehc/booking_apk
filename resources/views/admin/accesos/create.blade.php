@@ -9,13 +9,6 @@
             @lang('quickadmin.qa_create')
         </div>
         
-
-<?php 
-
-var_dump($ubicaciones[1]);
-
-?>
-
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">

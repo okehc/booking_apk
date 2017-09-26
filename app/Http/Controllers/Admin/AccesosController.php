@@ -31,6 +31,15 @@ class AccesosController extends Controller
             }
             $accesos = Acceso::onlyTrashed()->get();
         } else {
+            
+            try {
+                $acc= DB::connection('mysql')->select('SELECT a.id, a.nombre_acceso, b.nombre as id_ubicacion, a.created_at, a.updated_at, a.deleted_at FROM accesos a JOIN ubicaciones b on a.id = b.id ') ;                
+            } catch (\Exception $ubicaciones) {
+                die("Could not connect to the database.  Please check your configuration.");
+            }
+
+var_dump($acc);
+
             $accesos = Acceso::all();
         }
 
@@ -49,14 +58,7 @@ class AccesosController extends Controller
         }
 
         try {
-            $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;    
-            
-          
-print_r($ubicaciones);
-
-#print_r($ubicaciones);
-#print_r($ub_array);
-
+            $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;                
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
         }
