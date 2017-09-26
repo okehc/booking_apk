@@ -47,10 +47,17 @@ class AccesosController extends Controller
             return abort(401);
         }
 
-        
+        try {
+            $ubicaciones= DB::connection('mysql')->selectOne('SELECT id, nombre, estado FROM ubicaciones') ;       
+        } catch (\Exception $ubicaciones) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
 
 
-        return view('admin.accesos.create');
+var_dump($ubicaciones);
+
+
+        return view('admin.accesos.create')->with('ubicaciones', $ubicaciones);
     }
 
     /**
