@@ -25,20 +25,16 @@
                             <td field-key='sala_de_juntas'>{{ $reservacion->sala_de_juntas }}</td>
                         </tr>
                         <tr>
-                            <th>@lang('quickadmin.reservacion.fields.fecha-de-inicio')</th>
-                            <td field-key='fecha_de_inicio'>{{ $reservacion->fecha_de_inicio }}</td>
+                            <th>@lang('quickadmin.reservacion.fields.hora-duracion')</th>
+                            <td field-key='hora_duracion'>{{ $reservacion->hora_duracion }}</td>
                         </tr>
                         <tr>
-                            <th>@lang('quickadmin.reservacion.fields.fecha-de-finalizacion')</th>
-                            <td field-key='fecha_de_finalizacion'>{{ $reservacion->fecha_de_finalizacion }}</td>
+                            <th>@lang('quickadmin.reservacion.fields.minuto-duracion')</th>
+                            <td field-key='minuto_duracion'>{{ $reservacion->minuto_duracion }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.reservacion.fields.repeat')</th>
                             <td field-key='repeat'>{{ Form::checkbox("repeat", 1, $reservacion->repeat == 1 ? true : false, ["disabled"]) }}</td>
-                        </tr>
-                        <tr>
-                            <th>@lang('quickadmin.reservacion.fields.invitado')</th>
-                            <td field-key='invitado'>{!! $reservacion->invitado !!}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.reservacion.fields.comentario')</th>

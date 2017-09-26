@@ -5,10 +5,9 @@ $factory->define(App\Reservacion::class, function (Faker\Generator $faker) {
         "nombre_de_reunion" => $faker->name,
         "ubicacion" => $faker->name,
         "sala_de_juntas" => $faker->name,
-        "fecha_de_inicio" => $faker->date("d/m/Y H:i:s", $max = 'now'),
-        "fecha_de_finalizacion" => $faker->date("d/m/Y H:i:s", $max = 'now'),
+        "hora_duracion" => $faker->randomNumber(2),
+        "minuto_duracion" => $faker->randomNumber(2),
         "repeat" => 0,
-        "invitado" => $faker->name,
         "comentario" => $faker->name,
     ];
 });

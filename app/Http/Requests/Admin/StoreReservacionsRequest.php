@@ -25,8 +25,8 @@ class StoreReservacionsRequest extends FormRequest
         return [
             'nombre_de_reunion' => 'required',
             'sala_de_juntas' => 'required',
-            'fecha_de_inicio' => 'required|date_format:'.config('app.date_format').' H:i:s|unique:reservacions,fecha_de_inicio',
-            'fecha_de_finalizacion' => 'required|date_format:'.config('app.date_format').' H:i:s|unique:reservacions,fecha_de_finalizacion',
+            'hora_duracion' => 'max:2147483647|required|numeric',
+            'minuto_duracion' => 'max:2147483647|required|numeric',
         ];
     }
 }

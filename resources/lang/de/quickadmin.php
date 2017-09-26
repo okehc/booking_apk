@@ -4,10 +4,10 @@ return [
 		'user-management' => [		'title' => 'Administración de usuarios',		'fields' => [		],	],
 		'roles' => [		'title' => 'Roles',		'fields' => [			'title' => 'Título',		],	],
 		'users' => [		'title' => 'Usuarios',		'fields' => [			'name' => 'Nombre',			'apellido-paterno' => 'Apellido Paterno',			'apellido-materno' => 'Apellido Materno',			'email' => 'Correo',			'password' => 'Contraseña',			'role' => 'Rol',			'remember-token' => 'Recordar token',		],	],
-		'reservacion' => [		'title' => 'Mis Reservaciones',		'fields' => [			'nombre-de-reunion' => 'Reunión',			'ubicacion' => 'Ubicación',			'sala-de-juntas' => 'Sala de Juntas',			'fecha-de-inicio' => 'Fecha de Inicio',			'fecha-de-finalizacion' => 'Fecha de Finalización',			'repeat' => 'Repetir?',			'invitado' => 'Invitado(s)',			'comentario' => 'Mensaje',		],	],
+		'reservacion' => [		'title' => 'Mis Reservaciones',		'fields' => [			'nombre-de-reunion' => 'Reunión',			'ubicacion' => 'Ubicación',			'sala-de-juntas' => 'Sala de Juntas',			'hora-duracion' => 'Horas de Duración',			'minuto-duracion' => 'Minutos de Duración',			'repeat' => 'Repetir?',			'comentario' => 'Mensaje',		],	],
 		'ubicaciones' => [		'title' => 'Adminitración de Ubicaciones',		'fields' => [			'nombre' => 'Nombre de Ubicación',			'ciudad' => 'Ciudad',			'estado' => 'Estado',		],	],
 		'accesos' => [		'title' => 'Adminitración de Accesos',		'fields' => [			'nombre-acceso' => 'Nombre del Acceso',			'id-ubicacion' => 'Ubicación',		],	],
-		'seccion' => [		'title' => 'Administración de recursos ( salas ) ',		'fields' => [			'id-ubicacion' => 'Ubicación',			'nombre-seccion' => 'Nombre de sección',			'id-atributos' => 'Id atributos',		],	],
+		'seccion' => [		'title' => 'Administración de recursos',		'fields' => [			'id-ubicacion' => 'Ubicación',			'nombre-seccion' => 'Nombre de sección',			'id-atributos' => 'Id atributos',		],	],
 		'administracion' => [		'title' => 'Administración',		'fields' => [		],	],
 		'adminitracion' => [		'title' => 'Adminitración General',		'fields' => [		],	],
 	'qa_create' => 'Erstellen',

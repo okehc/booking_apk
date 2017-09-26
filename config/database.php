@@ -66,19 +66,6 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-
-        'odbc'   => [
-            'driver'   => 'odbc',
-            'dsn'      => 'odbc:MSSQLServer',
-            'host'     => '172.30.7.23',
-            'database' => 'db_room_booking',
-            'username' => 'sa',
-            'password' => 'Superx01',
-            'grammar' => [
-                'query' => Illuminate\Database\Query\Grammars\SqlServerGrammar::class,
-                'schema' => Illuminate\Database\Schema\Grammars\SqlServerGrammar::class,
-            ],
-        ],         
     ],
 
     /*

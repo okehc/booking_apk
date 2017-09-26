@@ -2,7 +2,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -12,77 +11,34 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $nombre_de_reunion
  * @property string $ubicacion
  * @property string $sala_de_juntas
- * @property string $fecha_de_inicio
- * @property string $fecha_de_finalizacion
+ * @property integer $hora_duracion
+ * @property integer $minuto_duracion
  * @property tinyInteger $repeat
- * @property text $invitado
  * @property text $comentario
 */
 class Reservacion extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nombre_de_reunion', 'ubicacion', 'sala_de_juntas', 'fecha_de_inicio', 'fecha_de_finalizacion', 'repeat', 'invitado', 'comentario'];
+    protected $fillable = ['nombre_de_reunion', 'ubicacion', 'sala_de_juntas', 'hora_duracion', 'minuto_duracion', 'repeat', 'comentario'];
     
 
     /**
-     * Set attribute to date format
+     * Set attribute to money format
      * @param $input
      */
-    public function setFechaDeInicioAttribute($input)
+    public function setHoraDuracionAttribute($input)
     {
-        if ($input != null && $input != '') {
-            $this->attributes['fecha_de_inicio'] = Carbon::createFromFormat(config('app.date_format') . ' H:i:s', $input)->format('Y-m-d H:i:s');
-        } else {
-            $this->attributes['fecha_de_inicio'] = null;
-        }
+        $this->attributes['hora_duracion'] = $input ? $input : null;
     }
 
     /**
-     * Get attribute from date format
-     * @param $input
-     *
-     * @return string
-     */
-    public function getFechaDeInicioAttribute($input)
-    {
-        $zeroDate = str_replace(['Y', 'm', 'd'], ['0000', '00', '00'], config('app.date_format') . ' H:i:s');
-
-        if ($input != $zeroDate && $input != null) {
-            return Carbon::createFromFormat('Y-m-d H:i:s', $input)->format(config('app.date_format') . ' H:i:s');
-        } else {
-            return '';
-        }
-    }
-
-    /**
-     * Set attribute to date format
+     * Set attribute to money format
      * @param $input
      */
-    public function setFechaDeFinalizacionAttribute($input)
+    public function setMinutoDuracionAttribute($input)
     {
-        if ($input != null && $input != '') {
-            $this->attributes['fecha_de_finalizacion'] = Carbon::createFromFormat(config('app.date_format') . ' H:i:s', $input)->format('Y-m-d H:i:s');
-        } else {
-            $this->attributes['fecha_de_finalizacion'] = null;
-        }
-    }
-
-    /**
-     * Get attribute from date format
-     * @param $input
-     *
-     * @return string
-     */
-    public function getFechaDeFinalizacionAttribute($input)
-    {
-        $zeroDate = str_replace(['Y', 'm', 'd'], ['0000', '00', '00'], config('app.date_format') . ' H:i:s');
-
-        if ($input != $zeroDate && $input != null) {
-            return Carbon::createFromFormat('Y-m-d H:i:s', $input)->format(config('app.date_format') . ' H:i:s');
-        } else {
-            return '';
-        }
+        $this->attributes['minuto_duracion'] = $input ? $input : null;
     }
     
 }

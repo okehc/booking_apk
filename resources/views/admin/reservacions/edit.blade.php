@@ -49,24 +49,24 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('fecha_de_finalizacion', trans('quickadmin.reservacion.fields.fecha-de-finalizacion').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('fecha_de_finalizacion', old('fecha_de_finalizacion'), ['class' => 'form-control datetime', 'placeholder' => 'Fecha de Terminación de Reunión', 'required' => '']) !!}
-                    <p class="help-block">Fecha de Terminación de Reunión</p>
-                    @if($errors->has('fecha_de_finalizacion'))
+                    {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
+                    {!! Form::number('hora_duracion', old('hora_duracion'), ['class' => 'form-control', 'placeholder' => 'Hora que dura la reunión', 'required' => '']) !!}
+                    <p class="help-block">Hora que dura la reunión</p>
+                    @if($errors->has('hora_duracion'))
                         <p class="help-block">
-                            {{ $errors->first('fecha_de_finalizacion') }}
+                            {{ $errors->first('hora_duracion') }}
                         </p>
                     @endif
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('invitado', trans('quickadmin.reservacion.fields.invitado').'', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('invitado', old('invitado'), ['class' => 'form-control ', 'placeholder' => 'Escribir los correos separados por comas ( , )']) !!}
-                    <p class="help-block">Escribir los correos separados por comas ( , )</p>
-                    @if($errors->has('invitado'))
+                    {!! Form::label('minuto_duracion', trans('quickadmin.reservacion.fields.minuto-duracion').'*', ['class' => 'control-label']) !!}
+                    {!! Form::number('minuto_duracion', old('minuto_duracion'), ['class' => 'form-control', 'placeholder' => 'minutos', 'required' => '']) !!}
+                    <p class="help-block">minutos</p>
+                    @if($errors->has('minuto_duracion'))
                         <p class="help-block">
-                            {{ $errors->first('invitado') }}
+                            {{ $errors->first('minuto_duracion') }}
                         </p>
                     @endif
                 </div>
@@ -91,16 +91,3 @@
     {!! Form::close() !!}
 @stop
 
-@section('javascript')
-    @parent
-    <script src="{{ url('quickadmin/js') }}/timepicker.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>    <script>
-        $('.datetime').datetimepicker({
-            autoclose: true,
-            dateFormat: "{{ config('app.date_format_js') }}",
-            timeFormat: "HH:mm:ss"
-        });
-    </script>
-
-@stop

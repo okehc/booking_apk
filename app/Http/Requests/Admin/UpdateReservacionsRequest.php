@@ -26,7 +26,8 @@ class UpdateReservacionsRequest extends FormRequest
             
             'nombre_de_reunion' => 'required',
             'sala_de_juntas' => 'required',
-            'fecha_de_finalizacion' => 'required|date_format:'.config('app.date_format').' H:i:s|unique:reservacions,fecha_de_finalizacion,'.$this->route('reservacion'),
+            'hora_duracion' => 'max:2147483647|required|numeric',
+            'minuto_duracion' => 'max:2147483647|required|numeric',
         ];
     }
 }
