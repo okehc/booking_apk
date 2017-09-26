@@ -24,6 +24,30 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('apellido_paterno', trans('quickadmin.users.fields.apellido-paterno').'*', ['class' => 'control-label']) !!}
+                    {!! Form::text('apellido_paterno', old('apellido_paterno'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('apellido_paterno'))
+                        <p class="help-block">
+                            {{ $errors->first('apellido_paterno') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('apellido_materno', trans('quickadmin.users.fields.apellido-materno').'*', ['class' => 'control-label']) !!}
+                    {!! Form::text('apellido_materno', old('apellido_materno'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('apellido_materno'))
+                        <p class="help-block">
+                            {{ $errors->first('apellido_materno') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('email', trans('quickadmin.users.fields.email').'*', ['class' => 'control-label']) !!}
                     {!! Form::email('email', old('email'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>

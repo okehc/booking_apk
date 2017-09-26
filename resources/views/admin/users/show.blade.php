@@ -17,6 +17,14 @@
                             <td field-key='name'>{{ $user->name }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.users.fields.apellido-paterno')</th>
+                            <td field-key='apellido_paterno'>{{ $user->apellido_paterno }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.users.fields.apellido-materno')</th>
+                            <td field-key='apellido_materno'>{{ $user->apellido_materno }}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.users.fields.email')</th>
                             <td field-key='email'>{{ $user->email }}</td>
                         </tr>
