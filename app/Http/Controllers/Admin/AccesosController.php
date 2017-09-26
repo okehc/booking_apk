@@ -54,19 +54,16 @@ class AccesosController extends Controller
             foreach($ubicaciones as $ubicacion) {
                 $ub_array[$ubicacion->id] = $ubicacion->nombre;
             }
-
-            $ub= Ubicacione::all()->lists('id', 'nombre');
-
-
-
-var_dump($ub);
-
 #print_r($ubicaciones);
 #print_r($ub_array);
 
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
         }
+
+            $ub= Ubicacione::all()->lists('id', 'nombre');
+            var_dump($ub);
+
 
         return view('admin.accesos.create')->with('ub_array', $ub_array);
     }
