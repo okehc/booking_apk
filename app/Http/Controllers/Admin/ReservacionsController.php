@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreReservacionsRequest;
 use App\Http\Requests\Admin\UpdateReservacionsRequest;
+use DB;
 
 class ReservacionsController extends Controller
 {
@@ -45,6 +46,16 @@ class ReservacionsController extends Controller
         if (! Gate::allows('reservacion_create')) {
             return abort(401);
         }
+
+
+    try {
+        $e= DB::connection('odbc')->selectOne('SELECT * FROM tb_users') ;
+        #var_dump($e);
+        //DB::connection()->getPdo();
+    } catch (\Exception $e) {
+        die("Could not connect to the database.  Please check your configuration.");
+    }
+
         return view('admin.reservacions.create');
     }
 
