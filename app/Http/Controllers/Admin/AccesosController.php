@@ -48,7 +48,7 @@ class AccesosController extends Controller
         }
 
         try {
-            $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;    
+            $ubicaciones= DB::connection('mysql')->raw('SELECT id, nombre, estado FROM ubicaciones') ;    
 
             $ub_array = array();
             foreach($ubicaciones as $ubicacion) {
