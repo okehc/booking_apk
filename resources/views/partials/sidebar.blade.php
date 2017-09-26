@@ -81,6 +81,51 @@
             </li>
             @endcan
 
+            @can('adminitracion_access')
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-asterisk"></i>
+                    <span class="title">@lang('quickadmin.adminitracion.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                
+                @can('ubicacione_access')
+                <li class="{{ $request->segment(2) == 'ubicaciones' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('admin.ubicaciones.index') }}">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="title">
+                                @lang('quickadmin.ubicaciones.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
+                @can('acceso_access')
+                <li class="{{ $request->segment(2) == 'accesos' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('admin.accesos.index') }}">
+                            <i class="fa fa-universal-access"></i>
+                            <span class="title">
+                                @lang('quickadmin.accesos.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
+                @can('seccion_access')
+                <li class="{{ $request->segment(2) == 'seccions' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('admin.seccions.index') }}">
+                            <i class="fa fa-square-o"></i>
+                            <span class="title">
+                                @lang('quickadmin.seccion.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
+                </ul>
+            </li>
+            @endcan            
+
             
 
             
