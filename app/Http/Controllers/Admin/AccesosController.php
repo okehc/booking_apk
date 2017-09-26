@@ -62,7 +62,7 @@ var_dump($ub_array);
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        return view('admin.accesos.create')->with('ub_array', $ub_array);
+        return view('admin.accesos.create')->with('ub_array', $ubicaciones);
     }
 
     /**
