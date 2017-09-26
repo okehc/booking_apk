@@ -20,9 +20,9 @@ var_dump($ub_array);
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('nombre_acceso', trans('quickadmin.accesos.fields.nombre-acceso').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('nombre_acceso', old('nombre_acceso'), ['class' => 'form-control', 'placeholder' => 'Nombre del acceso a crear', 'required' => '']) !!}
+                    
 
-                    {!! Form::select('nombre_acceso', $ub_array, null), ['class' => 'form-control', 'placeholder' => 'Nombre del acceso a crear', 'required' => '']) !!}
+                    {!! Form::select('nombre_acceso', $ub_array), ['class' => 'form-control', 'placeholder' => 'Nombre del acceso a crear', 'required' => '']) !!}
                     <p class="help-block">Nombre del acceso a crear</p>
                     @if($errors->has('nombre_acceso'))
                         <p class="help-block">
