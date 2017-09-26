@@ -10,7 +10,11 @@
         </div>
         
 
+<?php 
 
+var_dump($ubicaciones);
+
+?>
 
         <div class="panel-body">
             <div class="row">
