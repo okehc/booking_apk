@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreSeccionsRequest;
 use App\Http\Requests\Admin\UpdateSeccionsRequest;
+use DB;
 
 class SeccionsController extends Controller
 {
@@ -45,7 +46,14 @@ class SeccionsController extends Controller
         if (! Gate::allows('seccion_create')) {
             return abort(401);
         }
-        return view('admin.seccions.create');
+        
+        try {
+            $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;                
+        } catch (\Exception $ubicaciones) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
+
+        return view('admin.seccions.create')->with('ubicaciones', $ubicaciones);;
     }
 
     /**

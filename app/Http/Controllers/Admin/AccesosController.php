@@ -33,7 +33,8 @@ class AccesosController extends Controller
         } else {
             
             try {
-                $accesos= DB::connection('mysql')->select('SELECT a.id, a.nombre_acceso, b.nombre as id_ubicacion, a.created_at, a.updated_at, a.deleted_at FROM accesos a JOIN ubicaciones b on a.id = b.id ') ;                
+                $accesos= DB::connection('mysql')->select('SELECT a.id, a.nombre_acceso, b.nombre as id_ubicacion, a.created_at, a.updated_at, a.deleted_at 
+                                                           FROM accesos a JOIN ubicaciones b on a.id = b.id ') ;                
             } catch (\Exception $ubicaciones) {
                 die("Could not connect to the database.  Please check your configuration.");
             }
