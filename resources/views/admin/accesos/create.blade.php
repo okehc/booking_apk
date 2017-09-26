@@ -12,7 +12,7 @@
 
 <?php 
 
-var_dump($ubicaciones);
+var_dump($ub_array);
 
 ?>
 
