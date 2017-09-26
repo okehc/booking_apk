@@ -51,12 +51,8 @@ class AccesosController extends Controller
         try {
             $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;    
             
-            foreach($ubicaciones as $ubicacion) {
-                $ub_array[$ubicacion->id] = $ubicacion->nombre;
-            }
-
-            
-print_r($ub_array);
+          
+print_r($ubicaciones);
 
 #print_r($ubicaciones);
 #print_r($ub_array);
@@ -65,7 +61,7 @@ print_r($ub_array);
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        return view('admin.accesos.create')->with('ub_array', $ub_array);
+        return view('admin.accesos.create')->with('ubicaciones', $ubicaciones);
     }
 
     /**

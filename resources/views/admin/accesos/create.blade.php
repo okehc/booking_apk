@@ -12,7 +12,7 @@
 
 <?php 
 
-var_dump($ub_array[1]);
+var_dump($ubicaciones[1]);
 
 ?>
 
@@ -33,6 +33,12 @@ var_dump($ub_array[1]);
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_ubicacion', trans('quickadmin.accesos.fields.id-ubicacion').'*', ['class' => 'control-label']) !!}
                     {!! Form::number('id_ubicacion', old('id_ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación a la que pertenece', 'required' => '']) !!}
+
+<select name="id_ubicacion">
+    @foreach($ubicaciones as $ubicacion)
+     <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}}</option>
+    @endforeach
+</select>
 
                     <p class="help-block">Ubicación a la que pertenece</p>
                     @if($errors->has('id_ubicacion'))
