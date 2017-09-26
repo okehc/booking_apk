@@ -56,7 +56,7 @@ class AccesosController extends Controller
             }
 
             
-print_r($ub_array);
+var_dump($ub_array);
 
 #print_r($ubicaciones);
 #print_r($ub_array);
