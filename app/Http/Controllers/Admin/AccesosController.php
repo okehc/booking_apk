@@ -50,10 +50,7 @@ class AccesosController extends Controller
         
 
 
-var_dump($ubicaciones);
-
-
-        return view('admin.accesos.create')->with('ubicaciones', $ubicaciones);
+        return view('admin.accesos.create');
     }
 
     /**
