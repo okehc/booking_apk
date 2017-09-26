@@ -25,6 +25,18 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     Route::resource('reservacions', 'Admin\ReservacionsController');
+    Route::resource('ubicaciones', 'Admin\UbicacionesController');
+    Route::post('ubicaciones_mass_destroy', ['uses' => 'Admin\UbicacionesController@massDestroy', 'as' => 'ubicaciones.mass_destroy']);
+    Route::post('ubicaciones_restore/{id}', ['uses' => 'Admin\UbicacionesController@restore', 'as' => 'ubicaciones.restore']);
+    Route::delete('ubicaciones_perma_del/{id}', ['uses' => 'Admin\UbicacionesController@perma_del', 'as' => 'ubicaciones.perma_del']);
+    Route::resource('accesos', 'Admin\AccesosController');
+    Route::post('accesos_mass_destroy', ['uses' => 'Admin\AccesosController@massDestroy', 'as' => 'accesos.mass_destroy']);
+    Route::post('accesos_restore/{id}', ['uses' => 'Admin\AccesosController@restore', 'as' => 'accesos.restore']);
+    Route::delete('accesos_perma_del/{id}', ['uses' => 'Admin\AccesosController@perma_del', 'as' => 'accesos.perma_del']);
+    Route::resource('seccions', 'Admin\SeccionsController');
+    Route::post('seccions_mass_destroy', ['uses' => 'Admin\SeccionsController@massDestroy', 'as' => 'seccions.mass_destroy']);
+    Route::post('seccions_restore/{id}', ['uses' => 'Admin\SeccionsController@restore', 'as' => 'seccions.restore']);
+    Route::delete('seccions_perma_del/{id}', ['uses' => 'Admin\SeccionsController@perma_del', 'as' => 'seccions.perma_del']);
 
 
 });
