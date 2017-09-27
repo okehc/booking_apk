@@ -26,6 +26,13 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_ubicacion', trans('quickadmin.accesos.fields.id-ubicacion').'*', ['class' => 'control-label']) !!}
+                    <select name="id_ubicacion">
+                        <option value="{{ $location->id }} selected ">{{ $location->nombre }}, {{ $location->ciudad }}, {{ $location->estado }}</option>
+                        @foreach($ubicaciones as $ubicacion)
+                         <option value="{{ $ubicacion->id }} selected ">{{ $ubicacion->nombre }}, {{ $ubicacion->ciudad }}, {{ $ubicacion->estado }}</option>
+                        @endforeach
+                    </select>
+
                     {!! Form::number('id_ubicacion', old('id_ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación a la que pertenece', 'required' => '']) !!}
                     <p class="help-block">Ubicación a la que pertenece</p>
                     @if($errors->has('id_ubicacion'))
