@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('items_mass_destroy', ['uses' => 'Admin\itemsController@massDestroy', 'as' => 'items.mass_destroy']);
     Route::post('items_restore/{id}', ['uses' => 'Admin\itemsController@restore', 'as' => 'items.restore']);
     Route::delete('items_perma_del/{id}', ['uses' => 'Admin\itemsController@perma_del', 'as' => 'items.perma_del']);
-
+    Route::resource('departamentos', 'Admin\DepartamentosController');
+    Route::post('departamentos_mass_destroy', ['uses' => 'Admin\DepartamentosController@massDestroy', 'as' => 'departamentos.mass_destroy']);
+    Route::post('departamentos_restore/{id}', ['uses' => 'Admin\DepartamentosController@restore', 'as' => 'departamentos.restore']);
+    Route::delete('departamentos_perma_del/{id}', ['uses' => 'Admin\DepartamentosController@perma_del', 'as' => 'departamentos.perma_del']);
 
 });

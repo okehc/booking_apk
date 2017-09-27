@@ -153,5 +153,21 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
+        // Auth gates for: Departamentos
+        Gate::define('departamento_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('departamento_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('departamento_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('departamento_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('departamento_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
     }
 }

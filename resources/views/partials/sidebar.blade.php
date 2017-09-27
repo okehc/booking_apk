@@ -124,6 +124,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('departamento_access')
+                <li class="{{ $request->segment(2) == 'departamentos' ? 'active' : '' }}">
+                    <a href="{{ route('admin.departamentos.index') }}">
+                        <i class="fa fa-gears"></i>
+                        <span class="title">@lang('quickadmin.departamentos.title')</span>
+                    </a>
+                </li>
+                @endcan                
                 </ul>
             </li>
             @endcan

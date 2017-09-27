@@ -89,6 +89,13 @@ return [
 			'item-descripcion' => 'Descripción del Item',
 		],
 	],
+	'departamentos' => [
+		'title' => 'Administración Departamentos',
+		'fields' => [
+			'departamento' => 'Departamento',
+			'descripcion' => 'Descripción',
+		],
+	],	
 	'qa_create' => 'Crear',
 	'qa_save' => 'Guardar',
 	'qa_edit' => 'Editar',
