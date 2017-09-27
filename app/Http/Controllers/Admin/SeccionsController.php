@@ -83,11 +83,12 @@ class SeccionsController extends Controller
         if (! Gate::allows('seccion_create')) {
             return abort(401);
         }
-        $seccion = Seccion::create($request->all());
+
+          var_dump($request);
 
 
-
-        return redirect()->route('admin.seccions.index');
+        #$seccion = Seccion::create($request->all());
+        #return redirect()->route('admin.seccions.index');
     }
 
 
