@@ -48,18 +48,6 @@ class User extends Authenticatable
     }
 
 
-
-    /**
-     * Hash password
-     * @param $input
-     */
-    public function setPasswordAttribute($input)
-    {
-        if ($input)
-            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
-    }
-
-
     /**
      * Hash password
      * @param $input
