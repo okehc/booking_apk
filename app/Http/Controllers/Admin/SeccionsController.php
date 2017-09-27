@@ -165,7 +165,7 @@ class SeccionsController extends Controller
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        return view('admin.seccions.show', compact('seccion'))->with('find_items', $find_items)->with('find_location', $find_location);
+        return view('admin.seccions.show', compact('seccion'))->with('find_location', $find_location);
     }
 
 
