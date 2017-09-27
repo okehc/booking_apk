@@ -18,7 +18,9 @@
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.accesos.fields.id-ubicacion')</th>
-                            <td field-key='id_ubicacion'>{{ $acceso->id_ubicacion }}</td>
+                            <td field-key='id_ubicacion'>
+                                {{ $location->nombre }}, {{ $location->ciudad }}, {{ $location->estado }}
+                            </td>
                         </tr>
                     </table>
                 </div>

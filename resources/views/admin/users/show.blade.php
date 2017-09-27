@@ -26,11 +26,13 @@
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.users.fields.ubicacion')</th>
-                            <td field-key='ubicacion'>{{ $user->ubicacion }}</td>
+                            <td field-key='ubicacion'>
+                                {{ $location->nombre }}, {{ $location->ciudad }}, {{ $location->estado }}
+                            </td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.users.fields.departamento')</th>
-                            <td field-key='departamento'>{{ $user->departamento }}</td>
+                            <td field-key='departamento'>{{ $departamento->departamento }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.users.fields.extension')</th>

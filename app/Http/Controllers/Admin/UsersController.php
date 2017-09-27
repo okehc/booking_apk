@@ -121,8 +121,10 @@ class UsersController extends Controller
             return abort(401);
         }
         $user = User::findOrFail($id);
+        $location= DB::connection('mysql')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion  WHERE b.id = "'.$id.'" ');
+        $departamento= DB::connection('mysql')->selectOne('SELECT a.departamento FROM departamento a JOIN users b ON a.id = b.departamento  WHERE b.id = "'.$id.'" ');
 
-        return view('admin.users.show', compact('user'));
+        return view('admin.users.show', compact('user'))->with('location', $location)->with('departamento', $departamento);
     }
 
 
