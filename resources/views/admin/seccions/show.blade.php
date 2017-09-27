@@ -27,10 +27,11 @@
                         <tr>
                             <th>@lang('quickadmin.seccion.fields.id-atributos')</th>
                             <td field-key='id_atributos'>
-
+                                <ul>
                                 @foreach($find_items as $item)
-                                        {{ $item->item_nombre }} - {{ $item->item_descripcion }} </br>
+                                        <li> {{ $item->item_nombre }} - {{ $item->item_descripcion }} </li>
                                 @endforeach
+                                </ul>
                             </td>
                         </tr>
                     </table>
