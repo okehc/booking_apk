@@ -59,10 +59,10 @@ return [
 	],
 	
 	'seccion' => [
-		'title' => 'Administración de recursos',
+		'title' => 'Administración de Salas',
 		'fields' => [
 			'id-ubicacion' => 'Ubicación',
-			'nombre-seccion' => 'Nombre de recurso',
+			'nombre-seccion' => 'Nombre de Sala',
 			'id-atributos' => 'Id atributos',
 		],
 	],
@@ -76,6 +76,14 @@ return [
 	'adminitracion' => [
 		'title' => 'Adminitración General',
 		'fields' => [
+		],
+	],
+
+	'items' => [
+		'title' => 'Administración de Items',
+		'fields' => [
+			'item-nombre' => 'Nombre del Item',
+			'item-descripcion' => 'Descripción del Item',
 		],
 	],
 	'qa_create' => 'Crear',

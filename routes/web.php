@@ -37,6 +37,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('seccions_mass_destroy', ['uses' => 'Admin\SeccionsController@massDestroy', 'as' => 'seccions.mass_destroy']);
     Route::post('seccions_restore/{id}', ['uses' => 'Admin\SeccionsController@restore', 'as' => 'seccions.restore']);
     Route::delete('seccions_perma_del/{id}', ['uses' => 'Admin\SeccionsController@perma_del', 'as' => 'seccions.perma_del']);
+    Route::resource('items', 'Admin\itemsController');
+    Route::post('items_mass_destroy', ['uses' => 'Admin\itemsController@massDestroy', 'as' => 'items.mass_destroy']);
+    Route::post('items_restore/{id}', ['uses' => 'Admin\itemsController@restore', 'as' => 'items.restore']);
+    Route::delete('items_perma_del/{id}', ['uses' => 'Admin\itemsController@perma_del', 'as' => 'items.perma_del']);
 
 
 });

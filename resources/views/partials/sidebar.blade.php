@@ -115,6 +115,15 @@
                         </a>
                     </li>
                 @endcan
+                @can('item_access')
+                <li class="{{ $request->segment(2) == 'items' ? 'active' : '' }}">
+                        <a href="{{ route('admin.items.index') }}">
+                            <i class="fa fa-check"></i>
+                            <span class="title">
+                                @lang('quickadmin.items.title')</span>
+                        </a>
+                    </li>
+                @endcan
                 </ul>
             </li>
             @endcan
