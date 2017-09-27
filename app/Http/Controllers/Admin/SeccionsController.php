@@ -159,7 +159,10 @@ class SeccionsController extends Controller
         # get items
         try {
             $find_items= DB::connection('mysql')->select('SELECT a.item_nombre, a.item_descripcion FROM items a JOIN items_seccions b ON a.id = b.id  WHERE b.id_seccions = "'.$id.'" ') ;
-            $find_location= DB::connection('mysql')->select('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ') ;                
+            $find_location= DB::connection('mysql')->select('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ') ;            
+
+var_dump($find_location);
+
         } catch (\Exception $find_items) {
             die("Could not connect to the database.  Please check your configuration.");
         }
