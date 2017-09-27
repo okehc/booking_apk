@@ -136,7 +136,7 @@ class AccesosController extends Controller
         $acceso = Acceso::findOrFail($id);
         $location= DB::connection('mysql')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
 
-        return view('admin.accesos.show', compact('acceso'))->view('location', $location);
+        return view('admin.accesos.show', compact('acceso'))->with('location', $location);
     }
 
 
