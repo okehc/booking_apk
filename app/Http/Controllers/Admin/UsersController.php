@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUsersRequest;
 use App\Http\Requests\Admin\UpdateUsersRequest;
+use DB;
 
 class UsersController extends Controller
 {
@@ -40,8 +41,10 @@ class UsersController extends Controller
         }
         
         $roles = \App\Role::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+        $departamentos = DB::connection('mysql')->select('SELECT id, departamento FROM departamentos') ;       
+        $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;
 
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create', compact('roles'))->with('departamentos', $departamentos)->with('ubicaciones', $ubicaciones);
     }
 
     /**

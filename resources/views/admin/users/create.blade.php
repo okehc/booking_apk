@@ -49,7 +49,11 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ubicacion', trans('quickadmin.users.fields.ubicacion').'*', ['class' => 'control-label']) !!}
-                    {!! Form::number('ubicacion', old('ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación del usuario', 'required' => '']) !!}
+                    <select name="ubicacion">
+                        @foreach($ubicaciones as $ubicacion)
+                         <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}} - {{ $ubicacion->estado}}</option>
+                        @endforeach
+                    </select>
                     <p class="help-block">Ubicación del usuario</p>
                     @if($errors->has('ubicacion'))
                         <p class="help-block">
@@ -61,6 +65,12 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('departamento', trans('quickadmin.users.fields.departamento').'*', ['class' => 'control-label']) !!}
+                    <select name="departamento">
+                        @foreach($departamentos as $departamento)
+                         <option value="{{ $departamento->id }}">{{ $departamento->departamento}}</option>
+                        @endforeach
+                    </select>
+
                     {!! Form::number('departamento', old('departamento'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('departamento'))
