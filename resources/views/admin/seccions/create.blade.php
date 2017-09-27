@@ -42,7 +42,10 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_atributos', trans('quickadmin.seccion.fields.id-atributos').'', ['class' => 'control-label']) !!}
-                    {!! Form::number('id_atributos', old('id_atributos'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    @foreach($items as $item)
+                        <input type="checkbox" name="{{ $item->item_nombre }}" value="{{ $item->id }}"> {{ $item->item_nombre }} {{ $item->item_descripcion }}
+                    @endforeach
+
                     <p class="help-block"></p>
                     @if($errors->has('id_atributos'))
                         <p class="help-block">

@@ -69,7 +69,6 @@ class SeccionsController extends Controller
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-var_dump($items);
         return view('admin.seccions.create')->with('ubicaciones', $ubicaciones)->with('items', $items);
     }
 
