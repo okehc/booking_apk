@@ -23,10 +23,11 @@ class UsersController extends Controller
             return abort(401);
         }
 
-
-                $users = User::all();
-
-                var_dump($users);
+                $users= DB::connection('mysql')->select('SELECT a.id, a.name, a.email, a.password, a.remember_token, a.created_at,
+                    a.updated_at, a.role_id, a.apellido_paterno, a.apellido_materno,
+                    a.deleted_at, b.nombre as ubicacion, c.departamento as departamento,
+                    a.extension FROM users a JOIN ubicaciones b ON a.ubicacion = b.id
+                    JOIN departamentos c ON a.departamento = c.id') ; 
 
         return view('admin.users.index', compact('users'));
     }
