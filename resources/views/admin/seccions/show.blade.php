@@ -8,6 +8,11 @@
             @lang('quickadmin.qa_view')
         </div>
 
+
+<?php
+var_dump($find_location);
+?>
+
         <div class="panel-body table-responsive">
             <div class="row">
                 <div class="col-md-6">
