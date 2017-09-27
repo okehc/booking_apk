@@ -32,8 +32,6 @@
                          <option value="{{ $ubicacion->id }} selected ">{{ $ubicacion->nombre }}, {{ $ubicacion->ciudad }}, {{ $ubicacion->estado }}</option>
                         @endforeach
                     </select>
-
-                    {!! Form::number('id_ubicacion', old('id_ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación a la que pertenece', 'required' => '']) !!}
                     <p class="help-block">Ubicación a la que pertenece</p>
                     @if($errors->has('id_ubicacion'))
                         <p class="help-block">
