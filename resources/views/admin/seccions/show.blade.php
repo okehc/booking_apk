@@ -3,6 +3,10 @@
 @section('content')
     <h3 class="page-title">@lang('quickadmin.seccion.title')</h3>
 
+<?php
+         var_dump($find_items);
+?>         
+
     <div class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_view')

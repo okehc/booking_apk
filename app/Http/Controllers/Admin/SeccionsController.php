@@ -93,7 +93,9 @@ class SeccionsController extends Controller
           try {
             foreach ($request['item'] as $item) {
               
-                $inserted_items= DB::connection('mysql')->insert('INSERT INTO items_seccions ( id_seccions, id_item, created_at ) VALUES ( "'.$last_id.'", "'.$item.'", NOW() )');        
+                $inserted_items= DB::connection('mysql')->insert(
+                                  'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
+                                  VALUES ( "'.$last_id.'", "'.$item.'", NOW() )');        
             }
                
           } catch (\Exception $inserted_items) {
@@ -154,7 +156,14 @@ class SeccionsController extends Controller
         }
         $seccion = Seccion::findOrFail($id);
 
-        return view('admin.seccions.show', compact('seccion'));
+        # get items
+        try {
+            $find_items= DB::connection('mysql')->select('SELECT a.item_nombre, a.item_descripcion FROM items a JOIN items_seccions b ON a.id = b.id  WHERE b.id_seccions = "'.$id.'" ') ;                
+        } catch (\Exception $find_items) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
+
+        return view('admin.seccions.show', compact('seccion'))->with('find_items', $find_items);
     }
 
 
