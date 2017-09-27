@@ -84,7 +84,7 @@ class SeccionsController extends Controller
             return abort(401);
         }
 
-          var_dump($request);
+          var_dump($request['item']);
 
 
         #$seccion = Seccion::create($request->all());
