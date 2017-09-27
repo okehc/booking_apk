@@ -93,7 +93,7 @@ class SeccionsController extends Controller
           try {
             foreach ($request['item'] as $item) {
               
-                $inserted_items= DB::connection('mysql')->insert('INSERT INTO items_seccions ( id_seccions, id_item, created_at ) VALUES ( "$last_id", "$item", NOW() )');        
+                $inserted_items= DB::connection('mysql')->insert('INSERT INTO items_seccions ( id_seccions, id_item, created_at ) VALUES ( "'.$last_id.'", "'.$item.'", '.NOW().' )');        
             }
                
           } catch (\Exception $inserted_items) {
