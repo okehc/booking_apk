@@ -97,7 +97,7 @@ class SeccionsController extends Controller
             }
                
           } catch (\Exception $inserted_items) {
-                die("Could not connect to the database.  Please check your configuration.");
+                die($inserted_items->getMessage());
           }          
 
         return redirect()->route('admin.seccions.index');
