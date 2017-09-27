@@ -55,13 +55,22 @@ class SeccionsController extends Controller
             return abort(401);
         }
         
+        # get ubications
         try {
             $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;                
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        return view('admin.seccions.create')->with('ubicaciones', $ubicaciones);;
+        #get items
+        try {
+            $items= DB::connection('mysql')->select('SELECT id, item_nombre, item_descripcion FROM items') ;                
+        } catch (\Exception $items) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
+
+var_dump($items);
+        return view('admin.seccions.create')->with('ubicaciones', $ubicaciones)->with('items', $items);
     }
 
     /**
