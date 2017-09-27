@@ -10,7 +10,7 @@
 
 
 <?php
-var_dump($find_location);
+var_dump($find_items);
 ?>
 
         <div class="panel-body table-responsive">
