@@ -3,10 +3,6 @@
 @section('content')
     <h3 class="page-title">@lang('quickadmin.seccion.title')</h3>
 
-<?php
-         var_dump($find_items);
-?>         
-
     <div class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_view')
@@ -18,7 +14,9 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.seccion.fields.id-ubicacion')</th>
-                            <td field-key='id_ubicacion'>{{ $seccion->id_ubicacion }}</td>
+                            <td field-key='id_ubicacion'>
+                                    {{find_location->nombre}} - {{find_location->ciudad}} - {{find_location->estado}}
+                            </td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.seccion.fields.nombre-seccion')</th>

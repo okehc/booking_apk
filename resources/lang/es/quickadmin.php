@@ -63,7 +63,7 @@ return [
 		'fields' => [
 			'id-ubicacion' => 'Ubicación',
 			'nombre-seccion' => 'Nombre de Sala',
-			'id-atributos' => 'Lista de Atributos de la Sala',
+			'id-atributos' => 'Atributos de la Sala',
 		],
 	],
 	
