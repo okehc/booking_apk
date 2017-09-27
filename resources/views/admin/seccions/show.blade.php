@@ -10,7 +10,7 @@
 
 
 <?php
-var_dump($find_items);
+var_dump($find_location);
 ?>
 
         <div class="panel-body table-responsive">
@@ -20,7 +20,7 @@ var_dump($find_items);
                         <tr>
                             <th>@lang('quickadmin.seccion.fields.id-ubicacion')</th>
                             <td field-key='id_ubicacion'>
-                                  <p>  {{ $find_location->nombre }}  {{ $find_location->ciudad }}  {{ $find_location->estado }} </p>
+                                  
                             </td>
                         </tr>
                         <tr>
