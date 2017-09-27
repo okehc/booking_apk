@@ -83,22 +83,23 @@ class SeccionsController extends Controller
         if (! Gate::allows('seccion_create')) {
             return abort(401);
         }
+          #count the items in seccion
+          $request['id_atributos'] = count($request['item']);          
 
-          $request['id_atributos'] = count($request['item']);
-          var_dump($request['id_atributos']);
+          # insert and get last id 
+          $seccion = Seccion::create($request->all());
+          $last_id=$seccion->id;
 
-/*
-            try {
-                $accesos= DB::connection('mysql')->select('SELECT a.id, a.nombre_acceso, b.nombre as id_ubicacion, a.created_at, a.updated_at, a.deleted_at 
-                                                           FROM accesos a JOIN ubicaciones b on a.id = b.id ') ;                
-            } catch (\Exception $ubicaciones) {
+          try {
+            foreach ($request['item'] as $item) {
+              
+                $inserted_items= DB::connection('mysql')->insert('INSERT INTO items_seccions ( id_seccions, it_item, created_at ) VALUES ( "$last_id", "$item", NOW() )');        
+            }
+               
+          } catch (\Exception $inserted_items) {
                 die("Could not connect to the database.  Please check your configuration.");
-            }          
-*/
-          
+          }          
 
-
-        $seccion = Seccion::create($request->all());
         return redirect()->route('admin.seccions.index');
     }
 
