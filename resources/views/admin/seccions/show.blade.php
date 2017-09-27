@@ -8,11 +8,6 @@
             @lang('quickadmin.qa_view')
         </div>
 
-
-<?php
-var_dump($find_items);
-?>
-
         <div class="panel-body table-responsive">
             <div class="row">
                 <div class="col-md-6">
@@ -20,7 +15,7 @@ var_dump($find_items);
                         <tr>
                             <th>@lang('quickadmin.seccion.fields.id-ubicacion')</th>
                             <td field-key='id_ubicacion'>
-                                    
+                                    {{ $find_location->nombre }} - {{ $find_location->ciudad }} - {{ $find_location->estado }}
                             </td>
                         </tr>
                         <tr>
