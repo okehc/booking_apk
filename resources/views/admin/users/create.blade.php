@@ -54,7 +54,7 @@
                          <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre}} - {{ $ubicacion->estado}}</option>
                         @endforeach
                     </select>
-                    <p class="help-block">Ubicación del usuario</p>
+                    <p class="help-block"></p>
                     @if($errors->has('ubicacion'))
                         <p class="help-block">
                             {{ $errors->first('ubicacion') }}
@@ -70,8 +70,6 @@
                          <option value="{{ $departamento->id }}">{{ $departamento->departamento}}</option>
                         @endforeach
                     </select>
-
-                    {!! Form::number('departamento', old('departamento'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('departamento'))
                         <p class="help-block">
@@ -84,7 +82,6 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('extension', trans('quickadmin.users.fields.extension').'', ['class' => 'control-label']) !!}
                     {!! Form::text('extension', old('extension'), ['class' => 'form-control', 'placeholder' => 'Extensión de usuario']) !!}
-                    <p class="help-block">Extensión de usuario</p>
                     @if($errors->has('extension'))
                         <p class="help-block">
                             {{ $errors->first('extension') }}
