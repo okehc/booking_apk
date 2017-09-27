@@ -48,6 +48,42 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('ubicacion', trans('quickadmin.users.fields.ubicacion').'*', ['class' => 'control-label']) !!}
+                    {!! Form::number('ubicacion', old('ubicacion'), ['class' => 'form-control', 'placeholder' => 'Ubicación del usuario', 'required' => '']) !!}
+                    <p class="help-block">Ubicación del usuario</p>
+                    @if($errors->has('ubicacion'))
+                        <p class="help-block">
+                            {{ $errors->first('ubicacion') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('departamento', trans('quickadmin.users.fields.departamento').'*', ['class' => 'control-label']) !!}
+                    {!! Form::number('departamento', old('departamento'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('departamento'))
+                        <p class="help-block">
+                            {{ $errors->first('departamento') }}
+                        </p>
+                    @endif
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('extension', trans('quickadmin.users.fields.extension').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('extension', old('extension'), ['class' => 'form-control', 'placeholder' => 'Extensión de usuario']) !!}
+                    <p class="help-block">Extensión de usuario</p>
+                    @if($errors->has('extension'))
+                        <p class="help-block">
+                            {{ $errors->first('extension') }}
+                        </p>
+                    @endif
+                </div>
+            </div>                    
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('email', trans('quickadmin.users.fields.email').'*', ['class' => 'control-label']) !!}
                     {!! Form::email('email', old('email'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>

@@ -27,6 +27,8 @@ class UpdateUsersRequest extends FormRequest
             'name' => 'required',
             'apellido_paterno' => 'required',
             'apellido_materno' => 'required',
+            'ubicacion' => 'max:2147483647|required|numeric',
+            'departamento' => 'max:2147483647|required|numeric',
             'email' => 'required|email|unique:users,email,'.$this->route('user'),
             'role_id' => 'required',
         ];

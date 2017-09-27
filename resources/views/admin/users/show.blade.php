@@ -25,6 +25,19 @@
                             <td field-key='apellido_materno'>{{ $user->apellido_materno }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.users.fields.ubicacion')</th>
+                            <td field-key='ubicacion'>{{ $user->ubicacion }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.users.fields.departamento')</th>
+                            <td field-key='departamento'>{{ $user->departamento }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.users.fields.extension')</th>
+                            <td field-key='extension'>{{ $user->extension }}</td>
+                        </tr>
+                        <tr>                        
+                        <tr>
                             <th>@lang('quickadmin.users.fields.email')</th>
                             <td field-key='email'>{{ $user->email }}</td>
                         </tr>

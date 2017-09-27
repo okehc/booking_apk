@@ -26,6 +26,8 @@ class StoreUsersRequest extends FormRequest
             'name' => 'required',
             'apellido_paterno' => 'required',
             'apellido_materno' => 'required',
+            'ubicacion' => 'max:2147483647|required|numeric',
+            'departamento' => 'max:2147483647|required|numeric',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'role_id' => 'required',

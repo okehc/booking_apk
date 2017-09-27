@@ -28,6 +28,9 @@
                         <th>@lang('quickadmin.users.fields.name')</th>
                         <th>@lang('quickadmin.users.fields.apellido-paterno')</th>
                         <th>@lang('quickadmin.users.fields.apellido-materno')</th>
+                        <th>@lang('quickadmin.users.fields.ubicacion')</th>
+                        <th>@lang('quickadmin.users.fields.departamento')</th>
+                        <th>@lang('quickadmin.users.fields.extension')</th>
                         <th>@lang('quickadmin.users.fields.email')</th>
                         <th>@lang('quickadmin.users.fields.role')</th>
                                                 <th>&nbsp;</th>
@@ -46,6 +49,9 @@
                                 <td field-key='name'>{{ $user->name }}</td>
                                 <td field-key='apellido_paterno'>{{ $user->apellido_paterno }}</td>
                                 <td field-key='apellido_materno'>{{ $user->apellido_materno }}</td>
+                                <td field-key='ubicacion'>{{ $user->ubicacion }}</td>
+                                <td field-key='departamento'>{{ $user->departamento }}</td>
+                                <td field-key='extension'>{{ $user->extension }}</td>                                
                                 <td field-key='email'>{{ $user->email }}</td>
                                 <td field-key='role'>{{ $user->role->title or '' }}</td>
                                                                 <td>
