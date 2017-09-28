@@ -146,13 +146,14 @@ class SeccionsController extends Controller
         DB::connection('mysql')->delete('DELETE FROM items_seccions WHERE id_seccions = "'.$id.'" ');
           
           try {
-            foreach ($request['item'] as $item) {
-              
-                $inserted_items= DB::connection('mysql')->insert(
-                                  'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
-                                  VALUES ( "'.$id.'", "'.$item.'", NOW() )');        
-            }
-               
+            if(!empty($request['item'])) {
+                foreach ($request['item'] as $item) {
+                
+                    $inserted_items= DB::connection('mysql')->insert(
+                                      'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
+                                      VALUES ( "'.$id.'", "'.$item.'", NOW() )');        
+                }
+            }   
           } catch (\Exception $inserted_items) {
                 die($inserted_items->getMessage());
           }  
