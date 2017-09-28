@@ -47,7 +47,7 @@
                     
 
                     @foreach($all_items as $all_item)
-                        @if(in_array($all_item->id, $selected_items->id_item ))
+                        @if(in_array($all_item->id, $selected_items ))
                                 <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}" checked> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
                         @else
                                 <input type="checkbox" name="item[]" value="{{ $all_item->id }}"> {{ $all_item->item_nombre }} - {{ $all_item->item_descripcion }} </br>        
