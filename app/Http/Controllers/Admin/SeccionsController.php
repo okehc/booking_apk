@@ -125,7 +125,7 @@ class SeccionsController extends Controller
         $selected_items= DB::connection('mysql')->select('SELECT a.id_item, b.item_nombre, b.item_descripcion FROM items_seccions a 
                                                             JOIN items b ON a.id_item = b.id WHERE a.id_seccions =  "'.$id.'" ');
         
-        $all_items = DB::connection('mysql')->select('SELECT a.id, a.item_nombre, a.item_descripcion FROM items a WHERE NOT IN (SELECT b.id_item FROM items_seccions b WHERE b.id_seccions  = "'.$id.'")  ');
+        $all_items = DB::connection('mysql')->select('SELECT a.id, a.item_nombre, a.item_descripcion FROM items a WHERE a.id NOT IN (SELECT b.id_item FROM items_seccions b WHERE b.id_seccions  = "'.$id.'")  ');
 
 var_dump($all_items);
 
