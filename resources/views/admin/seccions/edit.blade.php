@@ -53,6 +53,7 @@
                             @else
                                 <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}"> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
                             @endif
+                        @endforeach
                     @endforeach
                     <p class="help-block"></p>
                     @if($errors->has('id_atributos'))
