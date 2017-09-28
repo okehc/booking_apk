@@ -52,7 +52,7 @@
                                 <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}" checked> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
                             @endif
                         @endforeach
-                        <input type="checkbox" name="item[]" value="{{ $all_items->id }}"> {{ $all_items->item_nombre }} - {{ $all_items->item_descripcion }} </br>        
+                        <input type="checkbox" name="item[]" value="{{ $all_item->id }}"> {{ $all_item->item_nombre }} - {{ $all_item->item_descripcion }} </br>        
                     @endforeach
                     <p class="help-block"></p>
                     @if($errors->has('id_atributos'))
