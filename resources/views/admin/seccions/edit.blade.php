@@ -46,12 +46,12 @@
                     {!! Form::label('id_atributos', trans('quickadmin.seccion.fields.id-atributos').'', ['class' => 'control-label']) !!}
                     
 
-                    @foreach($all_items as $all_item)
-                        @if(in_array($all_item->id, $selected_items ))
-                                <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}" checked> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
-                        @else
-                                <input type="checkbox" name="item[]" value="{{ $all_item->id }}"> {{ $all_item->item_nombre }} - {{ $all_item->item_descripcion }} </br>        
-                        @endif
+                    @foreach($selected_items as $selected_item)
+                        <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}" checked> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
+                    @endforeach
+
+                    @foreach($left_items as $left_item)
+                        <input type="checkbox" name="item[]" value="{{ $left_item->id }}" checked> {{ $left_item->item_nombre }} - {{ $left_item->item_descripcion }} </br>        
                     @endforeach
                     <p class="help-block"></p>
                     @if($errors->has('id_atributos'))
