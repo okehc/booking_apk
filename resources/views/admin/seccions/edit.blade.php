@@ -44,14 +44,14 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('id_atributos', trans('quickadmin.seccion.fields.id-atributos').'', ['class' => 'control-label']) !!}
-                    
+                    <br>
 
                     @foreach($selected_items as $selected_item)
                         <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}" checked> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
                     @endforeach
 
                     @foreach($left_items as $left_item)
-                        <input type="checkbox" name="item[]" value="{{ $left_item->id }}" checked> {{ $left_item->item_nombre }} - {{ $left_item->item_descripcion }} </br>        
+                        <input type="checkbox" name="item[]" value="{{ $left_item->id }}"> {{ $left_item->item_nombre }} - {{ $left_item->item_descripcion }} </br>        
                     @endforeach
                     <p class="help-block"></p>
                     @if($errors->has('id_atributos'))

@@ -120,14 +120,10 @@ class SeccionsController extends Controller
         $seccion = Seccion::findOrFail($id);
         $location= DB::connection('mysql')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
         $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
-        
-
         $selected_items= DB::connection('mysql')->select('SELECT a.id_item, b.item_nombre, b.item_descripcion FROM items_seccions a 
                                                             JOIN items b ON a.id_item = b.id WHERE a.id_seccions =  "'.$id.'" ');
-        
         $left_items = DB::connection('mysql')->select('SELECT a.id, a.item_nombre, a.item_descripcion FROM items a WHERE a.id NOT IN (SELECT b.id_item FROM items_seccions b WHERE b.id_seccions  = "'.$id.'")  ');
 
-var_dump($left_items);
 
         return view('admin.seccions.edit', compact('seccion'))->with('location', $location )->with('ubicaciones', $ubicaciones)->with('selected_items', $selected_items)->with('left_items', $left_items);
     }
@@ -147,6 +143,21 @@ var_dump($left_items);
         }
         $seccion = Seccion::findOrFail($id);
         $seccion->update($request->all());
+
+
+        DB::connection('mysql')->update('UPDATE items_seccions SET status=0 WHERE id = "'.$id.'" ');
+          try {
+            foreach ($request['item'] as $item) {
+              
+                $inserted_items= DB::connection('mysql')->insert(
+                                  'INSERT INTO items_seccions ( id_seccions, id_item, created_at, status ) 
+                                  VALUES ( "'.$id.'", "'.$item.'", NOW() ) ON DUPLICATE KEY UPDATE status = 1');        
+            }
+               
+          } catch (\Exception $inserted_items) {
+                die($inserted_items->getMessage());
+          }  
+
 
 
 
