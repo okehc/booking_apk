@@ -159,8 +159,7 @@ class SeccionsController extends Controller
           }  
 
 
-
-
+        DB::connection('mysql')->update('UPDATE seccions SET id_ubicacion = "'.$request['id_ubicacion'].'" WHERE id="'.$id.'" ');
         return redirect()->route('admin.seccions.index');
     }
 
