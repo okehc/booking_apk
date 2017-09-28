@@ -142,16 +142,15 @@ class SeccionsController extends Controller
             return abort(401);
         }
         $seccion = Seccion::findOrFail($id);
-        $seccion->update($request->all());
 
-
-        DB::connection('mysql')->update('UPDATE items_seccions SET status=0 WHERE id = "'.$id.'" ');
+        DB::connection('mysql')->delete('DELETE FROM items_seccions WHERE id_seccions = "'.$id.'" ');
+          
           try {
             foreach ($request['item'] as $item) {
               
                 $inserted_items= DB::connection('mysql')->insert(
-                                  'INSERT INTO items_seccions ( id_seccions, id_item, created_at, status ) 
-                                  VALUES ( "'.$id.'", "'.$item.'", NOW() ) ON DUPLICATE KEY UPDATE status = 1');        
+                                  'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
+                                  VALUES ( "'.$last_id.'", "'.$item.'", NOW() )');        
             }
                
           } catch (\Exception $inserted_items) {
