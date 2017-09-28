@@ -118,8 +118,15 @@ class SeccionsController extends Controller
             return abort(401);
         }
         $seccion = Seccion::findOrFail($id);
+        $location= DB::connection('mysql')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
+        
 
-        return view('admin.seccions.edit', compact('seccion'));
+        $selected_items= DB::connection('mysql')->select('SELECT a.id_item, b.item_nombre, b.item_descripcion FROM items_seccions a 
+                                                            JOIN items b ON a.id_item = b.id WHERE a.id_seccions =  "'.$id.'" ');
+        $all_items = DB::connection('mysql')->select('SELECT id, item_nombre, item_descripcion FROM items');
+
+        return view('admin.seccions.edit', compact('seccion'))->with('location', $location )->with('ubicaciones', $ubicaciones)->with('selected_items', $selected_items)->with('all_items', $all_items);
     }
 
     /**
