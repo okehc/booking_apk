@@ -133,10 +133,6 @@ var_dump($all_items);
     }
 
 
-
-
-select 
-
     /**
      * Update Seccion in storage.
      *
