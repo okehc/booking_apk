@@ -47,12 +47,11 @@
                     
 
                     @foreach($all_items as $all_item)
-                        @foreach($selected_items as $selected_item)
-                            @if($all_item->id == $selected_item->id_item )
+                        @if(in_array($all_item->id, $selected_items->id_item ))
                                 <input type="checkbox" name="item[]" value="{{ $selected_item->id_item }}" checked> {{ $selected_item->item_nombre }} - {{ $selected_item->item_descripcion }} </br>        
-                            @endif
-                        @endforeach
-                        <input type="checkbox" name="item[]" value="{{ $all_item->id }}"> {{ $all_item->item_nombre }} - {{ $all_item->item_descripcion }} </br>        
+                        @else
+                                <input type="checkbox" name="item[]" value="{{ $all_item->id }}"> {{ $all_item->item_nombre }} - {{ $all_item->item_descripcion }} </br>        
+                        @endif
                     @endforeach
                     <p class="help-block"></p>
                     @if($errors->has('id_atributos'))
