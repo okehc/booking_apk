@@ -22,7 +22,7 @@ class AccesosController extends Controller
     {
         if (! Gate::allows('acceso_access')) {
             return abort(401);
-        }
+        } 
 
 
         if (request('show_deleted') == 1) {
