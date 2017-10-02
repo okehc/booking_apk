@@ -70,7 +70,7 @@ return [
         'odbc'   => [
             'driver'   => 'odbc',
             'dsn'      => 'odbc:MSSQLServer',
-            'host'     => '172.30.7.23',
+            'host'     => '10.30.42.28',
             'database' => 'db_room_booking',
             'username' => 'sa',
             'password' => 'Superx01',
