@@ -23,7 +23,7 @@ class UsersController extends Controller
             return abort(401);
         }
 
-                $users= DB::connection('mysql')->select('SELECT a.id, a.name, a.email, a.password, a.remember_token, a.created_at,
+                $users= DB::connection('obdc')->select('SELECT a.id, a.name, a.email, a.password, a.remember_token, a.created_at,
                     a.updated_at, a.role_id, a.apellido_paterno, a.apellido_materno,
                     a.deleted_at, b.nombre as ubicacion, c.departamento as departamento,
                     a.extension FROM users a JOIN ubicaciones b ON a.ubicacion = b.id
@@ -44,8 +44,8 @@ class UsersController extends Controller
         }
         
         $roles = \App\Role::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $departamentos = DB::connection('mysql')->select('SELECT id, departamento FROM departamentos') ;       
-        $ubicaciones= DB::connection('mysql')->select('SELECT id, nombre, estado FROM ubicaciones') ;
+        $departamentos = DB::connection('obdc')->select('SELECT id, departamento FROM departamentos') ;       
+        $ubicaciones= DB::connection('obdc')->select('SELECT id, nombre, estado FROM ubicaciones') ;
 
         return view('admin.users.create', compact('roles'))->with('departamentos', $departamentos)->with('ubicaciones', $ubicaciones);
     }
@@ -121,8 +121,8 @@ class UsersController extends Controller
             return abort(401);
         }
         $user = User::findOrFail($id);
-        $location= DB::connection('mysql')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion  WHERE b.id = "'.$id.'" ');
-        $departamento= DB::connection('mysql')->selectOne('SELECT a.departamento FROM departamentos a JOIN users b ON a.id = b.departamento  WHERE b.id = "'.$id.'" ');
+        $location= DB::connection('obdc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion  WHERE b.id = "'.$id.'" ');
+        $departamento= DB::connection('obdc')->selectOne('SELECT a.departamento FROM departamentos a JOIN users b ON a.id = b.departamento  WHERE b.id = "'.$id.'" ');
 
         return view('admin.users.show', compact('user'))->with('location', $location)->with('departamento', $departamento);
     }
