@@ -33,7 +33,7 @@ class AccesosController extends Controller
         } else {
             
             try {
-                $accesos= DB::connection('obdc')->select('SELECT a.id, a.nombre_acceso, b.nombre as id_ubicacion, a.created_at, a.updated_at, a.deleted_at 
+                $accesos= DB::connection('odbc')->select('SELECT a.id, a.nombre_acceso, b.nombre as id_ubicacion, a.created_at, a.updated_at, a.deleted_at 
                                                            FROM accesos a JOIN ubicaciones b on a.id_ubicacion = b.id ') ;                
             } catch (\Exception $ubicaciones) {
                 die("Could not connect to the database.  Please check your configuration.");
@@ -55,7 +55,7 @@ class AccesosController extends Controller
         }
 
         try {
-            $ubicaciones= DB::connection('obdc')->select('SELECT id, nombre, estado FROM ubicaciones') ;                
+            $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, estado FROM ubicaciones') ;                
         } catch (\Exception $ubicaciones) {
             die("Could not connect to the database.  Please check your configuration.");
         }
@@ -94,8 +94,8 @@ class AccesosController extends Controller
             return abort(401);
         }
         $acceso = Acceso::findOrFail($id);
-        $location= DB::connection('obdc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN accesos b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
-        $ubicaciones= DB::connection('obdc')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
+        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN accesos b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
 
 
         return view('admin.accesos.edit', compact('acceso'))->with('location', $location)->with('ubicaciones', $ubicaciones);
@@ -134,7 +134,7 @@ class AccesosController extends Controller
             return abort(401);
         }
         $acceso = Acceso::findOrFail($id);
-        $location= DB::connection('obdc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
 
         return view('admin.accesos.show', compact('acceso'))->with('location', $location);
     }

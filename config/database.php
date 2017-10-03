@@ -69,10 +69,10 @@ return [
 
         'odbc'   => [
             'driver'   => 'odbc',
-            'dsn'      => 'odbc:MSSQLServer',
+            'dsn'      => 'odbc:cddmty12kRoom02',
             'host'     => '10.30.42.28',
             'database' => 'db_room_booking',
-            'username' => 'sa',
+            'username' => 'aplicacion',
             'password' => 'Superx01',
             'grammar' => [
                 'query' => Illuminate\Database\Query\Grammars\SqlServerGrammar::class,
