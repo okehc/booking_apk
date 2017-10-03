@@ -118,11 +118,11 @@ class SeccionsController extends Controller
             return abort(401);
         }
         $seccion = Seccion::findOrFail($id);
-        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = '.$id.' ');
         $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
         $selected_items= DB::connection('odbc')->select('SELECT a.id_item, b.item_nombre, b.item_descripcion FROM items_seccions a 
-                                                            JOIN items b ON a.id_item = b.id WHERE a.id_seccions =  "'.$id.'" ');
-        $left_items = DB::connection('odbc')->select('SELECT a.id, a.item_nombre, a.item_descripcion FROM items a WHERE a.id NOT IN (SELECT b.id_item FROM items_seccions b WHERE b.id_seccions  = "'.$id.'")  ');
+                                                            JOIN items b ON a.id_item = b.id WHERE a.id_seccions =  '.$id.' ');
+        $left_items = DB::connection('odbc')->select('SELECT a.id, a.item_nombre, a.item_descripcion FROM items a WHERE a.id NOT IN (SELECT b.id_item FROM items_seccions b WHERE b.id_seccions  = '.$id.')  ');
 
 
         return view('admin.seccions.edit', compact('seccion'))->with('location', $location )->with('ubicaciones', $ubicaciones)->with('selected_items', $selected_items)->with('left_items', $left_items);
@@ -143,7 +143,7 @@ class SeccionsController extends Controller
         }
         $seccion = Seccion::findOrFail($id);
 
-        DB::connection('odbc')->delete('DELETE FROM items_seccions WHERE id_seccions = "'.$id.'" ');
+        DB::connection('odbc')->delete('DELETE FROM items_seccions WHERE id_seccions = '.$id.' ');
           
           try {
             if(!empty($request['item'])) {
@@ -159,7 +159,7 @@ class SeccionsController extends Controller
           }  
 
 
-        DB::connection('odbc')->update('UPDATE seccions SET id_ubicacion = "'.$request['id_ubicacion'].'" WHERE id="'.$id.'" ');
+        DB::connection('odbc')->update('UPDATE seccions SET id_ubicacion = "'.$request['id_ubicacion'].'" WHERE id='.$id.' ');
         return redirect()->route('admin.seccions.index');
     }
 
@@ -179,12 +179,12 @@ class SeccionsController extends Controller
 
         # get items
         try {
-            $find_items= DB::connection('odbc')->select('SELECT a.item_nombre, a.item_descripcion FROM items a JOIN items_seccions b ON a.id = b.id_item  WHERE b.id_seccions = "'.$id.'" ') ;
+            $find_items= DB::connection('odbc')->select('SELECT a.item_nombre, a.item_descripcion FROM items a JOIN items_seccions b ON a.id = b.id_item  WHERE b.id_seccions = '.$id.' ') ;
         } catch (\Exception $find_items) {
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        $find_location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $find_location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = '.$id.' ');
         return view('admin.seccions.show', compact('seccion'))->with('find_items', $find_items)->with('find_location', $find_location );
     }
 

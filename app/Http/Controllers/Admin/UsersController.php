@@ -121,8 +121,8 @@ class UsersController extends Controller
             return abort(401);
         }
         $user = User::findOrFail($id);
-        $location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion  WHERE b.id = "'.$id.'" ');
-        $departamento= DB::connection('odbc')->selectOne('SELECT a.departamento FROM departamentos a JOIN users b ON a.id = b.departamento  WHERE b.id = "'.$id.'" ');
+        $location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion  WHERE b.id = '.$id.' ');
+        $departamento= DB::connection('odbc')->selectOne('SELECT a.departamento FROM departamentos a JOIN users b ON a.id = b.departamento  WHERE b.id = '.$id.' ');
 
         return view('admin.users.show', compact('user'))->with('location', $location)->with('departamento', $departamento);
     }

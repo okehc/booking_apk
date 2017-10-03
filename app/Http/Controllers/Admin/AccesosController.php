@@ -94,7 +94,7 @@ class AccesosController extends Controller
             return abort(401);
         }
         $acceso = Acceso::findOrFail($id);
-        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN accesos b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $location= DB::connection('odbc')->selectOne('SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN accesos b ON a.id = b.id_ubicacion  WHERE b.id = '.$id.' ');
         $ubicaciones= DB::connection('odbc')->select('SELECT id, nombre, ciudad, estado FROM ubicaciones') ;                
 
 
@@ -134,7 +134,7 @@ class AccesosController extends Controller
             return abort(401);
         }
         $acceso = Acceso::findOrFail($id);
-        $location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN seccions b ON a.id = b.id_ubicacion  WHERE b.id = "'.$id.'" ');
+        $location= DB::connection('odbc')->selectOne('SELECT a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN accesos b ON a.id = b.id_ubicacion  WHERE b.id = '.$id.' ');
 
         return view('admin.accesos.show', compact('acceso'))->with('location', $location);
     }
