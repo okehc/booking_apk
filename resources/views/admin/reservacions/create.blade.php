@@ -2,7 +2,7 @@
 
 @section('javascript')
 
-
+<script type="text/javascript" src="{{asset('datePicker/jquery.js')}}"></script>
   <script type="text/javascript" src="{{asset('datePicker/moment.js')}}"></script>
 <script type="text/javascript" src="{{asset('datePicker/transition.js')}}"></script>
 <script type="text/javascript" src="{{asset('datePicker/collapse.js')}}"></script>
