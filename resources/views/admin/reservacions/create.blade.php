@@ -144,7 +144,7 @@
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
 
-                    <input value="5:00pm" class="ui-timepicker-input" type="text">
+                    <input type="text" class="form-control datepicker" name="date">
 
 
                     <p class="help-block">Hora que dura la reunión</p>
