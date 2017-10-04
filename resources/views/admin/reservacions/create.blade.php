@@ -30,7 +30,7 @@
         });
         
 
-        $('.datepicker').datetimepicker();
+        $('#datetimepicker1').datetimepicker();
 
 
     });
@@ -117,8 +117,12 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-
-                    <input type="text" class="form-control datepicker" name="date">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
 
 
                     <p class="help-block">Hora que dura la reunión</p>
