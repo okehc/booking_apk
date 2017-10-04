@@ -55,6 +55,9 @@
             sideBySide: true
         });
 
+
+        $('#timepicker1').timepicker();
+
     });
     </script>
 @endsection
@@ -151,16 +154,14 @@
                     @endif
                 </div>
 
-            <div class="input-group bootstrap-timepicker timepicker">
             <input id="timepicker1" type="text" class="form-control input-small">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-        </div>
+
             </div>
 
                     <script type="text/javascript">
             $('#timepicker1').timepicker();
         </script>
-        
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('minuto_duracion', trans('quickadmin.reservacion.fields.minuto-duracion').'*', ['class' => 'control-label']) !!}
