@@ -70,7 +70,23 @@
             }
          });
 
-         
+
+        var conc = $("#concurrencia").val();
+
+        if ( conc == 1 ) {
+            $("#diar").show(); 
+            $("#sem").hide(); 
+            $("#men").hide(); 
+        } else if ( conc == 2 ) {
+            $("#sem").show(); 
+            $("#diar").hide(); 
+            $("#men").hide(); 
+        } else {
+            $("#men").show(); 
+            $("#sem").hide(); 
+            $("#diar").hide(); 
+        }
+        
 
     });
     </script>
@@ -221,7 +237,7 @@
                 </div>
             </div>
 
-            <div class="row" id="sem">
+            <div class="row" id="diar">
                 <input type="radio" name="cuantosDias" value="1"> Cada 
                         <select name="dia_cons" class="form-control"  >
                             <option  value="1"> 1 </option>
