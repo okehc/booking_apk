@@ -38,7 +38,7 @@ return [
 			'ubicacion' => 'Ubicación',
 			'sala-de-juntas' => 'Sala de Juntas',
 			'hora-duracion' => 'Fecha / Hora de inicio',
-			'minuto-duracion' => 'Minutos de Duración',
+			'minuto-duracion' => 'Tiempo de duración',
 			'repeat' => 'Repetir?',
 			'comentario' => 'Mensaje',
 		],
