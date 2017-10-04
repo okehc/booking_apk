@@ -68,13 +68,10 @@
             } else {
                 $('#divConcurrencia').hide();
             }
-         }
+         });
 
          var conc = $('#concurrencia').val();
 
-         if (conc == 1) {
-            $("#sem").show();
-         }
 
 
 });
