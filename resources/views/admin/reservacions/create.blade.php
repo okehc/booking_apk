@@ -28,6 +28,8 @@
     <script>
     $(function() {        
         $('.options').hide();
+        $('#divConcurrencia').hide();
+
         var x = document.getElementById("ubicacion").value;
         $('#' + x).show(); 
         $('#ubicacion').change(function(){
@@ -58,10 +60,14 @@
 
 
          $( "#timepicker" ).timepicker();
+         $('#divConcurrencia').hide();
 
          $("#repeat").change(function() {
             if(this.checked) {
-                $('#concurrencia').show();
+                $('#divConcurrencia').show();
+            } else {
+                $('#divConcurrencia').hide();
+            }
          }
 
          var conc = $('#concurrencia').val();
@@ -161,10 +167,11 @@
                     <input type="text" class="form-control datepicker" name="date">
                     
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
+                    </br>
 
                     <input type="text" id="timepicker" class="from-control">
 
-                    <p class="help-block">Hora que dura la reunión</p>
+                    
                     @if($errors->has('hora_duracion'))
                         <p class="help-block">
                             {{ $errors->first('hora_duracion') }}
@@ -180,7 +187,7 @@
 
                     <select name="horas" class="form-control"> 
                     <?php
-                        $start = "01:00";
+                        $start = "00:00";
                         $end = "12:00";
                     
                         $tStart = strtotime($start);
@@ -195,7 +202,6 @@
                     ?>
                     </select>
 
-                    <p class="help-block">minutos</p>
                     @if($errors->has('minuto_duracion'))
                         <p class="help-block">
                             {{ $errors->first('minuto_duracion') }}
@@ -211,7 +217,7 @@
                     {!! Form::hidden('repeat', 0) !!}
                     {!! Form::checkbox('repeat', 1, false, []) !!}
                 </div>
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-12 form-group" id="divConcurrencia">
                     {!! Form::label('concurrencia', trans('quickadmin.reservacion.fields.concurrencia').'', ['class' => 'control-label']) !!}
                     <select name="concurrencia" id="concurrencia" class="form-control" > 
                         <option value="1">Diario</option>
@@ -233,7 +239,10 @@
                             <option  value="6"> 6 </option>
                             <option  value="7"> 7 </option>
                         </select> dia(s)
-                    <input type="radio" name="cuantosDias" value="2"> Cada día de la semana
+                    </div>    
+                    <div class="col-xs-12 form-group">
+                        <input type="radio" name="cuantosDias" value="2"> Cada día de la semana
+                    </div>
 
             <div class="row">
                 <div class="col-xs-12 form-group">
