@@ -174,8 +174,9 @@
                     
                         $tStart = strtotime($start);
                         $tEnd = strtotime($end);
+                        $tNow = $tStart;
                     
-                        while($tStart <= $tEnd){
+                        while($tNow <= $tEnd){
                             $x = date("H:i",$tNow);
                             echo "<options value='".$x."'>".$x."</option>";
                             $tNow = strtotime('+30 minutes',$tNow);
