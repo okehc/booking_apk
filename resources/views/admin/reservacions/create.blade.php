@@ -18,7 +18,8 @@
     <!-- Languaje -->
     <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
  
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+       <link rel="stylesheet" href="{{asset('picker/jquery.timepicker.css')}}">
+    <script src="{{asset('picker/jquery.timepicker.js')}}"></script>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.css">
 
@@ -143,7 +144,7 @@
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
 
-                    <input type="text" class="form-control datepicker" name="date">
+                    <input value="5:00pm" class="ui-timepicker-input" type="text">
 
 
                     <p class="help-block">Hora que dura la reunión</p>
@@ -157,10 +158,6 @@
                 <input type="text" id="timepicker" class="from-control">
 
             </div>
-
-            <script type="text/javascript">
-                $( "#timepicker" ).timepicker();
-            </script>
 
             <div class="row">
                 <div class="col-xs-12 form-group">
