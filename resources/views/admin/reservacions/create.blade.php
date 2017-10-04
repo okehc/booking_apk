@@ -70,7 +70,7 @@
             }
          });
 
-         var conc = $('#concurrencia').val();
+         
 
     });
     </script>
@@ -207,8 +207,9 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('repeat', trans('quickadmin.reservacion.fields.repeat').'', ['class' => 'control-label']) !!}
-                    {!! Form::hidden('repeat', 0) !!}
-                    {!! Form::checkbox('repeat', 1, false, []) !!}
+                    
+                    <input type="checkbox" id="repeat" value="repeat">
+
                 </div>
                 <div class="col-xs-12 form-group" id="divConcurrencia">
                     {!! Form::label('concurrencia', trans('quickadmin.reservacion.fields.concurrencia').'', ['class' => 'control-label']) !!}
