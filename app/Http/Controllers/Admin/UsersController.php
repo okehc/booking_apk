@@ -61,9 +61,16 @@ class UsersController extends Controller
         if (! Gate::allows('user_create')) {
             return abort(401);
         }
+        
+        $pass = $request['password'];
+        $email = $request['email'];
+        $hash = DB::connection('odbc')->selectOne("select EncryptByPassPhrase('fabe', '".$pass."' ) as hash" );
+
         $user = User::create($request->all());
 
+        $id= DB::connection('odbc')->selectOne("SELECT id from users where email = '".$email."'  ");
 
+        DB::connection('odbc')->update('UPDATE users SET hash = '.$hash->hash.' WHERE id='.$id->id.' ');
 
         return redirect()->route('admin.users.index');
     }

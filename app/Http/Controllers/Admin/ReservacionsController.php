@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreReservacionsRequest;
 use App\Http\Requests\Admin\UpdateReservacionsRequest;
 use DB;
+use Auth;
 
 class ReservacionsController extends Controller
 {
@@ -47,13 +48,24 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
-        try {
-            $e= DB::connection('odbc')->selectOne('SELECT * FROM tb_users') ;       
-        } catch (\Exception $e) {
-            die("Could not connect to the database.  Please check your configuration.");
+        $userId = Auth::id();
+
+        $ub_default= DB::connection('odbc')->selectOne("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a JOIN users b ON a.id = b.ubicacion WHERE b.id = ".$userId." ");
+
+        $ubs = DB::connection('odbc')->select("SELECT a.id, a.nombre, a.ciudad, a.estado FROM ubicaciones a ");
+
+        foreach ($ubs as $ub ) {
+            $rooms[$ub->id] = DB::connection('odbc')->select("SELECT a.id, a.id_ubicacion, a.nombre_seccion FROM seccions a WHERE a.id_ubicacion = ".$ub->id." "); 
         }
 
-        return view('admin.reservacions.create')->with('e', $e);
+
+        $items = DB::connection('odbc')->select("SELECT a.id_seccions, a.id_item FROM items_seccions a ");
+
+        foreach ($items as $item ) {
+            $room_items[$item->id_seccions] = DB::connection('odbc')->select("SELECT a.item_nombre, a.item_descripcion FROM items a WHERE a.id = ".$item->id_item." "); 
+        }
+
+        return view('admin.reservacions.create')->with('ub_default', $ub_default)->with('ubs', $ubs)->with('rooms', $rooms)->with('room_items', $room_items)->with('items', $items);
     }
 
     /**

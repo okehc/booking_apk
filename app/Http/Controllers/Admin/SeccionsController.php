@@ -95,7 +95,7 @@ class SeccionsController extends Controller
               
                 $inserted_items= DB::connection('odbc')->insert(
                                   'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
-                                  VALUES ( "'.$last_id.'", "'.$item.'", NOW() )');        
+                                  VALUES ( "'.$last_id.'", "'.$item.'", getdate()  )');        
             }
                
           } catch (\Exception $inserted_items) {
@@ -151,7 +151,7 @@ class SeccionsController extends Controller
                 
                     $inserted_items= DB::connection('odbc')->insert(
                                       'INSERT INTO items_seccions ( id_seccions, id_item, created_at ) 
-                                      VALUES ( "'.$id.'", "'.$item.'", NOW() )');        
+                                      VALUES ( '.$id.', '.$item.', getdate() )');        
                 }
             }   
           } catch (\Exception $inserted_items) {
@@ -159,7 +159,7 @@ class SeccionsController extends Controller
           }  
 
 
-        DB::connection('odbc')->update('UPDATE seccions SET id_ubicacion = "'.$request['id_ubicacion'].'" WHERE id='.$id.' ');
+        DB::connection('odbc')->update('UPDATE seccions SET id_ubicacion = '.$request['id_ubicacion'].' WHERE id='.$id.' ');
         return redirect()->route('admin.seccions.index');
     }
 

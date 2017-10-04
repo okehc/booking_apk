@@ -1,5 +1,54 @@
 @extends('layouts.app')
 
+@section('javascript')
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
+    <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+    <script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
+    <!-- Languaje -->
+    <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+ 
+
+    <script>
+    $(function() {        
+        $('.options').hide();
+        var x = document.getElementById("ubicacion").value;
+        $('#' + x).show(); 
+        $('#ubicacion').change(function(){
+            $('.options').hide();
+            $('#' + $(this).val()).show();
+        });
+
+
+        $('.desc').hide();
+        var y = $('.options').val(); 
+
+        $('#' + y).show(); 
+        $('.options').change(function(){
+            $('.desc').hide();
+            $('#' + $(this).val()).show();
+        });
+        
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true
+        });
+
+    });
+    </script>
+@endsection
+
 @section('content')
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['admin.reservacions.store']]) !!}
@@ -25,7 +74,13 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('ubicacion', trans('quickadmin.reservacion.fields.ubicacion').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('ubicacion', old('ubicacion'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <select name="ubicacion" id="ubicacion">
+                        <option value="{{ $ub_default->id }}" SELECTED>{{ $ub_default->nombre}} - {{ $ub_default->ciudad}} - {{ $ub_default->estado}}</option>
+
+                        @foreach($ubs as $ub)
+                            <option value="{{ $ub->id }}">{{ $ub->nombre}} - {{ $ub->ciudad}} - {{ $ub->estado}}</option>
+                        @endforeach
+                    </select>
                     <p class="help-block"></p>
                     @if($errors->has('ubicacion'))
                         <p class="help-block">
@@ -34,11 +89,32 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
+
+            
+            <div class="row" >
                 <div class="col-xs-12 form-group">
                     {!! Form::label('sala_de_juntas', trans('quickadmin.reservacion.fields.sala-de-juntas').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('sala_de_juntas', old('sala_de_juntas'), ['class' => 'form-control', 'placeholder' => 'Nombre de sala de juntas', 'required' => '']) !!}
-                    <p class="help-block">Nombre de sala de juntas</p>
+
+                    @foreach($ubs as $ub)
+                    <select name="sala_de_juntas" id="{{ $ub->id }}" class="options"> 
+                        @foreach($rooms[$ub->id] as $room)
+                            <option value="{{ $room->id }}">{{ $room->nombre_seccion}}</option>
+                        @endforeach
+                    </select>
+                    @endforeach
+
+
+
+                    <p class="help-block"> Inventario de Sala </br>
+                        @foreach($items as $item)
+
+                            @foreach($room_items[$item->id_seccions] as $it_desc)
+                                <p id="{{ $item->id_seccions }}" class="desc" > {{ it_desc->item_nombre }} - {{ it_desc->item_descripcion }} </p>
+                            @endforeach
+                        @endforeach
+
+                    </p>
+
                     @if($errors->has('sala_de_juntas'))
                         <p class="help-block">
                             {{ $errors->first('sala_de_juntas') }}
@@ -46,10 +122,17 @@
                     @endif
                 </div>
             </div>
+            
+
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
-                    {!! Form::number('hora_duracion', old('hora_duracion'), ['class' => 'form-control', 'placeholder' => 'Hora que dura la reunión', 'required' => '']) !!}
+                    
+
+                    <input type="text" class="form-control datepicker" name="date">
+
+
                     <p class="help-block">Hora que dura la reunión</p>
                     @if($errors->has('hora_duracion'))
                         <p class="help-block">
