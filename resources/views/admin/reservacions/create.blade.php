@@ -237,9 +237,11 @@
                 </div>
             </div>
 
+
             <div class="row" id="diar">
-                <input type="radio" name="cuantosDias" value="1"> Cada 
-                        <select name="dia_cons" class="form-control"  >
+                <div class="col-xs-12 form-group">
+                    <input type="radio" name="cuantosDias" > Cada 
+                        <select name="dia_cons" >
                             <option  value="1"> 1 </option>
                             <option  value="2"> 2 </option>
                             <option  value="3"> 3 </option>
@@ -248,8 +250,15 @@
                             <option  value="6"> 6 </option>
                             <option  value="7"> 7 </option>
                         </select> dia(s)
-                <input type="radio" name="cuantosDias" value="2"> Cada día de la semana
+                </div>
             </div>
+            
+            <div  class="row" id="sem">    
+                <div class="col-xs-12 form-group">
+                    <input type="radio" name="cuantosDias" value="2"> Cada día de la semana
+                </div>
+            </div>
+
 
             <div class="row">
                 <div class="col-xs-12 form-group">
