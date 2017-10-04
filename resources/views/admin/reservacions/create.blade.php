@@ -2,12 +2,22 @@
 
 @section('javascript')
 
-<script type="text/javascript" src="{{asset('datePicker/jquery.js')}}"></script>
-  <script type="text/javascript" src="{{asset('datePicker/moment.js')}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/transition.js')}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/collapse.js')}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/bootstrap-datetimepicker.min.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
+    <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+    <script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
+    <!-- Languaje -->
+    <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+ 
 
     <script>
     $(function() {        
@@ -29,9 +39,16 @@
             $('#' + $(this).val()).show();
         });
         
-
-        $('#datetimepicker1').datetimepicker();
-
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true,
+            daysOfWeekDisabled: "0,6",
+            daysOfWeekHighlighted: "1",
+            calendarWeeks: true, 
+            todayHighlight: true,
+            sideBySide: true
+        });
 
     });
     </script>
@@ -117,12 +134,8 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
                     
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
+
+                    <input type="text" class="form-control datepicker" name="date">
 
 
                     <p class="help-block">Hora que dura la reunión</p>
