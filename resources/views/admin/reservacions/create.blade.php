@@ -42,7 +42,12 @@
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy",
             language: "es",
-            autoclose: true
+            autoclose: true,
+            daysOfWeekDisabled: "0,6",
+            daysOfWeekHighlighted: "1",
+            calendarWeeks: true, 
+            todayHighlight: true,
+            
         });
 
     });
@@ -109,7 +114,7 @@
                         @foreach($items as $item)
 
                             @foreach($room_items[$item->id_seccions] as $it_desc)
-                                <p id="{{ $item->id_seccions }}" class="desc" > {{ it_desc->item_nombre }} - {{ it_desc->item_descripcion }} </p>
+                                <p id="{{ $item->id_seccions }}" class="desc" > {{ $it_desc->item_nombre }} - {{ $it_desc->item_descripcion }} </p>
                             @endforeach
                         @endforeach
 
