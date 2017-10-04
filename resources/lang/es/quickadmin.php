@@ -41,6 +41,7 @@ return [
 			'hora-inicio' => 'Hora de inicio',
 			'minuto-duracion' => 'Tiempo de duración',
 			'repeat' => 'Repetir?',
+			'concurrencia' => 'concurrencia',
 			'comentario' => 'Mensaje',
 		],
 	],

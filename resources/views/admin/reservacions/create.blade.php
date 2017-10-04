@@ -59,6 +59,20 @@
 
          $( "#timepicker" ).timepicker();
 
+         $("#repeat").change(function() {
+            if(this.checked) {
+                $('#concurrencia').show();
+         }
+
+         var conc = $('#concurrencia').val();
+
+         if (conc == 1) {
+            $("#sem").show();
+         }
+
+
+});
+
     });
     </script>
 @endsection
@@ -157,9 +171,6 @@
                         </p>
                     @endif
                 </div>
-
-                
-
             </div>
 
             <div class="row">
@@ -192,19 +203,38 @@
                     @endif
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('repeat', trans('quickadmin.reservacion.fields.repeat').'', ['class' => 'control-label']) !!}
                     {!! Form::hidden('repeat', 0) !!}
                     {!! Form::checkbox('repeat', 1, false, []) !!}
-                    <p class="help-block">repetir la reunion?</p>
-                    @if($errors->has('repeat'))
-                        <p class="help-block">
-                            {{ $errors->first('repeat') }}
-                        </p>
-                    @endif
+                </div>
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('concurrencia', trans('quickadmin.reservacion.fields.concurrencia').'', ['class' => 'control-label']) !!}
+                    <select name="concurrencia" id="concurrencia" class="form-control" > 
+                        <option value="1">Diario</option>
+                        <option value="2">Semanal</option>
+                        <option value="3">Mensual</option>
+                    </select>
                 </div>
             </div>
+
+            <div class="row" id="sem">
+                <div class="col-xs-12 form-group">
+                    <input type="radio" name="cuantosDias" value="1"> Cada 
+                        <select name="dia_cons" class="form-control"  >
+                            <option  value="1"> 1 </option>
+                            <option  value="2"> 2 </option>
+                            <option  value="3"> 3 </option>
+                            <option  value="4"> 4 </option>
+                            <option  value="5"> 5 </option>
+                            <option  value="6"> 6 </option>
+                            <option  value="7"> 7 </option>
+                        </select> dia(s)
+                    <input type="radio" name="cuantosDias" value="2"> Cada día de la semana
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('comentario', trans('quickadmin.reservacion.fields.comentario').'', ['class' => 'control-label']) !!}
