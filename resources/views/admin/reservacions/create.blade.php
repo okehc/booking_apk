@@ -3,11 +3,11 @@
 @section('javascript')
 
 
-  <script type="text/javascript" src="{{asset('datePicker/moment.js)}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/transition.js)}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/collapse.js)}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/bootstrap.min.js)}}"></script>
-<script type="text/javascript" src="{{asset('datePicker/bootstrap-datetimepicker.min.js)}}"></script>
+  <script type="text/javascript" src="{{asset('datePicker/moment.js')}}"></script>
+<script type="text/javascript" src="{{asset('datePicker/transition.js')}}"></script>
+<script type="text/javascript" src="{{asset('datePicker/collapse.js')}}"></script>
+<script type="text/javascript" src="{{asset('datePicker/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('datePicker/bootstrap-datetimepicker.min.js')}}"></script>
 
     <script>
     $(function() {        
