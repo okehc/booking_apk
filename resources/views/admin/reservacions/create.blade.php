@@ -148,7 +148,7 @@
                     
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
 
-                    <input type="text" id="timepicker" class="from-control datepicker">
+                    <input type="text" id="timepicker" class="from-control">
 
                     <p class="help-block">Hora que dura la reunión</p>
                     @if($errors->has('hora_duracion'))
@@ -178,7 +178,7 @@
                     
                         while($tNow <= $tEnd){
                             $x = date("H:i",$tNow);
-                            echo "<options value='".$x."'>".$x."</option>";
+                            echo "<option value='".$x."'>".$x."</option>";
                             $tNow = strtotime('+30 minutes',$tNow);
                         }
                     ?>
