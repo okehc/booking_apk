@@ -18,11 +18,11 @@
     <!-- Languaje -->
     <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
  
-        <link type="text/css" href="{{asset('timepicker/css/bootstrap.min.css')}}" />
-        <link type="text/css" href="{{asset('timepicker/css/bootstrap-timepicker.min.css')}}" />
-        
-        <script type="text/javascript" src="{{asset('timepicker/js/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('timepicker/js/bootstrap-timepicker.min.js')}}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.js"></script>
 
     <script>
     $(function() {        
@@ -56,7 +56,7 @@
         });
 
 
-        $('#timepicker1').timepicker();
+         $( "#timepicker" ).timepicker();
 
     });
     </script>
@@ -154,13 +154,13 @@
                     @endif
                 </div>
 
-            <input id="timepicker1" type="text" class="form-control input-small">
+                <input type="text" id="timepicker" class="from-control">
 
             </div>
 
-                    <script type="text/javascript">
-            $('#timepicker1').timepicker();
-        </script>
+            <script type="text/javascript">
+                $( "#timepicker" ).timepicker();
+            </script>
 
             <div class="row">
                 <div class="col-xs-12 form-group">
