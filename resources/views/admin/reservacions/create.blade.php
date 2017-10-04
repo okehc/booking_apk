@@ -18,6 +18,11 @@
     <!-- Languaje -->
     <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
  
+        <link type="text/css" href="{{asset('timepicker/css/bootstrap.min.css')}}" />
+        <link type="text/css" href="{{asset('timepicker/css/bootstrap-timepicker.min.css')}}" />
+        
+        <script type="text/javascript" src="{{asset('timepicker/js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('timepicker/js/bootstrap-timepicker.min.js')}}"></script>
 
     <script>
     $(function() {        
@@ -49,6 +54,8 @@
             todayHighlight: true,
             sideBySide: true
         });
+
+        $('#timepicker1').timepicker();
 
     });
     </script>
@@ -145,6 +152,11 @@
                         </p>
                     @endif
                 </div>
+
+            <div class="input-group bootstrap-timepicker timepicker">
+            <input id="timepicker1" type="text" class="form-control input-small">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
