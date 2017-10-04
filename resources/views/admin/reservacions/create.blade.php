@@ -72,10 +72,6 @@
 
          var conc = $('#concurrencia').val();
 
-
-
-});
-
     });
     </script>
 @endsection
