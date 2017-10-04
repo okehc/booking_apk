@@ -145,8 +145,10 @@
                     
 
                     <input type="text" class="form-control datepicker" name="date">
-                    <input type="text" id="timepicker" class="from-control">
+                    
+                    {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
 
+                    <input type="text" id="timepicker" class="from-control datepicker">
 
                     <p class="help-block">Hora que dura la reunión</p>
                     @if($errors->has('hora_duracion'))
@@ -165,28 +167,22 @@
                     {!! Form::label('minuto_duracion', trans('quickadmin.reservacion.fields.minuto-duracion').'*', ['class' => 'control-label']) !!}
 
 
-                    <p class:"control-label"> Tiempo de duración 
                     <select name="horas" class="form-control"> 
                     <?php
                         $start = "01:00";
-                        $end = "06:00";
+                        $end = "12:00";
                     
                         $tStart = strtotime($start);
                         $tEnd = strtotime($end);
-                        $tNow = $tStart;
                     
-                        while($tNow <= $tEnd){
+                        while($tStart <= $tEnd){
                             $x = date("H:i",$tNow);
                             echo "<options value='".$x."'>".$x."</option>";
                             $tNow = strtotime('+30 minutes',$tNow);
                         }
                     ?>
                     </select>
-                    </p>
 
-
-
-                    {!! Form::number('minuto_duracion', old('minuto_duracion'), ['class' => 'form-control', 'placeholder' => 'minutos', 'required' => '']) !!}
                     <p class="help-block">minutos</p>
                     @if($errors->has('minuto_duracion'))
                         <p class="help-block">
