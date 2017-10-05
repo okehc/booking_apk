@@ -79,19 +79,22 @@
          $("#rep2").hide(); 
          $("#rep3").hide(); 
          $("#concurrencia").change(function() {
-            alert($(this).val());
             if($(this).val() == 1 ) {
                 $("#rep1").show(); 
                 $("#rep2").hide(); 
                 $("#rep3").hide(); 
-            } else if (this.val == 2) {
+            } else if ($(this).val() == 2) {
                 $("#rep1").hide(); 
                 $("#rep2").show(); 
                 $("#rep3").hide();                 
-            } else {
+            } else if ($(this).val() == 3) {
                 $("#rep1").hide(); 
                 $("#rep2").hide(); 
                 $("#rep3").show(); 
+            } else {
+                $("#rep1").hide(); 
+                $("#rep2").hide(); 
+                $("#rep3").hide(); 
             }
          });
 
@@ -198,7 +201,8 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('minuto_duracion', trans('quickadmin.reservacion.fields.minuto-duracion').'*', ['class' => 'control-label']) !!}
 
-
+                </div>
+                <div class="col-xs-12 form-group">
                     <select name="horas" class="form-control"> 
                     <?php
                         $start = "00:00";
