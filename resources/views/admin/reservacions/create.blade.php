@@ -76,6 +76,8 @@
 
 
          $("#rep1").hide(); 
+         $("#rep2").hide(); 
+         $("#rep3").hide(); 
          $("#concurrencia").change(function() {
             alert($(this).val());
             if($(this).val() == 1 ) {
