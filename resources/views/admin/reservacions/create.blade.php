@@ -463,6 +463,11 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('sala_de_juntas', trans('quickadmin.reservacion.fields.invitados').'*', ['class' => 'control-label']) !!}
+                                        <div id='TextBoxesGroup'>
+                        <div id="TextBoxDiv1">
+
+                        </div>
+                    </div>
                     <table class="table">
                     <tr><td> Nombre </td> <td> Apellido </td> <td> email </td></tr>
                     <tr>
@@ -470,11 +475,7 @@
                        <td><input type="text" name="guest_last[]"" id="textbox1" value="" > </td>
                        <td><input type="text" name="guest_email[]"" id="textbox1" value="" > </td>
                     </tr>                    
-                    <div id='TextBoxesGroup'>
-                        <div id="TextBoxDiv1">
 
-                        </div>
-                    </div>
                     <tr>
                         <td><input type='button' value='agregar' id='addButton' class='btn btn-success'></td>
                         <td><input type='button' value='Eliminar' id='removeButton' class='btn btn-danger'></td>
