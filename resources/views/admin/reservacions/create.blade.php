@@ -74,22 +74,23 @@
          });
 
 
-        var conc = $("#concurrencia").val();
 
-        if ( conc == 1 ) {
-            $("#rep1").show(); 
-            $("#sem").hide(); 
-            $("#men").hide(); 
-        } else if ( conc == 2 ) {
-            $("#sem").show(); 
-            $("#rep1").hide(); 
-            $("#men").hide(); 
-        } else {
-            $("#men").show(); 
-            $("#sem").hide(); 
-            $("#rep1").hide(); 
-        }
-        
+         $("#rep1").hide(); 
+         $("#concurrencia").change(function() {
+            if(this.val == 1 ) {
+                $("#rep1").show(); 
+                $("#rep2").hide(); 
+                $("#rep3").hide(); 
+            } else if (this.val == 2) {
+                $("#rep1").hide(); 
+                $("#rep2").show(); 
+                $("#rep3").hide();                 
+            } else {
+                $("#rep1").hide(); 
+                $("#rep2").hide(); 
+                $("#rep3").show(); 
+            }
+         });
 
     });
     </script>
@@ -241,41 +242,43 @@
             </div>
 
             <div class="row" id="rep1">
-              <div class="table-responsive">          
-                <table class="table">
-                    <tr>
-                        <td>
-                            <input type="radio" name="repeticion" value="1" > Cada 
-                                <select name="dia_cons" >
-                                    <option  value="1"> 1 </option>
-                                    <option  value="2"> 2 </option>
-                                    <option  value="3"> 3 </option>
-                                    <option  value="4"> 4 </option>
-                                    <option  value="5"> 5 </option>
-                                    <option  value="6"> 6 </option>
-                                    <option  value="7"> 7 </option>
-                                </select> día(s).
-                        </td>
-                        <td>
-                            <input type="radio" name="repeticion" value="2" >
+                <div class="col-xs-12 form-group">
+                    <div class="table-responsive">          
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="repeticion" value="1" > Cada 
+                                        <select name="dia_cons" >
+                                            <option  value="1"> 1 </option>
+                                            <option  value="2"> 2 </option>
+                                            <option  value="3"> 3 </option>
+                                            <option  value="4"> 4 </option>
+                                            <option  value="5"> 5 </option>
+                                            <option  value="6"> 6 </option>
+                                            <option  value="7"> 7 </option>
+                                        </select> día(s).
+                                </td>
+                                <td>
+                                    <input type="radio" name="repeticion" value="2" >
                     Cada día de la semana.
-                        </td>
-                    </tr>
-                </table>
-                <table class="table">
-                    <tr>
-                        <td>    
-                            <input type="radio" name="rep_end" value="1" >
-                            Sin final. 
-                        </td>
-                        <td>
-                            <input type="radio" name="rep_end" value="1" >
-                            Finalizar el 
-                            <input type="text" class="form-control datepicker" name="dateEnd">
-                        </td>
-                    </tr>
-                </table>
-              </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <td>    
+                                    <input type="radio" name="rep_end" value="1" >
+                                Sin final. 
+                                </td>
+                                <td>
+                                    <input type="radio" name="rep_end" value="1" >
+                                Finalizar el 
+                                    <input type="text" class="form-control datepicker" name="dateEnd">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="row" id="rep1">
