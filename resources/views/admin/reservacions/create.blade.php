@@ -26,6 +26,50 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.3/jquery.timepicker.min.js"></script>
 
     <script>
+    $(document).ready(function(){
+        
+        var counter = 2;
+        $("#addButton").click(function () {
+
+        if(counter>10){
+            alert("Only 10 textboxes allow");
+            return false;
+        }
+
+        var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter);
+
+        newTextBoxDiv.after().html('<tr><td><input type="text" name="guest_name[]"' + counter + '" id="textbox1' + counter + '" value="" ></td>' + 
+            '<td><input type="text" name="guest_last[]"' + counter + '" id="textbox1' + counter + '" value="" ></td>' +
+            '<td><input type="text" name="guest_email[]"' + counter + '" id="textbox1' + counter + '" value="" ></td></tr>'  );
+
+        newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+        counter++;
+     });
+
+
+    $("#removeButton").click(function () {
+        if(counter==1){
+          alert("No more textbox to remove");
+          return false;
+        }
+
+        counter--;
+        $("#TextBoxDiv" + counter).remove();
+     });
+
+    
+    $("#getButtonValue").click(function () {
+        var msg = '';
+        for(i=1; i<counter; i++){
+            msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+        }
+          alert(msg);
+     });
+    });
+    </script>
+
+    <script>
     $(function() {     
 
 
@@ -186,7 +230,22 @@
                     {!! Form::label('hora_inicio', trans('quickadmin.reservacion.fields.hora-inicio').'*', ['class' => 'control-label']) !!}
                     </br>
 
-                    <input type="text" id="timepicker" class="from-control">
+                    <select name="hora_inicio" class="form-control"> 
+                    <?php
+                        $start = "06:00";
+                        $end = "22:00";
+                    
+                        $tStart = strtotime($start);
+                        $tEnd = strtotime($end);
+                        $tNow = $tStart;
+                    
+                        while($tNow <= $tEnd){
+                            $x = date("H:i",$tNow);
+                            echo "<option value='".$x."'>".$x."</option>";
+                            $tNow = strtotime('+30 minutes',$tNow);
+                        }
+                    ?>
+                    </select>
 
                     
                     @if($errors->has('hora_duracion'))
@@ -307,15 +366,13 @@
                         </table>
                         <table class="table">
                             <tr>
-                                <td>    
-                                    <input type='checkbox' name='checkboxvar[]' value='0'>Dom 
-                                    <input type='checkbox' name='checkboxvar[]' value='1'>Lun
-                                    <input type='checkbox' name='checkboxvar[]' value='2'>Mar
-                                    <input type='checkbox' name='checkboxvar[]' value='3'>Mié
-                                    <input type='checkbox' name='checkboxvar[]' value='4'>Jue
-                                    <input type='checkbox' name='checkboxvar[]' value='5'>Vie
-                                    <input type='checkbox' name='checkboxvar[]' value='6'>Sáb
-                                </td>
+                                <td><input type='checkbox' name='checkboxvar[]' value='0'> Dom </td> 
+                                <td><input type='checkbox' name='checkboxvar[]' value='1'> Lun </td>
+                                <td><input type='checkbox' name='checkboxvar[]' value='2'> Mar </td>
+                                <td><input type='checkbox' name='checkboxvar[]' value='3'> Mié </td>
+                                <td><input type='checkbox' name='checkboxvar[]' value='4'> Jue </td>
+                                <td><input type='checkbox' name='checkboxvar[]' value='5'> Vie </td>
+                                <td><input type='checkbox' name='checkboxvar[]' value='6'> Sáb </td>
                             </tr>
                         </table>
                         <table class="table">
@@ -403,7 +460,28 @@
                 </div>
             </div>
 
-
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <table class="table">
+                    <tr>
+                        <td> Nombre </td> <td> Apellido </td> <td> email </td>
+                    </tr>
+                    <div id='TextBoxesGroup'>
+                        <div id="TextBoxDiv1">
+                            <tr>
+                               <td><input type="text" name="guest_name[]"" id="textbox1" value="" > </td>
+                               <td><input type="text" name="guest_last[]"" id="textbox1" value="" > </td>
+                               <td><input type="text" name="guest_email[]"" id="textbox1" value="" > </td>
+                            </tr>
+                        </div>
+                    </div>
+                    <tr>
+                        <td><input type='button' value='agregar' id='addButton' class='btn btn-success'></td>
+                        <td><input type='button' value='Eliminar' id='removeButton' class='btn btn-danger'></td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
   
             <div class="row">
                 <div class="col-xs-12 form-group">
