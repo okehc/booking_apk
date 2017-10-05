@@ -171,8 +171,6 @@
                 </div>
             </div>
             
-
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('hora_duracion', trans('quickadmin.reservacion.fields.hora-duracion').'*', ['class' => 'control-label']) !!}
@@ -224,7 +222,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('repeat', trans('quickadmin.reservacion.fields.repeat').'', ['class' => 'control-label']) !!}
@@ -235,6 +232,7 @@
                 <div class="col-xs-12 form-group" id="divConcurrencia">
                     {!! Form::label('concurrencia', trans('quickadmin.reservacion.fields.concurrencia').'', ['class' => 'control-label']) !!}
                     <select name="concurrencia" id="concurrencia" class="form-control" > 
+                        <option value="0" SELECTED>--Seleccionar--</option>
                         <option value="1">Diario</option>
                         <option value="2">Semanal</option>
                         <option value="3">Mensual</option>
@@ -242,6 +240,7 @@
                 </div>
             </div>
 
+            <!-- rep 1 -->
             <div class="row" id="rep1">
                 <div class="col-xs-12 form-group">
                     <div class="table-responsive">          
@@ -250,13 +249,13 @@
                                 <td>
                                     <input type="radio" name="repeticion" value="1" > Cada 
                                         <select name="dia_cons" >
-                                            <option  value="1"> 1 </option>
-                                            <option  value="2"> 2 </option>
-                                            <option  value="3"> 3 </option>
-                                            <option  value="4"> 4 </option>
-                                            <option  value="5"> 5 </option>
-                                            <option  value="6"> 6 </option>
-                                            <option  value="7"> 7 </option>
+                                            <option value="1"> 1 </option>
+                                            <option value="2"> 2 </option>
+                                            <option value="3"> 3 </option>
+                                            <option value="4"> 4 </option>
+                                            <option value="5"> 5 </option>
+                                            <option value="6"> 6 </option>
+                                            <option value="7"> 7 </option>
                                         </select> día(s).
                                 </td>
                                 <td>
@@ -272,7 +271,7 @@
                                 Sin final. 
                                 </td>
                                 <td>
-                                    <input type="radio" name="rep_end" value="1" >
+                                    <input type="radio" name="rep_end" value="2" >
                                 Finalizar el 
                                     <input type="text" class="form-control datepicker" name="dateEnd">
                                 </td>
@@ -281,6 +280,123 @@
                     </div>
                 </div>
             </div>
+
+
+            <!-- rep 2 -->
+            <div class="row" id="rep2">
+                <div class="col-xs-12 form-group">
+                    <div class="table-responsive">          
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    Cada 
+                                    <select name="dia_cons" >
+                                        <option value="1"> 1 </option>
+                                        <option value="2"> 2 </option>
+                                        <option value="3"> 3 </option>
+                                        <option value="4"> 4 </option>
+                                    </select> semana(s) el.
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <td>    
+                                    <input type='checkbox' name='checkboxvar[]' value='0'>Dom 
+                                    <input type='checkbox' name='checkboxvar[]' value='1'>Lun
+                                    <input type='checkbox' name='checkboxvar[]' value='2'>Mar
+                                    <input type='checkbox' name='checkboxvar[]' value='3'>Mié
+                                    <input type='checkbox' name='checkboxvar[]' value='4'>Jue
+                                    <input type='checkbox' name='checkboxvar[]' value='5'>Vie
+                                    <input type='checkbox' name='checkboxvar[]' value='6'>Sáb
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <td>    
+                                    <input type="radio" name="rep_end" value="1" >
+                                Sin final. 
+                                </td>
+                                <td>
+                                    <input type="radio" name="rep_end" value="2" >
+                                Finalizar el 
+                                    <input type="text" class="form-control datepicker" name="dateEnd">
+                                </td>
+                            </tr>
+                        </table>                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" id="rep3">
+                <div class="col-xs-12 form-group">
+                    <div class="table-responsive">          
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rep_men" value="1" > Día 
+                                    <select name="dia_men" >
+                                        <?php
+                                            for ($i=0; $i <= 30; $i++) { 
+                                                echo "<option value=".$i.">".$i."</option>";
+                                            }
+                                        ?>
+                                    </select> de cada 
+                                    <select name="mes_men" >
+                                        <?php
+                                            for ($i=0; $i <= 12; $i++) { 
+                                                echo "<option value=".$i.">".$i."</option>";
+                                            }
+                                        ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rep_men" value="2" > 
+                                        <select name="num_men" >
+                                        <?php
+                                            for ($i=0; $i <= 4; $i++) { 
+                                                echo "<option value=".$i.">".$i."º</option>";
+                                            }
+                                        ?>
+                                        </select>                                    
+                                        <select name="dia_men">
+                                            <option value="1"> Lun </option>
+                                            <option value="2"> Mar </option>
+                                            <option value="3"> Mié </option>
+                                            <option value="4"> Jue </option>
+                                            <option value="5"> Vie </option>
+                                        </select> de cada
+                                        <select name="mes_men" >
+                                        <?php
+                                            for ($i=0; $i <= 12; $i++) { 
+                                                echo "<option value=".$i.">".$i."</option>";
+                                            }
+                                        ?>
+                                    </select> 
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <td>    
+                                    <input type="radio" name="rep_end" value="1" >
+                                Sin final. 
+                                </td>
+                                <td>
+                                    <input type="radio" name="rep_end" value="2" >
+                                Finalizar el 
+                                    <input type="text" class="form-control datepicker" name="dateEnd">
+                                </td>
+                            </tr>
+                        </table>                        
+                    </div>
+                </div>
+            </div>
+
 
   
             <div class="row">
