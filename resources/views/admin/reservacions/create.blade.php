@@ -77,7 +77,8 @@
 
          $("#rep1").hide(); 
          $("#concurrencia").change(function() {
-            if(this.val == 1 ) {
+            alert($(this).val());
+            if($(this).val() == 1 ) {
                 $("#rep1").show(); 
                 $("#rep2").hide(); 
                 $("#rep3").hide(); 
@@ -281,15 +282,7 @@
                 </div>
             </div>
 
-            <div class="row" id="rep1">
-
-             id="sem">    
-                <div class="col-xs-12 form-group">
-                    <input type="radio" name="cuantosDias" value="2"> Cada día de la semana
-                </div>
-            </div>
-
-
+  
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('comentario', trans('quickadmin.reservacion.fields.comentario').'', ['class' => 'control-label']) !!}
