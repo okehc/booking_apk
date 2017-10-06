@@ -402,7 +402,7 @@
                                     <input type="radio" name="rep_men" value="1" > Día 
                                     <select name="dia_men" >
                                         <?php
-                                            for ($i=0; $i <= 30; $i++) { 
+                                            for ($i=0; $i <= 31; $i++) { 
                                                 echo "<option value=".$i.">".$i."</option>";
                                             }
                                         ?>
@@ -413,7 +413,7 @@
                                                 echo "<option value=".$i.">".$i."</option>";
                                             }
                                         ?>
-                                    </select>
+                                    </select> mes(s).
                                 </td>
                             </tr>
                             <tr>
@@ -439,7 +439,7 @@
                                                 echo "<option value=".$i.">".$i."</option>";
                                             }
                                         ?>
-                                    </select> 
+                                    </select>  mes(s).
                                 </td>
                             </tr>
                         </table>

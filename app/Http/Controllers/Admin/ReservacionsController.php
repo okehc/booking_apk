@@ -68,6 +68,8 @@ class ReservacionsController extends Controller
         return view('admin.reservacions.create')->with('ub_default', $ub_default)->with('ubs', $ubs)->with('rooms', $rooms)->with('room_items', $room_items)->with('items', $items);
     }
 
+
+
     /**
      * Store a newly created Reservacion in storage.
      *
@@ -79,11 +81,11 @@ class ReservacionsController extends Controller
         if (! Gate::allows('reservacion_create')) {
             return abort(401);
         }
-        $reservacion = Reservacion::create($request->all());
 
+        var_dump($request->all());
 
-
-        return redirect()->route('admin.reservacions.index');
+        #$reservacion = Reservacion::create($request->all());
+        #return redirect()->route('admin.reservacions.index');
     }
 
 
