@@ -25,8 +25,6 @@ class StoreReservacionsRequest extends FormRequest
         return [
             'nombre_de_reunion' => 'required',
             'sala_de_juntas' => 'required',
-            'hora_duracion' => 'max:2147483647|required|numeric',
-            'minuto_duracion' => 'max:2147483647|required|numeric',
         ];
     }
 }
