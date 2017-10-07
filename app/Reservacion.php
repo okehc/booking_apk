@@ -20,7 +20,7 @@ class Reservacion extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nombre_de_reunion', 'ubicacion', 'sala_de_juntas', 'hora_duracion', 'minuto_duracion', 'repeat', 'comentario'];
+    protected $fillable = ['nombre_de_reunion', 'ubicacion', 'sala_de_juntas', 'repeat', 'comentario'];
     
 
     /**

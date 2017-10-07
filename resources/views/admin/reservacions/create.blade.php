@@ -97,8 +97,7 @@
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy",
             language: "es",
-            autoclose: true,
-            daysOfWeekDisabled: "0,6",
+            autoclose: true,            
             daysOfWeekHighlighted: "1",
             calendarWeeks: true, 
             todayHighlight: true,
