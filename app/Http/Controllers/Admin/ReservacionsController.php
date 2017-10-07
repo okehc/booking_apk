@@ -82,7 +82,51 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
+
+        $f_inicio = $request->date;
+        $h_inicio = $request->hora_inicio;
+        $h_duracion = $request->horas;
+        $id_seccion = $request->id_seccion;
+
+        $tStart = strtotime($h_inicio);
+        $tEnd = $tSart + strtotime($h_duracion);
+        $tNow = $tStart;
+
+        # validate if date is selected 
+        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$h_inicio." AND ");
+
+        while($tNow <= $tEnd){
+            $x = date("H:i",$tNow);
+            $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$tNow." AND ");    
+            $tNow = strtotime('+30 minutes',$tNow);
+        }
+
+        if ( !empty($val_reservation) ) {
+            $error = "Hora y Sala ya han sido reservadas, elija otra hora";
+            return redirect()->route('admin.reservacions.create')->with('error', $error);    
+        } else {
+
+
+            $reservation = DB::connection('odbc')->insert("INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$reservacion->comentario."', ".$reservacion->repeat.")");
+
+            $last_id = DB::connection('odbc')->selectOne("SELECT LAST_INSERT_ID()");
+
+            var_dump($last_id);
+
+
+
+        }
+
+        
+
+
+
+
         var_dump($request->all());
+
+
+
+        
 
         #$reservacion = Reservacion::create($request->all());
         #return redirect()->route('admin.reservacions.index');

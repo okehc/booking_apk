@@ -290,7 +290,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('repeat', trans('quickadmin.reservacion.fields.repeat').'', ['class' => 'control-label']) !!}
                     
-                    <input type="checkbox" id="repeat" value="repeat">
+                    <input type="checkbox" id="repeat" value="1">
 
                 </div>
                 <div class="col-xs-12 form-group" id="divConcurrencia">
@@ -462,10 +462,6 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('sala_de_juntas', trans('quickadmin.reservacion.fields.invitados').'*', ['class' => 'control-label']) !!}
-                                        <div id='TextBoxesGroup'>
-                        <div id="TextBoxDiv1">
-
-                        </div>
                     </div>
                     <table class="table">
                     <tr><td> Nombre </td> <td> Apellido </td> <td> email </td></tr>
@@ -475,6 +471,10 @@
                        <td><input type="text" name="guest_email[]"" id="textbox1" value="" > </td>
                     </tr>                    
 
+                    <div id='TextBoxesGroup'>
+                        <div id="TextBoxDiv1">
+                    </div>
+                    
                     <tr>
                         <td><input type='button' value='agregar' id='addButton' class='btn btn-success'></td>
                         <td><input type='button' value='Eliminar' id='removeButton' class='btn btn-danger'></td>
