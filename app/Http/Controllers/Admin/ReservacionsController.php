@@ -95,7 +95,7 @@ class ReservacionsController extends Controller
         $tNow = $tStart;
 
 var_dump($f_inicio); echo "<br>";
-var_dump($h_inicio);
+var_dump($h_inicio); echo "<br>";
 
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$h_inicio."' ");
@@ -115,13 +115,13 @@ var_dump($val_reservation); echo "<br>";
             exit();
         } else {
 
-            $query  = "INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$reservacion->repeat.")";
+            $query  = "INSERT reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$request->repeat.")";
 
 
 echo "<br>";
 var_dump($query);
 
-            #$reservation = DB::connection('odbc')->insert("INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$reservacion->repeat.")");
+            #$reservation = DB::connection('odbc')->insert("INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$request->repeat.")");
 
             #$last_id = DB::connection('odbc')->selectOne("SELECT LAST_INSERT_ID()");
 
