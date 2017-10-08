@@ -109,6 +109,7 @@ var_dump($val_reservation);
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
             #return redirect()->route('admin.reservacions.create')->with('error', $error);    
             echo "nononono";
+            exit();
         } else {
 
             $query  = "INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$reservacion->comentario."', ".$reservacion->repeat.")";

@@ -24,7 +24,7 @@ class StoreReservacionsRequest extends FormRequest
     {
         return [
             'nombre_de_reunion' => 'required',
-            'sala_de_juntas' => 'required',
+            #'sala_de_juntas' => 'required',
         ];
     }
 }
