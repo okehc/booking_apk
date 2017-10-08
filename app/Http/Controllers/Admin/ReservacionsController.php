@@ -97,17 +97,18 @@ class ReservacionsController extends Controller
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$h_inicio." AND ");
 
-        while($tNow <= $tEnd){
+        /*while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
             $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$tNow." AND ");    
             $tNow = strtotime('+30 minutes',$tNow);
-        }
+        }*/
 
 var_dump($val_reservation);
 
         if ( !empty($val_reservation) ) {
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
-            return redirect()->route('admin.reservacions.create')->with('error', $error);    
+            #return redirect()->route('admin.reservacions.create')->with('error', $error);    
+            echo "nononono";
         } else {
 
             $query  = "INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$reservacion->comentario."', ".$reservacion->repeat.")";
