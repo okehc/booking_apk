@@ -95,11 +95,11 @@ class ReservacionsController extends Controller
         $tNow = $tStart;
 
         # validate if date is selected 
-        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$h_inicio." ");
+        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$h_inicio." ");
 
         /*while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
-            $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$tNow." AND ");    
+            $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$tNow." AND ");    
             $tNow = strtotime('+30 minutes',$tNow);
         }*/
 
