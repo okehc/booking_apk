@@ -45,5 +45,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('departamentos_mass_destroy', ['uses' => 'Admin\DepartamentosController@massDestroy', 'as' => 'departamentos.mass_destroy']);
     Route::post('departamentos_restore/{id}', ['uses' => 'Admin\DepartamentosController@restore', 'as' => 'departamentos.restore']);
     Route::delete('departamentos_perma_del/{id}', ['uses' => 'Admin\DepartamentosController@perma_del', 'as' => 'departamentos.perma_del']);
-
+    Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');
+    Route::post('/spatie/media/remove', 'Admin\SpatieMediaController@destroy')->name('media.remove');
 });
