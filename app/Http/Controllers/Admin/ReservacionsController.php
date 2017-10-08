@@ -88,7 +88,7 @@ class ReservacionsController extends Controller
         $f_inicio = date('Y/m/d', strtotime($request->date));
         $h_inicio = date('H:i', strtotime($request->hora_inicio));
         $h_duracion = $request->horas;
-        $id_seccion = $request->id_seccion;
+        $id_seccion = $request->sala_de_juntas;
 
         $tStart = strtotime($h_inicio);
         $tEnd = $tStart + strtotime($h_duracion);
