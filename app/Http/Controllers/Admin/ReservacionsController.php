@@ -82,8 +82,8 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
-
-        $request = $this->saveFiles($request);
+        var_dump($request);
+        #$request = $this->saveFiles($request);
 
         $f_inicio = $request->date;
         $h_inicio = $request->hora_inicio;
@@ -113,13 +113,7 @@ class ReservacionsController extends Controller
 
             $last_id = DB::connection('odbc')->selectOne("SELECT LAST_INSERT_ID()");
 
-            foreach ($request->input('file_id', []) as $index => $id) {
-                $model          = config('laravel-medialibrary.media_model');
-                $file           = $model::find($id);
-                $file->model_id = $reservacion->id;
-                $file->save();
-            }
-
+echo "<br>";
 var_dump($last_id);
 
             $guest_count(count($request->guest_name));
@@ -130,13 +124,9 @@ var_dump($last_id);
 
             }
 
-            
-
-
-
         }
 
-        
+        echo "<br>";
         var_dump($request->all());
        
 
