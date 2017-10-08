@@ -82,7 +82,7 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
-        var_dump($request); echo "<br>";
+        #ar_dump($request); echo "<br>";
         #$request = $this->saveFiles($request);
 
         $f_inicio = $request->date;
@@ -95,7 +95,7 @@ class ReservacionsController extends Controller
         $tNow = $tStart;
 
         # validate if date is selected 
-        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$h_inicio." AND ");
+        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$id_seccion." AND fecha_inicio = ".$f_inicio." AND hora_inicio=".$h_inicio." ");
 
         /*while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
@@ -103,7 +103,7 @@ class ReservacionsController extends Controller
             $tNow = strtotime('+30 minutes',$tNow);
         }*/
 
-var_dump($val_reservation);
+var_dump($val_reservation); echo "<br>";
 
         if ( !empty($val_reservation) ) {
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
