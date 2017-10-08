@@ -82,7 +82,7 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
-        var_dump($request);
+        var_dump($request); echo "<br>";
         #$request = $this->saveFiles($request);
 
         $f_inicio = $request->date;
@@ -103,24 +103,34 @@ class ReservacionsController extends Controller
             $tNow = strtotime('+30 minutes',$tNow);
         }
 
+var_dump($val_reservation);
+
         if ( !empty($val_reservation) ) {
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
             return redirect()->route('admin.reservacions.create')->with('error', $error);    
         } else {
 
+            $query  = "INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$reservacion->comentario."', ".$reservacion->repeat.")";
 
-            $reservation = DB::connection('odbc')->insert("INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$reservacion->comentario."', ".$reservacion->repeat.")");
-
-            $last_id = DB::connection('odbc')->selectOne("SELECT LAST_INSERT_ID()");
 
 echo "<br>";
-var_dump($last_id);
+var_dump($query);
+
+            #$reservation = DB::connection('odbc')->insert("INSERT rservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$reservacion->comentario."', ".$reservacion->repeat.")");
+
+            #$last_id = DB::connection('odbc')->selectOne("SELECT LAST_INSERT_ID()");
+
+
 
             $guest_count(count($request->guest_name));
 
             for ($i=0; $i <= $guest_count ; $i++) { 
                 
-                 DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ");
+                $q2 = "INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ";
+echo "<br>";
+var_dump($q2);
+                 #DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ");
+
 
             }
 
