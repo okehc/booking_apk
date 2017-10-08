@@ -91,8 +91,7 @@ class ReservacionsController extends Controller
         $id_seccion = $request->sala_de_juntas;
         $repeat  = ($request->repeat == 1) ? 1 : 0 ;
 
-        }
-
+        
 
         $tStart = strtotime($h_inicio);
         $tEnd = $tStart + strtotime($h_duracion);
