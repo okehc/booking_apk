@@ -85,13 +85,13 @@ class ReservacionsController extends Controller
         #ar_dump($request); echo "<br>";
         #$request = $this->saveFiles($request);
 
-        $f_inicio = date('Y/m/d', strtotime($request->date));
+        $f_inicio = date('d/m/Y', strtotime($request->date));
         $h_inicio = date('H:i', strtotime($request->hora_inicio));
         $h_duracion = date('H:i', strtotime($request->horas));
         $id_seccion = $request->sala_de_juntas;
         $repeat  = ($request->repeat == 1) ? 1 : 0 ;
 
-        
+            
 
         $tStart = strtotime($h_inicio);
         $tEnd = $tStart + strtotime($h_duracion);
