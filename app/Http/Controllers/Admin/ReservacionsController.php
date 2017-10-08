@@ -85,14 +85,17 @@ class ReservacionsController extends Controller
         #ar_dump($request); echo "<br>";
         #$request = $this->saveFiles($request);
 
-        $f_inicio = $request->date;
-        $h_inicio = $request->hora_inicio;
+        $f_inicio = date('Y-m-d', $request->date);
+        $h_inicio = date('H:i',$request->hora_inicio);
         $h_duracion = $request->horas;
         $id_seccion = $request->id_seccion;
 
         $tStart = strtotime($h_inicio);
         $tEnd = $tStart + strtotime($h_duracion);
         $tNow = $tStart;
+
+var_dump($f_inicio); echo "<br>";
+var_dump($h_inicio);
 
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$h_inicio."' ");
