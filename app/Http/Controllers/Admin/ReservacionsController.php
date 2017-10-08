@@ -83,6 +83,8 @@ class ReservacionsController extends Controller
         }
 
 
+        $request = $this->saveFiles($request);
+
         $f_inicio = $request->date;
         $h_inicio = $request->hora_inicio;
         $h_duracion = $request->horas;
@@ -111,22 +113,32 @@ class ReservacionsController extends Controller
 
             $last_id = DB::connection('odbc')->selectOne("SELECT LAST_INSERT_ID()");
 
-            var_dump($last_id);
+            foreach ($request->input('file_id', []) as $index => $id) {
+                $model          = config('laravel-medialibrary.media_model');
+                $file           = $model::find($id);
+                $file->model_id = $reservacion->id;
+                $file->save();
+            }
+
+var_dump($last_id);
+
+            $guest_count(count($request->guest_name));
+
+            for ($i=0; $i <= $guest_count ; $i++) { 
+                
+                 DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ");
+
+            }
+
+            
 
 
 
         }
 
         
-
-
-
-
         var_dump($request->all());
-
-
-
-        
+       
 
         #$reservacion = Reservacion::create($request->all());
         #return redirect()->route('admin.reservacions.index');

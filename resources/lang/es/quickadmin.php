@@ -44,6 +44,7 @@ return [
 			'repeat' => 'Repetir?',
 			'concurrencia' => 'concurrencia',
 			'comentario' => 'Mensaje',
+			'file' => 'Archivo a subir',
 		],
 	],
 	

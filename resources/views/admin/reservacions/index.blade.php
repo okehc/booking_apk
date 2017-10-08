@@ -29,6 +29,7 @@
                         <th>@lang('quickadmin.reservacion.fields.minuto-duracion')</th>
                         <th>@lang('quickadmin.reservacion.fields.repeat')</th>
                         <th>@lang('quickadmin.reservacion.fields.comentario')</th>
+                        <th>@lang('quickadmin.reservacion.fields.file')</th>
                                                 <th>&nbsp;</th>
 
                     </tr>
@@ -53,7 +54,13 @@
                                     @can('reservacion_edit')
                                     <a href="{{ route('admin.reservacions.edit',[$reservacion->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
-</td>
+                                </td>
+                                <td field-key='file'> @foreach($reservacion->getMedia('file') as $media)
+                                <p class="form-group">
+                                    <a href="{{ $media->getUrl() }}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
+                                </p>
+                                    @endforeach</td>
+                                <td>
 
                             </tr>
                         @endforeach
