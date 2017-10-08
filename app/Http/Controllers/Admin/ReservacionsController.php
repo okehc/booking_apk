@@ -85,8 +85,8 @@ class ReservacionsController extends Controller
         #ar_dump($request); echo "<br>";
         #$request = $this->saveFiles($request);
 
-        $f_inicio = date('Y/m/d', $request->date);
-        $h_inicio = date('H:i',$request->hora_inicio);
+        $f_inicio = date('Y/m/d', strtotime($request->date);
+        $h_inicio = date('H:i', strtotime($request->hora_inicio));
         $h_duracion = $request->horas;
         $id_seccion = $request->id_seccion;
 
