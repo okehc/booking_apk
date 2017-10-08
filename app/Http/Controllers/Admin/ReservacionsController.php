@@ -103,7 +103,7 @@ var_dump($h_inicio); echo "<br>";
         while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
             $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$x."' ");    
-            $x = strtotime('+30 minutes',$x);
+            $x = strtotime('+30 minutes',$tNow);
         }
 
 var_dump($val_reservation); echo "<br>";
