@@ -127,7 +127,7 @@ var_dump($query);
 
 
 
-            $guest_count(count($request->guest_name));
+            $guest_count = (count($request->guest_name));
 
             for ($i=0; $i <= $guest_count ; $i++) { 
                 
