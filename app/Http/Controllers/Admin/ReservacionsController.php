@@ -91,7 +91,7 @@ class ReservacionsController extends Controller
         $id_seccion = $request->id_seccion;
 
         $tStart = strtotime($h_inicio);
-        $tEnd = $tSart + strtotime($h_duracion);
+        $tEnd = $tStart + strtotime($h_duracion);
         $tNow = $tStart;
 
         # validate if date is selected 
