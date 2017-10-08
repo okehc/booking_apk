@@ -98,7 +98,7 @@ var_dump($f_inicio); echo "<br>";
 var_dump($h_inicio); echo "<br>";
 
         # validate if date is selected 
-        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$request->hora_inicio."' ");
+        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$h_inicio."' ");
 
         while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
