@@ -315,7 +315,7 @@
                             <tr>
                                 <td>
                                     <input type="radio" name="repeticion" value="1" > Cada 
-                                        <select name="dia_cons" >
+                                        <select name="rep_day" >
                                             <option value="1"> 1 </option>
                                             <option value="2"> 2 </option>
                                             <option value="3"> 3 </option>

@@ -162,8 +162,8 @@ class ReservacionsController extends Controller
 
                         $startDate = $f_ini3;
                         $endDate = $dateEnd3;
-                        $daysBetween = $request->dia_cons;
-                        var_dump($request->dia_cons);
+                        $daysBetween = $request->rep_day;
+                        var_dump($request->rep_day;
                         $finalResult = array();
                         $this->addDayswithdate($startDate,$daysBetween, $endDate, $finalResult);
 
