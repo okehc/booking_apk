@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin/reservacions/index');
+        return view('admin/calendar');
     }
 }
