@@ -91,7 +91,6 @@ class ReservacionsController extends Controller
         $f_ini3 = $f_ini2[2]."-".$f_ini2[1]."-".$f_ini2[0]; 
 
 
-echo "<br>"; var_dump($f_ini3);
         $h_inicio = date('H:i', strtotime($request->hora_inicio));
         $h_duracion = date('H:i', strtotime($request->horas));
         $id_seccion = $request->sala_de_juntas;
@@ -103,8 +102,8 @@ echo "<br>"; var_dump($f_ini3);
         $tEnd = $tStart + strtotime($h_duracion);
         $tNow = $tStart;
 
-var_dump($f_inicio); echo "<br>";
-var_dump($h_inicio); echo "<br>";
+var_dump($tStart); echo "<br>";
+var_dump($tEnd); echo "<br>";
 
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' AND hora_inicio='".$h_inicio."' ");
@@ -114,7 +113,7 @@ var_dump($h_inicio); echo "<br>";
             $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$x."' ");    
             $x = strtotime('+30 minutes',$tNow);
         }*/
-echo "val_reservacion";
+echo "val_reservacion ";
 var_dump($val_reservation); echo "<br>";
 
         if ( !empty($val_reservation) ) {
@@ -123,12 +122,6 @@ var_dump($val_reservation); echo "<br>";
             echo "nononono";
             exit();
         } else {
-
-            $query  = "INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_ini3."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")";
-
-
-echo "<br>";
-var_dump($query);
 
             $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_ini3."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
 
