@@ -20,7 +20,7 @@ class ReservacionsController extends Controller
         $tempDate += 3600*24*$days;
         if ($tempDate < strtotime($endDate)) {
             $finalResult[] = date("Y-m-d", $tempDate);
-            addDayswithdate(date("Y-m-d", $tempDate), $days, $endDate, $finalResult);
+            $this->addDayswithdate(date("Y-m-d", $tempDate), $days, $endDate, $finalResult);
         } else {
             return true;        
         }
