@@ -212,7 +212,7 @@ class ReservacionsController extends Controller
                     for($i=0; $i<$rep_day;++$i){   
                             
                         foreach ($week as $key ) {
-                            echo $key;    
+                            echo $key."<br>";    
                             $week[$key] = date('Y-m-d', strtotime($key . ' +1 Week'));
                         }
                     }                       
