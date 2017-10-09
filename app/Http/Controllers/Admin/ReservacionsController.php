@@ -169,7 +169,6 @@ class ReservacionsController extends Controller
                         
 
                         for ($i=0; $i < count($finalResult); $i++) { 
-                            echo $finalResult[$i]."<br>";
                             $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
                         }
 
@@ -189,7 +188,39 @@ class ReservacionsController extends Controller
 
 
                 } elseif ( $request->concurrencia == 2 ) {
-                    # code...
+                    
+                    $rep_day = $request->rep_day2;
+                    $weeekday = $request->weeekday;
+
+                    var_dump($rep_day); echo "<br>";
+                    var_dump($weeekday); echo "<br>";
+                  
+                    $rep_end = $request->rep_end2;
+                    if ($rep_end == 2) { 
+                        $dateEnd = $request->end_date2; 
+                        $dateEnd2 = explode('/', $dateEnd);
+                        $dateEnd3 = $dateEnd2[2]."-".$dateEnd2[1]."-".$dateEnd2[0];
+                    } else {
+                        $dateEnd3 = date("Y-m-d", strtotime($f_ini3. " +2 years"));
+                    }                    
+
+/*
+
+weeekday
+$interval = 3;
+$monday = date('Y-m-d',strtotime('next Monday'));
+$wednesday = date('Y-m-d',strtotime('next Wednesday'));
+$friday = date('Y-m-d',strtotime('next Friday'));
+
+for($i=0; $i<$interval;++$i){   
+    echo $monday."\n";
+    echo $wednesday."\n";
+    echo $friday."\n";
+    $monday =  date('Y-m-d', strtotime($monday . ' +1 Week'));
+    $wednesday =  date('Y-m-d', strtotime($wednesday . ' +1 Week'));
+    $friday =  date('Y-m-d', strtotime($friday . ' +1 Week'));
+}                       
+*/
                 } elseif ( $request->concurrencia == 3 ) {
                     # code...
                 }

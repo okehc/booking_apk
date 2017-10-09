@@ -357,7 +357,7 @@
                             <tr>
                                 <td>
                                     Cada 
-                                    <select name="dia_cons" >
+                                    <select name="rep_day2" >
                                         <option value="1"> 1 </option>
                                         <option value="2"> 2 </option>
                                         <option value="3"> 3 </option>
@@ -368,25 +368,25 @@
                         </table>
                         <table class="table">
                             <tr>
-                                <td><input type='checkbox' name='checkboxvar[]' value='0'> Dom </td> 
-                                <td><input type='checkbox' name='checkboxvar[]' value='1'> Lun </td>
-                                <td><input type='checkbox' name='checkboxvar[]' value='2'> Mar </td>
-                                <td><input type='checkbox' name='checkboxvar[]' value='3'> Mié </td>
-                                <td><input type='checkbox' name='checkboxvar[]' value='4'> Jue </td>
-                                <td><input type='checkbox' name='checkboxvar[]' value='5'> Vie </td>
-                                <td><input type='checkbox' name='checkboxvar[]' value='6'> Sáb </td>
+                                <td><input type='checkbox' name='weeekday[]' value='0'> Dom </td> 
+                                <td><input type='checkbox' name='weeekday[]' value='1'> Lun </td>
+                                <td><input type='checkbox' name='weeekday[]' value='2'> Mar </td>
+                                <td><input type='checkbox' name='weeekday[]' value='3'> Mié </td>
+                                <td><input type='checkbox' name='weeekday[]' value='4'> Jue </td>
+                                <td><input type='checkbox' name='weeekday[]' value='5'> Vie </td>
+                                <td><input type='checkbox' name='weeekday[]' value='6'> Sáb </td>
                             </tr>
                         </table>
                         <table class="table">
                             <tr>
                                 <td>    
-                                    <input type="radio" name="rep_end" value="1" >
+                                    <input type="radio" name="rep_end2" value="1" >
                                 Sin final. 
                                 </td>
                                 <td>
-                                    <input type="radio" name="rep_end" value="2" >
+                                    <input type="radio" name="rep_end2" value="2" >
                                 Finalizar el 
-                                    <input type="text" class="form-control datepicker" name="dateEnd">
+                                    <input type="text" class="form-control datepicker" name="end_date2">
                                 </td>
                             </tr>
                         </table>                        
