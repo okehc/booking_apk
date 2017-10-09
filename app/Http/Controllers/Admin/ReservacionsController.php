@@ -86,7 +86,7 @@ class ReservacionsController extends Controller
         #$request = $this->saveFiles($request);
 var_dump($request->date);
 
-        $f_inicio = date('d/m/Y', $request->date);
+        $f_inicio = date('d/m/Y', strtotime($request->date));      ####validar que pedo aqui,, necesitas un numero qeu e formateee en dd/mm/aaaa 
         $h_inicio = date('H:i', strtotime($request->hora_inicio));
         $h_duracion = date('H:i', strtotime($request->horas));
         $id_seccion = $request->sala_de_juntas;
