@@ -207,15 +207,18 @@ class ReservacionsController extends Controller
                     
                     foreach ($weeekday as $key ) {
                         $week[$key] = date('Y-m-d',strtotime("next ".$key.""));
+                        echo $week[$key]."<br>";
+
+                        for($i=0; $i<$rep_day;++$i){  
+                            $week[$key] = date('Y-m-d', strtotime($key . ' +1 Week'));
+                            echo $week[$key]."<br>";
+
+                        }
                     }
 
-                    for($i=0; $i<$rep_day;++$i){   
+                     
                             
-                        foreach ($week as $key ) {
-                            echo $key."<br>";    
-                            $week[$key] = date('Y-m-d', strtotime($key . ' +1 Week'));
-                        }
-                    }                       
+                                           
 
                 } elseif ( $request->concurrencia == 3 ) {
                     # code...
