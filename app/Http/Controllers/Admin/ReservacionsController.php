@@ -164,7 +164,7 @@ class ReservacionsController extends Controller
                         $endDate = $dateEnd3;
                         $daysBetween = $request->dia_cons;
                         $finalResult = array();
-                        addDayswithdate($startDate,$daysBetween, $endDate, $finalResult);
+                        $this->addDayswithdate($startDate,$daysBetween, $endDate, $finalResult);
 
                         for ($i=0; $i < count($finalResult); $i++) { 
                             $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
