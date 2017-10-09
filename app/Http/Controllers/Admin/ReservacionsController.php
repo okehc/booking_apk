@@ -43,6 +43,7 @@ class ReservacionsController extends Controller
             return abort(401);
         }
 
+        $userId = Auth::id();
 
         if (request('show_deleted') == 1) {
             if (! Gate::allows('reservacion_delete')) {
@@ -50,7 +51,8 @@ class ReservacionsController extends Controller
             }
             $reservacions = Reservacion::onlyTrashed()->get();
         } else {
-            $reservacions = Reservacion::all();
+            #$reservacions = Reservacion::all();
+            $reservacions= DB::connection('odbc')->select("SELECT * FROM reservaciones WHERE id_usuario = ".$userId." ");
         }
 
         return view('admin.reservacions.index', compact('reservacions'));
@@ -104,6 +106,8 @@ class ReservacionsController extends Controller
         #ar_dump($request); echo "<br>";
         #$request = $this->saveFiles($request);
 
+        $userId = Auth::id();
+
 
         $f_inicio = $request->date;
         $f_ini2 = explode('/', $f_inicio);
@@ -131,7 +135,7 @@ class ReservacionsController extends Controller
             exit();
         } else {
 
-            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_ini3."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat, id_usuario) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_ini3."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.", ".$userId.")");
 
             $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".$f_ini3."' AND hora_inicio = '".$h_inicio."' ");
 
@@ -169,7 +173,7 @@ class ReservacionsController extends Controller
                         
 
                         for ($i=0; $i < count($finalResult); $i++) { 
-                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat, id_usuario) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.", ".$userId.")");
                         }
 
                     #repeticion diario   
@@ -182,7 +186,7 @@ class ReservacionsController extends Controller
                         $this->addDayswithdate($startDate,$daysBetween, $endDate, $finalResult);
 
                         for ($i=0; $i < count($finalResult); $i++) { 
-                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat, id_usuario) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.", ".$userId.")");
                         }
                     }
 
@@ -205,12 +209,12 @@ class ReservacionsController extends Controller
                     foreach ($weeekday as $key ) {
                         $week[$key] = date('Y-m-d',strtotime("next ".$key.""));
 
-                        $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$week[$key]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+                        $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat, id_usuario) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$week[$key]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.", ".$userId.")");
 
                         for($i=0; $i<$rep_day;++$i){  
                             $week[$key] = date('Y-m-d', strtotime($week[$key] . ' +1 Week'));
 
-                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$week[$key]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat, id_usuario) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$week[$key]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.", ".$userId.")");
 
                         }
                     }
@@ -227,7 +231,7 @@ class ReservacionsController extends Controller
         }
 
         #$reservacion = Reservacion::create($request->all());
-        #return redirect()->route('admin.reservacions.index');
+        return redirect()->route('admin.reservacions.index');
     }
 
 
