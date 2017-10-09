@@ -91,8 +91,8 @@ class ReservacionsController extends Controller
         $f_ini3 = $f_ini2[2]."-".$f_ini2[1]."-".$f_ini2[0]; 
 
 
-        $h_inicio = date('H:i', strtotime($request->hora_inicio));
-        $h_duracion = date('H:i', strtotime($request->horas));
+        $h_inicio = date('H:i:s', strtotime($request->hora_inicio));
+        $h_duracion = date('H:i:s', strtotime($request->horas));
         $id_seccion = $request->sala_de_juntas;
         $repeat  = ($request->repeat == 1) ? 1 : 0 ;
 
@@ -102,8 +102,8 @@ class ReservacionsController extends Controller
         $tEnd = $tStart + strtotime($h_duracion);
         $tNow = $tStart;
 
-var_dump($tStart); echo "<br>";
-var_dump($tEnd); echo "<br>";
+var_dump($h_inicio); echo "<br>";
+var_dump($h_duracion); echo "<br>";
 
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->select("SELECT id, fecha_inicio, hora_inicio, tiempo_duracion FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' ");
@@ -118,7 +118,7 @@ var_dump($val_reservation);
         }
 
 echo "val_reservacion ";
-var_dump($validation); echo "<br>";
+isset($validation)?  var_dump($validation): '' ; echo "<br>";
 
         if ( !empty($validation) ) {
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
