@@ -62,11 +62,11 @@
  {{Form::label('title', 'Minuta')}}
  </div>
  <div class="form-group">
- {{Form::label('body', 'Content')}}
- {{Form::textarea('body',null,array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'summernote'))}}
+  {{Form::textarea('body',null,array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'summernote'))}}
  </div>
+ <div id="summernote"></div>
  <div class="form-group">
-     {{Form::submit('Publish Post',array('class' => 'btn btn-primary btn-sm'))}} </div>
+     {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
 
 
             <a href="{{ route('admin.reservacions.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
