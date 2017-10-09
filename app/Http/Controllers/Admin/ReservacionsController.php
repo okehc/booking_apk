@@ -127,7 +127,7 @@ var_dump($query);
 
             $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
 
-            $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".."' AND hora_inicio = '".$h_inicio."' ");
+            $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".$f_inicio."' AND hora_inicio = '".$h_inicio."' ");
 
             echo "<br>"; var_dump($last_id);
 
