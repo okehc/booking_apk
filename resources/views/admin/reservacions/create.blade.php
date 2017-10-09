@@ -302,7 +302,7 @@
                         <option value="0" SELECTED>--Seleccionar--</option>
                         <option value="1">Diario</option>
                         <option value="2">Semanal</option>
-                        <option value="3">Mensual</option>
+                        <!--<option value="3">Mensual</option>-->
                     </select>
                 </div>
             </div>

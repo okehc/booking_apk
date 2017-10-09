@@ -191,9 +191,6 @@ class ReservacionsController extends Controller
                     
                     $rep_day = $request->rep_day2;
                     $weeekday = $request->weeekday;
-
-                    var_dump($rep_day); echo "<br>";
-                    var_dump($weeekday); echo "<br>";
                   
                     $rep_end = $request->rep_end2;
                     if ($rep_end == 2) { 
@@ -207,18 +204,17 @@ class ReservacionsController extends Controller
                     
                     foreach ($weeekday as $key ) {
                         $week[$key] = date('Y-m-d',strtotime("next ".$key.""));
-                        echo $week[$key]."<br>";
+
+                        $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$week[$key]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
 
                         for($i=0; $i<$rep_day;++$i){  
-                            $week[$key] = date('Y-m-d', strtotime($key . ' +1 Week'));
-                            echo $week[$key]."<br>";
+                            $week[$key] = date('Y-m-d', strtotime($week[$key] . ' +1 Week'));
+
+                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$week[$key]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
 
                         }
                     }
-
-                     
-                            
-                                           
+                                   
 
                 } elseif ( $request->concurrencia == 3 ) {
                     # code...
