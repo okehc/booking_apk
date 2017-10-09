@@ -86,7 +86,12 @@ class ReservacionsController extends Controller
         #$request = $this->saveFiles($request);
 
 
-        $f_inicio = $request->date;      ####validar que pedo aqui,, necesitas un numero qeu e formateee en dd/mm/aaaa 
+        $f_inicio = $request->date;
+        $f_ini2 = explode('/', $f_inicio);
+        $f_ini3 = $f_ini2[2]"-"$f_ini2[1]"-"$f_ini2[0]; 
+
+
+echo "<br>"; var_dump($f_ini3);
         $h_inicio = date('H:i', strtotime($request->hora_inicio));
         $h_duracion = date('H:i', strtotime($request->horas));
         $id_seccion = $request->sala_de_juntas;
@@ -102,7 +107,7 @@ var_dump($f_inicio); echo "<br>";
 var_dump($h_inicio); echo "<br>";
 
         # validate if date is selected 
-        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$h_inicio."' ");
+        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' AND hora_inicio='".$h_inicio."' ");
 
         /*while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
@@ -119,15 +124,15 @@ var_dump($val_reservation); echo "<br>";
             exit();
         } else {
 
-            $query  = "INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")";
+            $query  = "INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_ini3."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")";
 
 
 echo "<br>";
 var_dump($query);
 
-            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_ini3."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
 
-            $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".$f_inicio."' AND hora_inicio = '".$h_inicio."' ");
+            $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".$f_ini3."' AND hora_inicio = '".$h_inicio."' ");
 
             echo "<br>"; var_dump($last_id);
 

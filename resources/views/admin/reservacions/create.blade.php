@@ -95,7 +95,7 @@
         });
         
         $('.datepicker').datepicker({
-            format: "yyyy-mm-dd",
+            format: "dd/mm/yyyy",
             language: "es",
             autoclose: true,            
             daysOfWeekHighlighted: "1",
