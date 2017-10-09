@@ -88,7 +88,7 @@ class ReservacionsController extends Controller
 
         $f_inicio = $request->date;
         $f_ini2 = explode('/', $f_inicio);
-        $f_ini3 = $f_ini2[2]"-"$f_ini2[1]"-"$f_ini2[0]; 
+        $f_ini3 = $f_ini2[2]."-".$f_ini2[1]."-".$f_ini2[0]; 
 
 
 echo "<br>"; var_dump($f_ini3);
