@@ -90,25 +90,17 @@ class ReservacionsController extends Controller
         $f_ini2 = explode('/', $f_inicio);
         $f_ini3 = $f_ini2[2]."-".$f_ini2[1]."-".$f_ini2[0]; 
 
-
         $h_inicio = date('H:i:s', strtotime($request->hora_inicio));
         $h_duracion = date('H:i:s', strtotime($request->horas));
         $id_seccion = $request->sala_de_juntas;
         $repeat  = ($request->repeat == 1) ? 1 : 0 ;
-
-            
-
+   
         $tStart = strtotime($h_inicio);
         $tEnd = $tStart + strtotime($h_duracion);
         $tNow = $tStart;
 
-var_dump($h_inicio); echo "<br>";
-var_dump($h_duracion); echo "<br>";
-
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->select("SELECT id, fecha_inicio, hora_inicio, tiempo_duracion FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' ");
-
-var_dump($val_reservation);
 
         foreach ($val_reservation as $key ) {
             $tiempo_final = $key->hora_inicio + $key->tiempo_duracion;
@@ -116,9 +108,6 @@ var_dump($val_reservation);
                 $validation[] = $key->id; 
             }
         }
-
-echo "val_reservacion ";
-isset($validation)?  var_dump($validation): '' ; echo "<br>";
 
         if ( !empty($validation) ) {
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
@@ -131,9 +120,9 @@ isset($validation)?  var_dump($validation): '' ; echo "<br>";
 
             $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".$f_ini3."' AND hora_inicio = '".$h_inicio."' ");
 
-            echo "<br>"; var_dump($last_id->id);
-
             $guest_count = (count($request->guest_name));
+
+var_dump($guest_count); echo "<br>";
 
             for ($i=0; $i <= $guest_count ; $i++) { 
                 
