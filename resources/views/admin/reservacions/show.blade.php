@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+ <script src="{!!asset('/assets/dist/summernote.css')!!}"></script>
+ <script src="{!!asset('/assets/dist/summernote.min.js')!!}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#summernote').summernote({
+              height:300,
+            });
+        });
+    </script>
+
 @section('content')
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
 
@@ -45,6 +55,20 @@
             </div>
 
             <p>&nbsp;</p>
+
+
+ <div class="box-body">
+ <div class="form-group">
+ {{Form::label('title', 'Title')}}
+ {{Form::text('title',null,array('class' => 'form-control', 'placeholder'=>'Title'))}}
+ </div>
+ <div class="form-group">
+ {{Form::label('body', 'Content')}}
+ {{Form::textarea('body',null,array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'technig'))}}
+ </div>
+ <div class="form-group">
+     {{Form::submit('Publish Post',array('class' => 'btn btn-primary btn-sm'))}} </div>
+
 
             <a href="{{ route('admin.reservacions.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
         </div>
