@@ -19,11 +19,12 @@ class EventoController extends Controller
  	
 		foreach ($reservacions as $key ) {
 
-
 			$secs = strtotime($key->time_end)-strtotime("00:00:00");
 			$end_time = date("H:i:s",strtotime($key->time_start)+$secs);
+			$sTime = date('Y-m-d H:i:s', strtotime("$key->fecha $key->time_start"));
+			$eTime = date('Y-m-d H:i:s', strtotime("$key->fecha $end_time"));
 
-			$t[] =  array('title' => $key->title, 'fecha' => $key->fecha, 'time_start' => $key->time_start, 'time_end' => $end_time  );
+			$t[] =  array("title" => $key->title, "start" => $sTime, "end" => $eTime, "url" => "http://10.30.42.27/booking/public/admin/reservacions/".$key->id." ");
 
 		}
 		return json_encode($t);

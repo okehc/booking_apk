@@ -32,7 +32,14 @@
                     right: 'month,agendaWeek,agendaDay'
                 },
 
-                events: "events.php",
+                events: {
+                    //para obtener los resultados del controlador y mostrarlos en el calendario
+                    //basta con hacer referencia a la url que nos da dicho resultado, en el ejemplo
+                    //en la propiedad url de events ponemos el enlace
+                    //y listo eso es todo ya el plugin se encargara de acomodar los eventos
+                    //segun la fecha.
+                    url:'http://10.30.42.27/booking/public/admin/evento'
+                },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
                         event.allDay = true;
