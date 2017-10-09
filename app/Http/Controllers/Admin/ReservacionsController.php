@@ -15,7 +15,7 @@ class ReservacionsController extends Controller
 {
 
 
-    function addDayswithdate($date,$days, $endDate, &$finalResult){
+    public function addDayswithdate($date,$days, $endDate, &$finalResult){
         $tempDate = strtotime($date);   
         $tempDate += 3600*24*$days;
         if ($tempDate < strtotime($endDate)) {
@@ -151,9 +151,7 @@ class ReservacionsController extends Controller
                     $rep_end = $request->rep_end;
                     if ($rep_end == 2) { 
                         $dateEnd = $request->end_date; 
-                        var_dump($dateEnd);
                         $dateEnd2 = explode('/', $dateEnd);
-                        var_dump($dateEnd2);
                         $dateEnd3 = $dateEnd2[2]."-".$dateEnd2[1]."-".$dateEnd2[0];
                     } else {
                         $dateEnd3 = date("Y-m-d", strtotime($f_ini3. " +2 years"));
