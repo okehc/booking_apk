@@ -102,10 +102,7 @@ var_dump($f_inicio); echo "<br>";
 var_dump($h_inicio); echo "<br>";
 
         # validate if date is selected 
-        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = CONVERT(VARCHAR(11),'".$f_inicio."',103) ");
-
-
-            #convert(varchar, '".$f_inicio."', 103) 
+        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$h_inicio."' ");
 
         /*while($tNow <= $tEnd){
             $x = date("H:i",$tNow);
@@ -122,7 +119,7 @@ var_dump($val_reservation); echo "<br>";
             exit();
         } else {
 
-            $query  = "INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", convert(varchar, '".$f_inicio."', 103), '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")";
+            $query  = "INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$f_inicio."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")";
 
 
 echo "<br>";
