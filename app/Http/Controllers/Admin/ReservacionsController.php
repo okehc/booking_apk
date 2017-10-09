@@ -106,18 +106,21 @@ var_dump($tStart); echo "<br>";
 var_dump($tEnd); echo "<br>";
 
         # validate if date is selected 
-        $val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' AND hora_inicio='".$h_inicio."' ");
+        $val_reservation= DB::connection('odbc')->select("SELECT id, fecha_inicio, hora_inicio, tiempo_duracion FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' ");
 
-        while($tNow <= $tEnd){
-            $x = date("H:i",$tNow);
-            #$val_reservation= DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_inicio."' AND hora_inicio='".$x."' ");    
-            echo $x."<br>";
-            $x = strtotime('+30 minutes',$tNow);
+var_dump($val_reservation);
+
+        foreach ($val_reservation as $key ) {
+            $tiempo_final = $key->hora_inicio + $key->tiempo_duracion;
+            if ($h_inicio >= $key->hora_inicio && $h_inicio < $tiempo_final) {
+                $validation[] = $key->id; 
+            }
         }
-echo "val_reservacion ";
-var_dump($val_reservation); echo "<br>";
 
-        if ( !empty($val_reservation) ) {
+echo "val_reservacion ";
+var_dump($validation); echo "<br>";
+
+        if ( !empty($validation) ) {
             $error = "Hora y Sala ya han sido reservadas, elija otra hora";
             #return redirect()->route('admin.reservacions.create')->with('error', $error);    
             echo "nononono";
