@@ -152,6 +152,7 @@ class ReservacionsController extends Controller
                     if ($rep_end == 2) { 
                         $dateEnd = $request->dateEnd; 
                         $dateEnd2 = explode('/', $dateEnd);
+                        var_dump($dateEnd2);
                         $dateEnd3 = $dateEnd2[2]."-".$dateEnd2[1]."-".$dateEnd2[0];
                     } else {
                         $dateEnd3 = date("Y-m-d", strtotime($f_ini3. " +2 years"));
