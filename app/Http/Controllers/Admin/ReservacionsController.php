@@ -53,6 +53,8 @@ class ReservacionsController extends Controller
         } else {
             #$reservacions = Reservacion::all();
             $reservacions= DB::connection('odbc')->select("SELECT * FROM reservaciones WHERE id_usuario = ".$userId." ");
+
+            var_dump($reservacions);
         }
 
         return view('admin.reservacions.index')->with('reservacion', $reservacions);
