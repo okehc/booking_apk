@@ -18,77 +18,94 @@
     
     <script>
         $(document).ready(function () {
-            // page is now ready, initialize the calendar...
-            events={!! json_encode($events)  !!};
-            $('#calendar').fullCalendar({
-                header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,basicWeek,basicDay'
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+            
+
+            var calendar = $('#calendar').fullCalendar({
+                editable: true, 
+                header: {    
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
                 },
-                defaultDate: '2017-10-04',
-                navLinks: true, // can click day/week names to navigate views
+
+                events: "events.php",
+                eventRender: function(event, element, view) {
+                    if (event.allDay === 'true') {
+                        event.allDay = true;
+                    } else {
+                        event.allDay = false;
+                    }
+                },
+                selectable: true,
+                selectHelper: true,
+                select: function(start, end, allDay) {
+                   var title = prompt('Event Title:');
+                    if (title) {
+                       var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                       var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                       $.ajax({
+                           url: 'add_events.php',
+                           data: 'title='+ title+'&start='+ start +'&end='+ end,
+                           type: "POST",
+                           success: function(json) {
+                               alert('Added Successfully');
+                            }
+                        });
+                        calendar.fullCalendar('renderEvent',
+                        {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        },
+                        true
+                        );
+                    }
+                    calendar.fullCalendar('unselect');
+                },
                 editable: true,
-                eventLimit: true, // allow "more" link when too many events
-                events: [
-                {
-                    title: 'All Day Event',
-                    start: '2017-10-01'
+                eventDrop: function(event, delta) {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    $.ajax({
+                        url: 'update_events.php',
+                        data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+                        type: "POST",
+                        success: function(json) {
+                            alert("Updated Successfully");
+                        }
+                   });
                 },
-                {
-                    title: 'Long Event',
-                    start: '2017-10-07',
-                    end: '2017-10-10'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2017-10-09T16:00:00'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2017-10-16T16:00:00'
-                },
-                {
-                    title: 'Conference',
-                    start: '2017-10-11',
-                    end: '2017-10-13'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2017-10-12T10:30:00',
-                    end: '2017-10-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2017-10-12T12:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2017-10-12T14:30:00'
-                },
-                {
-                    title: 'Happy Hour',
-                    start: '2017-10-12T17:30:00'
-                },
-                {
-                    title: 'Dinner',
-                    start: '2017-10-12T20:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2017-10-13T07:00:00'
-                },
-                {
-                    title: 'Click for Google',
-                    url: '#',
-                    start: '2017-10-28'
+                eventClick: function(event) {
+                var decision = confirm("Do you really want to do that?"); 
+                if (decision) {
+                    $.ajax({
+                    type: "POST",
+                    url: "delete_event.php",
+                    data: "&id=" + event.id,
+                    success: function(json) {
+                    $('#calendar').fullCalendar('removeEvents', event.id);
+                      alert("Updated Successfully");}
+                    });
                 }
-            ]
-
-
-            })
+            },
+            eventResize: function(event) {      
+                var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+                var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+                $.ajax({
+                    url: 'update_events.php',
+                    data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+                    type: "POST",
+                    success: function(json) {
+                        alert("Updated Successfully");
+                    }
+                });
+            }
         });
+    });
     </script>
 @endsection
