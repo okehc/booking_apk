@@ -340,7 +340,7 @@
                                 <td>
                                     <input type="radio" name="rep_end" value="2" >
                                 Finalizar el 
-                                    <input type="text" class="form-control datepicker" name="dateEnd">
+                                    <input type="text" class="form-control datepicker" name="dateEnd" id="dateEnd">
                                 </td>
                             </tr>
                         </table>
