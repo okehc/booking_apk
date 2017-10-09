@@ -293,7 +293,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('repeat', trans('quickadmin.reservacion.fields.repeat').'', ['class' => 'control-label']) !!}
                     
-                    <input type="checkbox" id="repeat" value="1">
+                    <input type="checkbox" id="repeat" value="1" name="repeat">
 
                 </div>
                 <div class="col-xs-12 form-group" id="divConcurrencia">
