@@ -27,7 +27,6 @@
                         <th>@lang('quickadmin.reservacion.fields.sala-de-juntas')</th>
                         <th>@lang('quickadmin.reservacion.fields.hora-duracion')</th>
                         <th>@lang('quickadmin.reservacion.fields.minuto-duracion')</th>
-                        <th>@lang('quickadmin.reservacion.fields.repeat')</th>
                         <th>@lang('quickadmin.reservacion.fields.tiempo')</th>
                                                 <th>&nbsp;</th>
 
@@ -44,7 +43,6 @@
                                 <td field-key='sala_de_juntas'>{{ $reservacion->sala_de_juntas }}</td>
                                 <td field-key='hora_duracion'>{{ $reservacion->hora_duracion }}</td>
                                 <td field-key='minuto_duracion'>{{ $reservacion->minuto_duracion }}</td>
-                                <td field-key='repeat'>{{ Form::checkbox("repeat", 1, $reservacion->repeat == 1 ? true : false, ["disabled"]) }}</td>
                                 <td field-key='comentario'>{!! $reservacion->tiempo !!}</td>
                                                                 <td>
                                     @can('reservacion_view')
