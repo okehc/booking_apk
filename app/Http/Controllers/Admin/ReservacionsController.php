@@ -134,13 +134,13 @@ var_dump($query);
 
             $last_id = DB::connection('odbc')->selectOne("SELECT id FROM reservaciones WHERE message ='".$request->comentario."' AND  fecha_inicio ='".$f_ini3."' AND hora_inicio = '".$h_inicio."' ");
 
-            echo "<br>"; var_dump($last_id);
+            echo "<br>"; var_dump($last_id->id);
 
             $guest_count = (count($request->guest_name));
 
             for ($i=0; $i <= $guest_count ; $i++) { 
                 
-                $q2 = "INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ";
+                $q2 = "INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id->id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ";
 echo "<br>";
 var_dump($q2);
                  #DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ");
