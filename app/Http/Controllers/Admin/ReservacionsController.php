@@ -150,9 +150,9 @@ class ReservacionsController extends Controller
                     $repeticion = $request->repeticion;
                     $rep_end = $request->rep_end;
                     if ($rep_end == 2) { 
-                        $dateEnd = $request->dateEnd; 
-                        var_dump($dateEnd);
-                        $dateEnd2 = explode('/', $dateEnd);
+                        $dateEnd = $request->end_date; 
+                        var_dump($end_date);
+                        $dateEnd2 = explode('/', $end_date);
                         var_dump($dateEnd2);
                         $dateEnd3 = $dateEnd2[2]."-".$dateEnd2[1]."-".$dateEnd2[0];
                     } else {
