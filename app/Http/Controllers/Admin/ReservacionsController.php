@@ -204,23 +204,19 @@ class ReservacionsController extends Controller
                         $dateEnd3 = date("Y-m-d", strtotime($f_ini3. " +2 years"));
                     }                    
 
-/*
+                    
+                    foreach ($weeekday as $key ) {
+                        $week[$key] = date('Y-m-d',strtotime("next ".$key.""));
+                    }
 
-weeekday
-$interval = 3;
-$monday = date('Y-m-d',strtotime('next Monday'));
-$wednesday = date('Y-m-d',strtotime('next Wednesday'));
-$friday = date('Y-m-d',strtotime('next Friday'));
+                    for($i=0; $i<$rep_day;++$i){   
+                            
+                        foreach ($week as $key ) {
+                            echo $key;    
+                            $week[$key] = date('Y-m-d', strtotime($key . ' +1 Week'));
+                        }
+                    }                       
 
-for($i=0; $i<$interval;++$i){   
-    echo $monday."\n";
-    echo $wednesday."\n";
-    echo $friday."\n";
-    $monday =  date('Y-m-d', strtotime($monday . ' +1 Week'));
-    $wednesday =  date('Y-m-d', strtotime($wednesday . ' +1 Week'));
-    $friday =  date('Y-m-d', strtotime($friday . ' +1 Week'));
-}                       
-*/
                 } elseif ( $request->concurrencia == 3 ) {
                     # code...
                 }

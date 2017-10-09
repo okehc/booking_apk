@@ -368,13 +368,13 @@
                         </table>
                         <table class="table">
                             <tr>
-                                <td><input type='checkbox' name='weeekday[]' value='0'> Dom </td> 
-                                <td><input type='checkbox' name='weeekday[]' value='1'> Lun </td>
-                                <td><input type='checkbox' name='weeekday[]' value='2'> Mar </td>
-                                <td><input type='checkbox' name='weeekday[]' value='3'> Mié </td>
-                                <td><input type='checkbox' name='weeekday[]' value='4'> Jue </td>
-                                <td><input type='checkbox' name='weeekday[]' value='5'> Vie </td>
-                                <td><input type='checkbox' name='weeekday[]' value='6'> Sáb </td>
+                                <td><input type='checkbox' name='weeekday[]' value='Sunday'> Dom </td> 
+                                <td><input type='checkbox' name='weeekday[]' value='Monday'> Lun </td>
+                                <td><input type='checkbox' name='weeekday[]' value='Tuesday'> Mar </td>
+                                <td><input type='checkbox' name='weeekday[]' value='Wednesday'> Mié </td>
+                                <td><input type='checkbox' name='weeekday[]' value='Thursday'> Jue </td>
+                                <td><input type='checkbox' name='weeekday[]' value='Friday'> Vie </td>
+                                <td><input type='checkbox' name='weeekday[]' value='Saturday'> Sáb </td>
                             </tr>
                         </table>
                         <table class="table">
