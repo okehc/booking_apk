@@ -28,7 +28,7 @@
                         <th>@lang('quickadmin.reservacion.fields.hora-duracion')</th>
                         <th>@lang('quickadmin.reservacion.fields.minuto-duracion')</th>
                         <th>@lang('quickadmin.reservacion.fields.repeat')</th>
-                        <th>@lang('quickadmin.reservacion.fields.comentario')</th>
+                        <th>@lang('quickadmin.reservacion.fields.tiempo')</th>
                                                 <th>&nbsp;</th>
 
                     </tr>
@@ -39,13 +39,13 @@
                         @foreach ($reservacions as $reservacion)
                             <tr data-entry-id="{{ $reservacion->id }}">
                                 
-                                <td field-key='nombre_de_reunion'>{{ $reservacion->nombre_de_reunion }}</td>
+                                <td field-key='nombre_de_reunion'>{{ $reservacion->nombre_reunion }}</td>
                                 <td field-key='ubicacion'>{{ $reservacion->ubicacion }}</td>
                                 <td field-key='sala_de_juntas'>{{ $reservacion->sala_de_juntas }}</td>
                                 <td field-key='hora_duracion'>{{ $reservacion->hora_duracion }}</td>
                                 <td field-key='minuto_duracion'>{{ $reservacion->minuto_duracion }}</td>
                                 <td field-key='repeat'>{{ Form::checkbox("repeat", 1, $reservacion->repeat == 1 ? true : false, ["disabled"]) }}</td>
-                                <td field-key='comentario'>{!! $reservacion->comentario !!}</td>
+                                <td field-key='comentario'>{!! $reservacion->tiempo !!}</td>
                                                                 <td>
                                     @can('reservacion_view')
                                     <a href="{{ route('admin.reservacions.show',[$reservacion->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>

@@ -44,6 +44,7 @@ return [
 			'repeat' => 'Repetir?',
 			'concurrencia' => 'concurrencia',
 			'comentario' => 'Mensaje',
+			'tiempo' => 'Tiempo duración',
 			'file' => 'Archivo a subir',
 		],
 	],
