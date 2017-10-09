@@ -13,6 +13,25 @@ use Auth;
 
 class ReservacionsController extends Controller
 {
+
+
+    function addDayswithdate($date,$days, $endDate, &$finalResult){
+        $tempDate = strtotime($date);   
+        $tempDate += 3600*24*$days;
+        if ($tempDate < strtotime($endDate)) {
+            $finalResult[] = date("Y-m-d", $tempDate);
+            addDayswithdate(date("Y-m-d", $tempDate), $days, $endDate, $finalResult);
+        } else {
+            return true;        
+        }
+    }
+
+
+
+
+
+
+
     /**
      * Display a listing of Reservacion.
      *
@@ -95,10 +114,6 @@ class ReservacionsController extends Controller
         $id_seccion = $request->sala_de_juntas;
         $repeat  = ($request->repeat == 1) ? 1 : 0 ;
    
-        $tStart = strtotime($h_inicio);
-        $tEnd = $tStart + strtotime($h_duracion);
-        $tNow = $tStart;
-
         # validate if date is selected 
         $val_reservation= DB::connection('odbc')->select("SELECT id, fecha_inicio, hora_inicio, tiempo_duracion FROM reservaciones WHERE id_seccion = ".$request->sala_de_juntas." AND fecha_inicio = '".$f_ini3."' ");
 
@@ -122,26 +137,68 @@ class ReservacionsController extends Controller
 
             $guest_count = (count($request->guest_name));
 
-var_dump($guest_count); echo "<br>";
-
-            for ($i=0; $i <= $guest_count ; $i++) { 
+            for ($i=0; $i < $guest_count; $i++) { 
                 
-                $q2 = "INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id->id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ";
-echo "<br>";
-var_dump($q2);
-                 #DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ");
-
-
+                 DB::connection('odbc')->insert("INSERT INTO invitados (id_reservacion, nombre, apellido, email, created_at) VALUES ".$last_id.", '".$request->guest_name[$i]."', '".$request->guest_last[$i]."', '".$request->guest_email[$i]."', getdate() ");
             }
+
+            if( $repeat == 1 ) {
+
+                if( $request->concurrencia == 1 ) {
+
+                    # -1 cada n dias, -2 cada día de la semana
+                    $repeticion = $request->repeticion;
+                    $rep_end = $request->rep_end;
+                    if ($rep_end == 2) { 
+                        $dateEnd = $request->dateEnd; 
+                        $dateEnd2 = explode('/', $dateEnd);
+                        $dateEnd3 = $dateEnd2[2]."-".$dateEnd2[1]."-".$dateEnd2[0];
+                    } else {
+                        $dateEnd3 = date("Y-m-d", strtotime($f_ini3. " +2 years"));
+                    }
+
+                    # repeticion cada N dias
+                    if ($repeticion == 1) {
+
+                        $startDate = $f_ini3;
+                        $endDate = $dateEnd3;
+                        $daysBetween = $request->dia_cons;
+                        $finalResult = array();
+                        addDayswithdate($startDate,$daysBetween, $endDate, $finalResult);
+
+                        for ($i=0; $i < count($finalResult); $i++) { 
+                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+                        }
+
+                    #repeticion diario   
+                    } else {
+
+                        $startDate = $f_ini3;
+                        $endDate = $dateEnd3;
+                        $daysBetween = 1;
+                        $finalResult = array();
+                        addDayswithdate($startDate,$daysBetween, $endDate, $finalResult);
+
+                        for ($i=0; $i < count($finalResult); $i++) { 
+                            $reservation = DB::connection('odbc')->insert("INSERT INTO reservaciones (created_at, nombre_reunion, id_ubicacion, id_seccion, fecha_inicio, hora_inicio, tiempo_duracion, message, repeat) VALUES (getdate(), '".$request->nombre_de_reunion."', ".$request->ubicacion.", ".$request->sala_de_juntas.", '".$finalResult[$i]."', '".$h_inicio."', '".$h_duracion."', '".$request->comentario."', ".$repeat.")");
+                        }
+                    }
+
+
+                } elseif ( $request->concurrencia == 2 ) {
+                    # code...
+                } elseif ( $request->concurrencia == 3 ) {
+                    # code...
+                }
+
+
+
+            }   
 
         }
 
-        echo "<br>";
-        var_dump($request->all());
-       
-
         #$reservacion = Reservacion::create($request->all());
-        #return redirect()->route('admin.reservacions.index');
+        return redirect()->route('admin.reservacions.index');
     }
 
 
