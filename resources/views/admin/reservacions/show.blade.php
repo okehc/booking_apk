@@ -82,7 +82,7 @@
 
             <p>&nbsp;</p>
 
-            {!! Form::open(['method' => 'GET', 'url' => ['admin/reservacions/sendMinuta'] ]) !!}
+            {!! Form::open(['method' => 'GET', 'route' => 'admin.reservacions.sendMinuta' ]) !!}
             <div class="box-body">
                 <div class="form-group">
                     {{Form::label('title', 'Minuta')}}
