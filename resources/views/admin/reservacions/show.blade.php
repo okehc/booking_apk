@@ -105,7 +105,7 @@
                     </div>
                 <div class="form-group">
                     <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
-                    <textarea class="form-control minuta" id="minuta" name="minuta" value="{!! $minuta->content !!}"></textarea>
+                    {!! $minuta->content !!}
                 </div>
                 
             <?php } ?>
