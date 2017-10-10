@@ -81,7 +81,7 @@
             </div>
 
             <p>&nbsp;</p>
-            {!! Form::open(['route' => 'reservacions.sendMinuta']) !!}
+            {!! Form::open(['action' => 'reservacions.sendMinuta']) !!}
             <div class="box-body">
                 <div class="form-group">
                     {{Form::label('title', 'Minuta')}}
