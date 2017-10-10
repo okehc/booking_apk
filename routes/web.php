@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('minuta_show', 'Admin\ReservacionsController@minuta')->name('reservacions.sendMinuta');
     Route::get('minuta_create', 'Admin\ReservacionsController@minuta')->name('reservacions.sendMinuta');
     Route::post('minuta',  'Admin\ReservacionsController@minuta')->name('reservacions.sendMinuta');
+
+    Route::post('search_show', 'Admin\ReservacionsController@minuta')->name('reservacions.search');
+    Route::get('search_create', 'Admin\ReservacionsController@minuta')->name('reservacions.search');
+    Route::post('search',  'Admin\ReservacionsController@minuta')->name('reservacions.search');
       
     Route::resource('ubicaciones', 'Admin\UbicacionesController');
     Route::post('ubicaciones_mass_destroy', ['uses' => 'Admin\UbicacionesController@massDestroy', 'as' => 'ubicaciones.mass_destroy']);
