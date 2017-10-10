@@ -72,6 +72,13 @@
             <div class="form-group">
             </div>
             <div id="summernote"></div>
+            <script>
+                 $('#summernote').summernote({
+                   placeholder: 'Hello bootstrap 4',
+                   tabsize: 2,
+                   height: 100
+                 });
+            </script>
             <div class="form-group">
                 {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
 
