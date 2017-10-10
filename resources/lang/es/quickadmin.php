@@ -46,6 +46,7 @@ return [
 			'comentario' => 'Mensaje',
 			'tiempo' => 'Tiempo duración',
 			'file' => 'Archivo a subir',
+			'guest' => 'Invitados',
 		],
 	],
 	

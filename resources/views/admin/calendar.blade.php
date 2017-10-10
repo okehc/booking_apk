@@ -4,9 +4,9 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
-    <h3 class="page-title">Calendar</h3>
+    <h3 class="page-title">Calendario</h3>
 
-    <div id='calendar'></div>
+    <div id='calendario'></div>
 
 @endsection
 
@@ -88,7 +88,8 @@
                    });
                 },
                 eventClick: function(event) {
-                var decision = confirm("Do you really want to do that?"); 
+                    $(this).css('background', 'red');
+                /*var decision = confirm("Do you really want to do that?"); 
                 if (decision) {
                     $.ajax({
                     type: "POST",
@@ -98,7 +99,7 @@
                     $('#calendar').fullCalendar('removeEvents', event.id);
                       alert("Updated Successfully");}
                     });
-                }
+                }*/
             },
             eventResize: function(event) {      
                 var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
