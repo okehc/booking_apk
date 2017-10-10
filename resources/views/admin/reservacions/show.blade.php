@@ -13,6 +13,24 @@
 
  <script src="{!!asset('/assets/dist/summernote.css')!!}"></script>
  <script src="{!!asset('/assets/dist/summernote.min.js')!!}"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#minuta').summernote({
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['picture']],
+            ]
+            });
+    });
+</script>
   
 @endsection
 @section('content')
@@ -70,25 +88,10 @@
                     {{Form::label('title', 'Minuta')}}
                  </div>
             <div class="form-group">
-                <textarea class="form-control summernote" id="summernote" name="minuta"></textarea>
+                <textarea class="form-control minuta" id="minuta" name="minuta"></textarea>
             </div>
             
-            <script>
-                $(document).ready(function() {
-                    $('#summernote').summernote({
-                        height: 100,
-                        toolbar: [
-                            ['style', ['bold', 'italic', 'underline', 'clear']],
-                            ['font', ['strikethrough', 'superscript', 'subscript']],
-                            ['fontsize', ['fontsize']],
-                            ['color', ['color']],
-                            ['para', ['ul', 'ol', 'paragraph']],
-                            ['height', ['height']],
-                            ['insert', ['picture']],
-                        ]
-                        });
-                });
-            </script>
+
             <div class="form-group">
                 {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
 
