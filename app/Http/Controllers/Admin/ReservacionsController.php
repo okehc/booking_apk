@@ -294,8 +294,9 @@ class ReservacionsController extends Controller
         $end_time = date("H:i:s",strtotime($reservacion->sTime)+$secs);
 
         $invitados = DB::connection('odbc')->select("SELECT a.nombre, a.apellido, a.email FROM invitados a WHERE a.id_reservacion = ".$id." ");
+        $minuta = DB:connection('odbc')->SelectOne("SELECT content FROM minutas WHERE id_reservacion=".$id."  ")
 
-        return view('admin.reservacions.show')->with('reservacion', $reservacion)->with('end_time', $end_time)->with('invitados', $invitados) ;
+        return view('admin.reservacions.show')->with('reservacion', $reservacion)->with('end_time', $end_time)->with('invitados', $invitados)->with('minuta', $minuta);
     }
 
 
@@ -305,15 +306,15 @@ class ReservacionsController extends Controller
 
         $userId = Auth::id();
         $text = $request->minuta;
-        $id_reservation = $request->id_reservation;
+        $id_reservation = $request->nombre_de_reunion;
 
         var_dump($text); echo "<br>"; var_dump($id_reservation);
 
 
-        #$reservacion= DB::connection('odbc')->insert("INSERT INTO minutas (id_reservacion, content, created_at) VALUES (".$id_reservation.", '".$text."', getdate()  )");
+        $reservacion= DB::connection('odbc')->insert("INSERT INTO minutas (id_reservacion, content, created_at) VALUES (".$id_reservation.", '".$text."', getdate()  )");
 
-        #return redirect()->route('admin.reservacions.index');
-         
+        return redirect()->route('admin.reservacions.show', $id_reservation);
+
     }
 
 }

@@ -81,20 +81,34 @@
             </div>
 
             <p>&nbsp;</p>
-            {!! Form::open(['action' => 'Admin\ReservacionsController@minuta']) !!}
-            <div class="box-body">
+
+            <?php if (!isset($minuta->content)) { ?>
+                {!! Form::open(['action' => 'Admin\ReservacionsController@minuta']) !!}
+                <div class="box-body">
+                    <div class="form-group">
+                        {{Form::label('title', 'Minuta')}}
+                    </div>
                 <div class="form-group">
-                    {{Form::label('title', 'Minuta')}}
-                 </div>
-            <div class="form-group">
-                <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
-                <textarea class="form-control minuta" id="minuta" name="minuta"></textarea>
-            </div>
+                    <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
+                    <textarea class="form-control minuta" id="minuta" name="minuta"></textarea>
+                </div>
             
 
-            <div class="form-group">
-                {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
-             {{!! Form::close() !!}}   
+                <div class="form-group">
+                    {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
+                {{!! Form::close() !!}}   
+            <?php } else { ?>
+
+                <div class="box-body">
+                    <div class="form-group">
+                        {{Form::label('title', 'Minuta')}}
+                    </div>
+                <div class="form-group">
+                    <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
+                    <textarea class="form-control minuta" id="minuta" name="minuta" value="{!! $minuta->content !!}"></textarea>
+                </div>
+                
+            <?php } ?>
 
             <a href="{{ route('admin.reservacions.index') }}" class="btn btn-default">
             @lang('quickadmin.qa_back_to_list')</a>
