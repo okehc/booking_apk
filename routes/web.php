@@ -25,6 +25,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     Route::resource('reservacions', 'Admin\ReservacionsController');
+    Route::post('minuta_show', 'Admin\ReservacionsController@minuta')->name('reservacions.sendMinuta');
+    Route::get('minuta_create', 'Admin\ReservacionsController@minuta')->name('reservacions.sendMinuta');
+    Route::post('minuta',  'Admin\ReservacionsController@minuta')->name('reservacions.sendMinuta');
+      
     Route::resource('ubicaciones', 'Admin\UbicacionesController');
     Route::post('ubicaciones_mass_destroy', ['uses' => 'Admin\UbicacionesController@massDestroy', 'as' => 'ubicaciones.mass_destroy']);
     Route::post('ubicaciones_restore/{id}', ['uses' => 'Admin\UbicacionesController@restore', 'as' => 'ubicaciones.restore']);
@@ -51,9 +55,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     #Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');
     #Route::post('/spatie/media/remove', 'Admin\SpatieMediaController@destroy')->name('media.remove');
     
-    Route::post('minuta_show', ['uses' => 'ReservacionsController@minuta']);
-    Route::get('minuta_create', ['uses' => 'ReservacionsController@minuta']);
-    Route::post('minuta', ['uses' => 'Admin\ReservacionsController@minuta', 'as' => 'reservacions.sendMinuta'] );
+
 });
 
 
