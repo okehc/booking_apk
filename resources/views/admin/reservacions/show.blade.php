@@ -87,7 +87,7 @@
                     {{Form::label('title', 'Minuta')}}
                  </div>
             <div class="form-group">
-                <input type="hidden" name="id_reservation" value="{{ $reservacion->id }}">
+                <input type="hidden" name="nombre_de_reunion" value="{{ $reservacion->id }}">
                 <textarea class="form-control minuta" id="minuta" name="minuta"></textarea>
             </div>
             
