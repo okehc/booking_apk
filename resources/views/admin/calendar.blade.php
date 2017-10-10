@@ -87,19 +87,7 @@
                         }
                    });
                 },
-                eventClick: function(event) {
-                var decision = confirm("Do you really want to do that?"); 
-                if (decision) {
-                    $.ajax({
-                    type: "POST",
-                    url: "delete_event.php",
-                    data: "&id=" + event.id,
-                    success: function(json) {
-                    $('#calendar').fullCalendar('removeEvents', event.id);
-                      alert("Updated Successfully");}
-                    });
-                }
-            },
+
             eventResize: function(event) {      
                 var start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
                 var end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
