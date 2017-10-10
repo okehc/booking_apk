@@ -317,4 +317,10 @@ class ReservacionsController extends Controller
 
     }
 
+
+    public function search(StoreReservacionsRequest $request)
+    {
+        var_dump($request);
+    }
+
 }

@@ -6,12 +6,12 @@
 
     <h3 class="page-title">Calendario</h3>
 
-    <form class="navbar-form navbar-left" role="search" action="{{url('home/searchredirect')}}">
-        <div class="form-group">
-            <input type="text" class="form-control" name='search' placeholder="Buscar ..." />
+    {!! Form::open(['action' => 'Admin\ReservacionsController@search']) !!}
+            <div class="form-group">
+            <input type="text" class="form-control" name='nombre_de_reunion' placeholder="Buscar ..." />
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
-    </form>    
+    {{!! Form::close() !!}}  
 
     <div id='calendar'></div>
 

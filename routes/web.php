@@ -53,15 +53,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('evento','Admin\EventoController');
     Route::get('api','EventoController@api'); //ruta que nos devuelve los eventos en formato json
 
-    Route::get('home/searchredirect', function(){
-        /* Nuevo: si el argumento search está vacío regresar a la página anterior */
-        if (empty(Input::get('search'))) return redirect()->back();
-    
-            $search = urlencode(e(Input::get('search')));
-            $route = "home/search/$search";
-            return redirect($route);
-        });
-    Route::get("home/search/{search}", "HomeController@search");
+
     #Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');
     #Route::post('/spatie/media/remove', 'Admin\SpatieMediaController@destroy')->name('media.remove');
     
