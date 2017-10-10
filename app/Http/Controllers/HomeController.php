@@ -26,4 +26,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function search($search)
+    {
+        return urldecode($search);
+
+    }
 }

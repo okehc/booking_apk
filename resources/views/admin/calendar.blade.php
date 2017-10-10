@@ -4,7 +4,14 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
-    <h3 class="page-title">Calendar</h3>
+    <h3 class="page-title">Calendario</h3>
+
+    <form class="navbar-form navbar-left" role="search" action="{{url('home/searchredirect')}}">
+        <div class="form-group">
+            <input type="text" class="form-control" name='search' placeholder="Buscar ..." />
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+    </form>    
 
     <div id='calendar'></div>
 
