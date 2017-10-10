@@ -300,7 +300,7 @@ class ReservacionsController extends Controller
 
 
 
-    public function minuta($request)
+    public function minuta(MinutaReservacionsRequest $request)
     {
 
         $userId = Auth::id();
