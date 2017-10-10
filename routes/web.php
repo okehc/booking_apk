@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     #Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');
     #Route::post('/spatie/media/remove', 'Admin\SpatieMediaController@destroy')->name('media.remove');
 
-    Route::post('reservacions/sendMinuta', 'Admin\ReservacionsController@sendMinuta');
+    Route::post('admin/reservacions/sendMinuta', 'Admin\ReservacionsController@sendMinuta');
 });
 
 
