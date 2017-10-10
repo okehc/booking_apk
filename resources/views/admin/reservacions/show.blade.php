@@ -82,20 +82,23 @@
 
             <p>&nbsp;</p>
 
-
+            {!! Form::open(['method' => 'POST', 'route' => ['admin.reservacions.sendMinuta'] ]) !!}
             <div class="box-body">
                 <div class="form-group">
                     {{Form::label('title', 'Minuta')}}
                  </div>
             <div class="form-group">
+                <input type="hidden" name="id_reservation" value="{{ $reservacion->id }}">
                 <textarea class="form-control minuta" id="minuta" name="minuta"></textarea>
             </div>
             
 
             <div class="form-group">
                 {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
+             {{!! Form::close() !!}}   
 
-            <a href="{{ route('admin.reservacions.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
+            <a href="{{ route('admin.reservacions.index') }}" class="btn btn-default">
+            @lang('quickadmin.qa_back_to_list')</a>
         </div>
     </div>
 @stop

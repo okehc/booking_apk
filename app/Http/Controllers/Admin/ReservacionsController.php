@@ -298,4 +298,22 @@ class ReservacionsController extends Controller
         return view('admin.reservacions.show')->with('reservacion', $reservacion)->with('end_time', $end_time)->with('invitados', $invitados) ;
     }
 
+
+
+    public function sendMinuta()
+    {
+
+        $userId = Auth::id();
+        $text = $request->post('minuta');
+        $id_reservation = $request->post('id_reservation');
+
+        var_dump($text); echo "<br>"; var_dump($id_reservation);
+
+
+        #$reservacion= DB::connection('odbc')->insert("INSERT INTO minutas (id_reservacion, content, created_at) VALUES (".$id_reservation.", '".$text."', getdate()  )");
+
+        #return redirect()->route('admin.reservacions.index');
+         
+    }
+
 }
