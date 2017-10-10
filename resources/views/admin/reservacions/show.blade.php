@@ -70,16 +70,24 @@
                     {{Form::label('title', 'Minuta')}}
                  </div>
             <div class="form-group">
+                <textarea class="form-control summernote" id="summernote" name="minuta"></textarea>
             </div>
-            <div id="summernote">
-                  <textarea class="form-control summernote" id="summernote" name="minuta"></textarea>
-            </div>
+            
             <script>
-                 $('#summernote').summernote({
-                   placeholder: 'Hello bootstrap 4',
-                   tabsize: 2,
-                   height: 100
-                 });
+                $(document).ready(function() {
+                    $('#summernote').summernote({
+                        height: 100,
+                        toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            ['fontsize', ['fontsize']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['height', ['height']],
+                            ['insert', ['picture']],
+                        ]
+                        });
+                });
             </script>
             <div class="form-group">
                 {{Form::submit('Enviar Minuta',array('class' => 'btn btn-primary btn-sm'))}} </div>
