@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     
     Route::post('minuta_show', ['uses' => 'ReservacionsController@minuta']);
     Route::get('minuta_create', ['uses' => 'ReservacionsController@minuta']);
+    Route::post('minuta', ['uses' = 'Admin\ReservacionsController@minuta', 'as' => 'reservacions.sendMinuta'] );
 });
 
 
