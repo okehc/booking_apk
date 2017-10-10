@@ -88,7 +88,6 @@
                    });
                 },
                 eventClick: function(event) {
-                    $(this).css('background', 'red');
                 /*var decision = confirm("Do you really want to do that?"); 
                 if (decision) {
                     $.ajax({
