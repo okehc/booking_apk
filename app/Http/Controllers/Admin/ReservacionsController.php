@@ -290,8 +290,8 @@ class ReservacionsController extends Controller
 
         $reservacion= DB::connection('odbc')->selectOne("SELECT a.id, a.nombre_reunion, b.nombre as ubicacion, c.nombre_seccion as sala_de_juntas, a.fecha_inicio as fDate, a.hora_inicio as sTime, a.tiempo_duracion as eTime, a.message as comentario FROM reservaciones a JOIN ubicaciones b ON a.id_ubicacion = b.id JOIN seccions c ON a.id_seccion = c.id WHERE a.id = ".$id." ");
 
-        $secs = strtotime($reservaciones->eTime)-strtotime("00:00:00");
-        $end_time = date("H:i:s",strtotime($reservaciones->sTime)+$secs);
+        $secs = strtotime($reservacion->eTime)-strtotime("00:00:00");
+        $end_time = date("H:i:s",strtotime($reservacion->sTime)+$secs);
 
         $invitados = DB::connection('odbc')->select("SELECT a.nombre, a.apellido, a.email FROM invitados WHERE a.id_reservacion = ".$id." ");
 
