@@ -297,6 +297,5 @@ class ReservacionsController extends Controller
 
         return view('admin.reservacions.show')->with('reservacion', $reservacion)->with('end_time', $end_time)->with('invitados', $invitados) ;
     }
-    }
 
 }
