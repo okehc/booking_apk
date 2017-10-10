@@ -294,7 +294,7 @@ class ReservacionsController extends Controller
         $end_time = date("H:i:s",strtotime($reservacion->sTime)+$secs);
 
         $invitados = DB::connection('odbc')->select("SELECT a.nombre, a.apellido, a.email FROM invitados a WHERE a.id_reservacion = ".$id." ");
-        $minuta = DB:connection('odbc')->SelectOne("SELECT content FROM minutas WHERE id_reservacion=".$id."  ")
+        $minuta = DB:connection('odbc')->SelectOne("SELECT content FROM minutas WHERE id_reservacion=".$id."  ");
 
         return view('admin.reservacions.show')->with('reservacion', $reservacion)->with('end_time', $end_time)->with('invitados', $invitados)->with('minuta', $minuta);
     }
