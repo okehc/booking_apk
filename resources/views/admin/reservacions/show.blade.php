@@ -71,7 +71,9 @@
                  </div>
             <div class="form-group">
             </div>
-            <div id="summernote"></div>
+            <div id="summernote">
+                  <textarea class="form-control summernote" id="summernote" name="minuta"></textarea>
+            </div>
             <script>
                  $('#summernote').summernote({
                    placeholder: 'Hello bootstrap 4',
