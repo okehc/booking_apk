@@ -304,8 +304,8 @@ class ReservacionsController extends Controller
     {
 
         $userId = Auth::id();
-        $text = $request->post('minuta');
-        $id_reservation = $request->post('id_reservation');
+        $text = $request->minuta;
+        $id_reservation = $request->id_reservation;
 
         var_dump($text); echo "<br>"; var_dump($id_reservation);
 
