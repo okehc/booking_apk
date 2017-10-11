@@ -50,7 +50,7 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    window.location = "{ url('/reservacions/create') }";
+                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create";
 
                 },
                 editable: true,
