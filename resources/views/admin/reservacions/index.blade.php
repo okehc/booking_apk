@@ -1,6 +1,21 @@
 @inject('request', 'Illuminate\Http\Request')
 @extends('layouts.app')
 
+@section('javascript')
+<script>
+        
+    $(document).ready(function() {
+        
+        $('div.dataTables_filter input').addClass('serch');
+        var dataTable = $('#DataTables_Table_0').dataTable();
+        $("#serch").keyup(function() {
+            dataTable.fnFilter(this.value);
+        });    
+    }); 
+
+</script>
+@endsection
+
 @section('content')
     <h3 class="page-title">@lang('quickadmin.reservacion.title')</h3>
     @can('reservacion_create')
