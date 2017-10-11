@@ -17,13 +17,6 @@
             @lang('quickadmin.qa_list')
         </div>
 
-            {!! Form::open(['action' => 'Admin\ReservacionsController@search']) !!}
-            <div class="form-group">
-            <input type="text" class="form-control" name='nombre_de_reunion' placeholder="Buscar ..." />
-        </div>
-        <button type="submit" class="btn btn-default">Buscar</button>
-    {{!! Form::close() !!}} 
-
         <div class="panel-body table-responsive">
             <table class="table table-bordered table-striped {{ count($reservacions) > 0 ? 'datatable' : '' }} ">
                 <thead>
