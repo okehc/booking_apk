@@ -3,16 +3,11 @@
 
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
-
+<input type="text" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>">
     <h3 class="page-title">Calendario</h3>
-    <input type="text" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>">
+
     <div id='calendar'></div>
 
-
-<?php 
-
-var_dump($sala);
-?>
 @endsection
 
 @section('javascript')
@@ -22,7 +17,10 @@ var_dump($sala);
     <script src="{{ url('quickadmin/js/locale') }}/es.js" ></script>
     
 
+<?php 
 
+var_dump($sala);
+?>
 
     <script>
         $(document).ready(function () {
@@ -30,8 +28,7 @@ var_dump($sala);
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
-            var sala = ( "#sala" ).val();
-            alert(sala);
+            
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
