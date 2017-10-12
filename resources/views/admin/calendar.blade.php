@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
     <h3 class="page-title">Calendario</h3>
-    <input type="text" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>;">
+    <input type="text" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>">
     <div id='calendar'></div>
 
 
