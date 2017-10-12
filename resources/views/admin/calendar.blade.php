@@ -24,9 +24,7 @@
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
-            var y = date.getFullYear(); 
-            alert(link);
-            
+            var y = date.getFullYear();           
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
@@ -59,7 +57,7 @@
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
 
 
-                    window.location = "http://10.30.42.27/booking_apk/public/admin/reservacions/create?start="+start+"&end="+end;
+                    window.location = "http://10.30.42.27/booking_apk/public/admin/reservacions/create?start="+start+"&end="+end+"&sala="+sala;
 
                 },
                 editable: true,
