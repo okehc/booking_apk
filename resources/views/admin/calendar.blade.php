@@ -4,7 +4,7 @@
 @section('content')
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 <input type="hidden" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>">
-    <h3 class="page-title">Calendario</h3>
+    <h3 class="page-title">Calendario: <?php echo $sala; ?></h3>
 
     <div id='calendar'></div>
 

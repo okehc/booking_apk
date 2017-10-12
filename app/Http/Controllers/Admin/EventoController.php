@@ -26,7 +26,8 @@ class EventoController extends Controller
 			c.nombre_seccion
 			FROM reservaciones a  
 			JOIN users b ON a.id_usuario = b.id 
-			JOIN  seccions c ON a.id_seccion  = c.id");
+			JOIN  seccions c ON a.id_seccion  = c.id 
+			WHERE c.id=".$sala." ");
  	
 		foreach ($reservacions as $key ) {
 
