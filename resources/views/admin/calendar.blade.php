@@ -29,7 +29,7 @@ var_dump($sala);
             var m = date.getMonth();
             var y = date.getFullYear(); 
             var sala = <?php echo $sala; ?>; 
-            
+            alert(sala);
 
             var calendar = $('#calendar').fullCalendar({
                 editable: true, 
