@@ -28,6 +28,7 @@ var_dump($sala);
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear(); 
+            var sala = <?php echo $sala; ?>; 
             
 
             var calendar = $('#calendar').fullCalendar({
@@ -44,7 +45,7 @@ var_dump($sala);
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:'http://10.30.42.27/booking_apk/public/admin/evento?sala="<?php echo $sala; ?>"'
+                    url:'http://10.30.42.27/booking_apk/public/admin/evento?sala='+sala
                 },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
