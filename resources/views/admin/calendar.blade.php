@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
 
     <h3 class="page-title">Calendario</h3>
-    <input type="hidden" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>;">
+    <input type="text" name="sala"  id="sala" class="sala" value="<?php echo $sala; ?>;">
     <div id='calendar'></div>
 
 
@@ -47,7 +47,7 @@ var_dump($sala);
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:'http://10.30.42.27/booking_apk/public/admin/evento?sala='+sala
+                    url:'http://10.30.42.27/booking_apk/public/admin/evento?sala='
                 },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
