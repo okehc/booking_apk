@@ -23,6 +23,9 @@ var_dump($sala);
 ?>
 
     <script>
+    var sala = $("#sala").val();
+    alert(sala);
+
         $(document).ready(function () {
             var date = new Date();
             var d = date.getDate();
