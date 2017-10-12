@@ -57,7 +57,7 @@
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
 
 
-                    window.location = "http://10.30.42.27/booking_apk/public/admin/reservacions/create?start="+start+"&end="+end+"&sala="+sala;
+                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end+"&sala="+sala;
 
                 },
                 editable: true,
