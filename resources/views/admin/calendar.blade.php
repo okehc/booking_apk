@@ -19,7 +19,7 @@
 
 <?php 
 
-var_dump($sala);
+echo "desde la vista";
 ?>
 
     <script>

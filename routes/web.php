@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('departamentos_restore/{id}', ['uses' => 'Admin\DepartamentosController@restore', 'as' => 'departamentos.restore']);
     Route::delete('departamentos_perma_del/{id}', ['uses' => 'Admin\DepartamentosController@perma_del', 'as' => 'departamentos.perma_del']);
 
-    Route::resource('evento','Admin\EventoController');
+    Route::resource('evento','Admin\EventoController', ['except' => ['index']]);
     Route::get('api','EventoController@api'); //ruta que nos devuelve los eventos en formato json
 
 

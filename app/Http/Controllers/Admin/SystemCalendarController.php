@@ -11,7 +11,9 @@ class SystemCalendarController extends Controller
     public function index() 
     {
         $events = []; 
-        $sala=$_GET['sala'];
+        $sala=if(isset($_GET['sala']))? $_GET['sala'] : 0;
+
+        var_dump($sala);
 
         foreach (\App\Reservacion::all() as $reservacion) { 
            $crudFieldValue = $reservacion->getOriginal('fecha_de_inicio'); 
