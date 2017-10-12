@@ -14,6 +14,9 @@ class EventoController extends Controller
     public function index()
     {
 
+    	$sala=isset($_GET['sala']) ? $_GET['sala'] : 0;
+
+    	echo "desde evento"; var_dump($sala);
 		$reservacions= DB::connection('odbc')->select("SELECT 
 			a.id, 
 			a.nombre_reunion as title, 
@@ -36,7 +39,7 @@ class EventoController extends Controller
 			$sTime = date('Y-m-d H:i:s', strtotime("$key->fecha $key->time_start"));
 			$eTime = date('Y-m-d H:i:s', strtotime("$key->fecha $end_time"));
 
-			$t[] =  array("title" => $real_title, "start" => $sTime, "end" => $eTime, "url" => "http://10.30.42.27/booking/public/admin/reservacions/".$key->id." ");
+			$t[] =  array("title" => $real_title, "start" => $sTime, "end" => $eTime, "url" => "http://10.30.42.27/booking_apk/public/admin/reservacions/".$key->id." ");
 
 		}
 		return json_encode($t);
