@@ -11,7 +11,7 @@ class SystemCalendarController extends Controller
     public function index() 
     {
         $events = []; 
-        $sala=if(isset($_GET['sala']))? $_GET['sala'] : 0;
+        $sala= isset($_GET['sala']) ? $_GET['sala'] : 0;
 
         var_dump($sala);
 
