@@ -11,6 +11,7 @@ class SystemCalendarController extends Controller
     public function index() 
     {
         $events = []; 
+        $sala=$_GET['sala'];
 
         foreach (\App\Reservacion::all() as $reservacion) { 
            $crudFieldValue = $reservacion->getOriginal('fecha_de_inicio'); 
@@ -31,7 +32,7 @@ class SystemCalendarController extends Controller
         } 
 
 
-       return view('admin.calendar' , compact('events')); 
+       return view('admin.calendar')->with('events', $events)->with('sala', $sala); 
     }
 
 }

@@ -16,6 +16,12 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
     <script src="{{ url('quickadmin/js/locale') }}/es.js" ></script>
     
+
+<?php 
+
+var_dump($sala);
+?>
+
     <script>
         $(document).ready(function () {
             var date = new Date();
@@ -38,7 +44,7 @@
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:'http://10.30.42.27/booking/public/admin/evento'
+                    url:'http://10.30.42.27/booking_apk/public/admin/evento'
                 },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {
@@ -55,7 +61,7 @@
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");                    
 
 
-                    window.location = "http://10.30.42.27/booking/public/admin/reservacions/create?start="+start+"&end="+end;
+                    window.location = "http://10.30.42.27/booking_apk/public/admin/reservacions/create?start="+start+"&end="+end;
 
                 },
                 editable: true,
