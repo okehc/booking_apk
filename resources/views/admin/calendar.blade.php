@@ -42,7 +42,7 @@
                     //en la propiedad url de events ponemos el enlace
                     //y listo eso es todo ya el plugin se encargara de acomodar los eventos
                     //segun la fecha.
-                    url:'http://10.30.42.27/booking_apk/public/admin/evento?sala='
+                    url:'http://10.30.42.27/booking_apk/public/admin/evento?sala=' + sala
                 },
                 eventRender: function(event, element, view) {
                     if (event.allDay === 'true') {

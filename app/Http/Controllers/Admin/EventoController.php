@@ -14,7 +14,7 @@ class EventoController extends Controller
     public function index()
     {
 
-    	$sala=isset($_GET['sala']) ? $_GET['sala'] : 0;
+    	$sala=isset($_GET['sala']) ? $_GET['sala'] : 0;aa
 
     	echo "desde evento"; var_dump($sala);
 		$reservacions= DB::connection('odbc')->select("SELECT 
