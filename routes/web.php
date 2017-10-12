@@ -1,5 +1,6 @@
 <?php
 Route::get('/', 'Admin\SystemCalendarController@index' );
+Route::get('/admin/evento', 'Admin\EventoController@index' );
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
